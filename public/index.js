@@ -21,7 +21,8 @@ var successSendModal = document.getElementById("success-send-modal"),
   loader = document.getElementById("loader-modal"),
   onSuccessModal = document.getElementById("onSuccess__modal"),
   btnSend = document.querySelector(".btn-send"),
-  applicantForm = document.getElementById("modal-form");
+  applicantForm = document.getElementById("modal-form"),
+  titleSuccess = document.getElementById("modal__header-title");
 function checkValidity(e) {
   e = e.target.form.checkValidity();
   return btnSend.disabled = !e, !btnSend.disabled && btnSendModal.classList.contains("hidden") || btnSend.disabled && validSendModal.classList.contains("hidden") ? (validSendModal.classList.toggle("hidden"), btnSendModal.classList.toggle("hidden")) : void 0;
@@ -30,7 +31,7 @@ function onError(e) {
   alert(e.message);
 }
 function onSuccess(e) {
-  e.classList.toggle("hidden"), onSuccessModal.classList.toggle("hidden"), btnSendModal.classList.toggle("hidden"), successSendModal.classList.toggle("hidden"), btnSend.disabled = "disabled";
+  e.classList.toggle("hidden"), onSuccessModal.classList.toggle("hidden"), btnSendModal.classList.toggle("hidden"), successSendModal.classList.toggle("hidden"), titleSuccess.classList.toggle("hidden"), btnSend.disabled = "disabled";
 }
 function toggleLoader() {
   btnSendModal.classList.toggle("hidden"), loader.classList.toggle("hidden");

@@ -61,7 +61,11 @@
               Креативные сайты <br />
               - наша особенность
             </h1>
-            <button class="button-primary">Рассчитать стоимость</button>
+            <a
+              class="js-modal-open button-primary"
+              href="#modal-request-website"
+              >Рассчитать стоимость</a
+            >
             <picture>
               <img
                 class="logo-rocket"
@@ -75,36 +79,30 @@
           <section class="main__services gap-in-block">
             <h2>Какой сайт вам нужен?</h2>
             <section>
-              <a class="js-modal-open" href="#modal-services">
-                <div class="link-block">
-                  <h3 class="text-color-brand">Сайт-визитка</h3>
-                  <p>
-                    Создаем интуитивно понятну навигацию по сайту с входами,
-                    переходами и захватывающим дизайном
-                  </p>
-                  <p>14-21 день</p>
-                </div></a
-              >
-              <a class="js-modal-open" href="#modal-services">
-                <div class="link-block">
-                  <h3 class="text-color-brand">Интернет-магазин</h3>
-                  <p>
-                    Разработаем полноценный магазин с корзиной, листингом и
-                    карточками товара, чтобы делать покупки легко
-                  </p>
-                  <p>21-28 дней</p>
-                </div></a
-              >
-              <a class="js-modal-open" href="#modal-services">
-                <div class="link-block">
-                  <h3 class="text-color-brand">Лендинг</h3>
-                  <p>
-                    Продумаем и разработаем так, чтобы пользователь точно достиг
-                    цели
-                  </p>
-                  <p>5-7 дней</p>
-                </div></a
-              >
+              <div class="link-block">
+                <h3 class="text-color-brand">Сайт-визитка</h3>
+                <p>
+                  Создаем интуитивно понятну навигацию по сайту с входами,
+                  переходами и захватывающим дизайном
+                </p>
+                <p>14-21 день</p>
+              </div>
+              <div class="link-block">
+                <h3 class="text-color-brand">Интернет-магазин</h3>
+                <p>
+                  Разработаем полноценный магазин с корзиной, листингом и
+                  карточками товара, чтобы делать покупки легко
+                </p>
+                <p>21-28 дней</p>
+              </div>
+              <div class="link-block">
+                <h3 class="text-color-brand">Лендинг</h3>
+                <p>
+                  Продумаем и разработаем так, чтобы пользователь точно достиг
+                  цели
+                </p>
+                <p>5-7 дней</p>
+              </div>
             </section>
             <picture>
               <img
@@ -148,11 +146,14 @@
     </div>
 
     <!-- МОДАЛЬНЫЕ ОКНА -->
-    <div class="modal modal--s modal--screen-height" id="modal-services">
+    <div class="modal modal--s modal--screen-height" id="modal-request-website">
       <div class="modal__dialog">
         <div class="modal__dialog-header">
           <div class="modal__dialog-header-content">
-            <h2>Заявка на разработку сайта</h2>
+            <h2 id="modal__header-title">Заявка на разработку сайта</h2>
+            <span id="success-send-modal" class="hidden"
+              >Ваша заявка отправлена!</span
+            >
           </div>
           <div class="modal__dialog-header-close">
             <a class="js-modal-close modal__dialog-header-btn-close">
@@ -307,9 +308,6 @@
             <span id="loader-modal" class="hidden">Отправляем...</span
             ><span id="btn-send-modal" class="hidden">Отправить заявку</span>
             <span id="valid-send-modal">Заполните обязательные поля</span>
-            <span id="success-send-modal" class="hidden"
-              >Ваша заявка отправлена!</span
-            >
           </button>
         </div>
       </div>
