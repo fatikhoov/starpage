@@ -8,3 +8,6 @@ dev
 .env.*.local
  
 .vscode
+
+.firebaserc
+firebase.json

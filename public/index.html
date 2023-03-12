@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js" lang="">
-  <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -23,25 +18,19 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/ElemModal.css" />
 
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="js/plugins.js"></script>
   </head>
   <body>
-    <!--[if lt IE 8]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="http://browsehappy.com/">upgrade your browser</a> to improve
-        your experience.
-      </p>
-    <![endif]-->
-
     <div class="header-container">
       <header class="wrapper clearfix">
         <h1 class="title"><a href="/">STARPAGE</a></h1>
         <nav>
           <ul>
             <li>
-              <a href="#"
+              <a href="https://t.me/my_starpage"
                 ><img
                   class="logo-telegram"
                   src="/img/telegram.svg"
@@ -50,7 +39,7 @@
               /></a>
             </li>
             <li>
-              <a href="#"
+              <a href="mailto:hello@starpage.ru"
                 ><img
                   class="logo-email"
                   src="/img/email.png"
@@ -58,9 +47,9 @@
                   alt="starpage email"
               /></a>
             </li>
-            <li><a href="#">Меню</a></li>
           </ul>
         </nav>
+        <a class="link-menu" href="#">Меню</a>
       </header>
     </div>
 
@@ -72,10 +61,8 @@
               Креативные сайты <br />
               - наша особенность
             </h1>
-            <button>Рассчитать стоимость</button>
+            <button class="button-primary">Рассчитать стоимость</button>
             <picture>
-              <!-- <source srcset="components/header/img/logo.avif, components/header/img/logo@2x.avif 2x" type="image/avif">
-                <source srcset="components/header/img/logo.webp, components/header/img/logo@2x.webp 2x" type="image/webp"> -->
               <img
                 class="logo-rocket"
                 src="/img/rocket.png"
@@ -97,7 +84,7 @@
                 <p>14-21 день</p>
               </div>
               <div class="link-block">
-                <h3>Интернет-магазин</h3>
+                <h3 class="text-color-brand">Интернет-магазин</h3>
                 <p>
                   Разработаем полноценный магазин с корзиной, листингом и
                   карточками товара, чтобы делать покупки легко
@@ -105,7 +92,7 @@
                 <p>21-28 дней</p>
               </div>
               <div class="link-block">
-                <h3>Лендинг</h3>
+                <h3 class="text-color-brand">Лендинг</h3>
                 <p>
                   Продумаем и разработаем так, чтобы пользователь точно достиг
                   цели
@@ -114,8 +101,6 @@
               </div>
             </section>
             <picture>
-              <!-- <source srcset="components/header/img/logo.avif, components/header/img/logo@2x.avif 2x" type="image/avif">
-                  <source srcset="components/header/img/logo.webp, components/header/img/logo@2x.webp 2x" type="image/webp"> -->
               <img
                 class="logo-stars"
                 src="/img/stars.png"
@@ -124,31 +109,10 @@
               />
             </picture>
           </section>
-          <!--  <section>
-            <h2>article section h2</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              sodales urna non odio egestas tempor. Nunc vel vehicula ante.
-              Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In
-              semper consequat est, eu porta velit mollis nec. Curabitur posuere
-              enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus
-              velit suscipit ultrices. Proin in est sed erat facilisis pharetra.
-            </p>
-          </section> -->
-          <!--  <footer>
-            <h3>article footer h3</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              sodales urna non odio egestas tempor. Nunc vel vehicula ante.
-              Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In
-              semper consequat est, eu porta velit mollis nec. Curabitur posuere
-              enim eget turpis feugiat tempor.
-            </p>
-          </footer> -->
         </article>
 
-        <!--  <aside class="menu-mobile">
-          <h3>aside</h3>
+        <aside class="menu-mobile">
+          <h3>Агентство создания сайтов под ключ</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
             sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam
@@ -157,19 +121,198 @@
             eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit
             suscipit ultrices.
           </p>
-        </aside> -->
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam
+            bibendum iaculis libero, eget molestie nisl pharetra in. In semper
+            consequat est, eu porta velit mollis nec. Curabitur posuere enim
+            eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit
+            suscipit ultrices.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam
+            bibendum iaculis libero, eget molestie nisl pharetra in. In semper
+            consequat est, eu porta velit mollis nec. Curabitur posuere enim
+            eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit
+            suscipit ultrices.
+          </p>
+        </aside>
       </div>
-      <!-- #main -->
     </div>
-    <!-- #main-container -->
 
+    <div class="modal modal--s modal__work" id="modal-1">
+      <div class="modal__dialog">
+        <div class="modal__dialog-header">
+          <div class="modal__dialog-header-content">
+            <h2>Заявка на разработку сайта-визитки</h2>
+          </div>
+          <div class="modal__dialog-header-close">
+            <a class="js-modal-close modal__dialog-header-btn-close">
+              <span>&times;</span>
+            </a>
+          </div>
+        </div>
+        <div class="modal__dialog-body">
+          <form
+            id="modal-form"
+            enctype="multipart/form-data"
+            method="post"
+            autocomplete="off"
+          >
+            <fieldset>
+              <legend>Персональные данные</legend>
+              <ul class="form-ul">
+                <li>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Ваше имя"
+                    title="Как мы будем к вам обращаться?"
+                    required
+                    autofocus
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="company"
+                    id="company"
+                    placeholder="Название проекта"
+                    title="Постарайтесь лучше рассказать о своем проекте"
+                    required
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="target"
+                    id="target"
+                    placeholder="Цель разработки"
+                    title="Постарайтесь лучше рассказать о своем проекте"
+                    required
+                  />
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset>
+              <legend>Контакты</legend>
+              <ul class="form-ul">
+                <li>
+                  <input
+                    type="email"
+                    name="mail"
+                    placeholder="Почта"
+                    id="email"
+                    required
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="telegram"
+                    id="telegram"
+                    placeholder="Telegram"
+                    required
+                  />
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset>
+              <legend>Ваш комментарий</legend>
+              <div class="form-ul">
+                <textarea
+                  name="comment"
+                  rows="4"
+                  id="message"
+                  placeholder="Укажите дополнительно всё, что считаете важным"
+                ></textarea>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Вопрос из брифа</legend>
+              <ul class="form-ul">
+                <li>
+                  <input
+                    type="checkbox"
+                    name="1 checkbox"
+                    id="courses"
+                    checked
+                  />
+                  <label for="courses">ответ 1</label>
+                </li>
+                <li>
+                  <input type="checkbox" name="2 checkbox" id="books" />
+                  <label for="books">ответ 1</label>
+                </li>
+                <li>
+                  <input type="checkbox" name="3 checkbox" id="video" />
+                  <label for="video">ответ 1</label>
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset>
+              <legend>Вопрос из брифа</legend>
+              <ul class="form-ul">
+                <li>
+                  <input
+                    type="radio"
+                    name="need radio"
+                    id="front"
+                    value="frontend"
+                    checked
+                  />
+                  <label for="front">Фронтенд-разработка</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="want radio"
+                    id="back"
+                    value="backend"
+                  />
+                  <label for="back">Бэкенд-разработка</label>
+                </li>
+              </ul>
+            </fieldset>
+            <div>
+              <input type="reset" value="Очистить все поля" />
+              <p>
+                Ссылки на политику конфидениальности, передачи персональных
+                данных
+              </p>
+            </div>
+          </form>
+          <p class="onSuccess__modal hidden" id="onSuccess__modal">
+            Менеджер получил заявку<br />и свяжется с Вами сразу,<br />как её
+            обработает :)
+          </p>
+        </div>
+        <div class="modal__dialog-footer">
+          <button
+            class="js-modal-close btn-send"
+            type="submit"
+            form="modal-form"
+            disabled
+          >
+            <span id="loader-modal" class="hidden">Отправляем...</span
+            ><span id="btn-send-modal" class="hidden">Отправить заявку</span>
+            <span id="valid-send-modal">Заполните обязательные поля</span>
+            <span id="success-send-modal" class="hidden"
+              >Ваша заявка отправлена!</span
+            >
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="footer-container">
       <footer class="wrapper">
         <h3>ОСТАЛИСЬ ЕЩЕ ВОПРОСЫ?</h3>
         <p>Свяжитесь с нами удобным для вас способом!</p>
-        <ul>
+        <ul class="ul-footer">
           <li>
-            <a href="#"
+            <a href="https://t.me/my_starpage"
               ><img
                 class="logo-telegram"
                 src="/img/telegram.svg"
@@ -178,7 +321,7 @@
             /></a>
           </li>
           <li>
-            <a href="#"
+            <a href="mailto:hello@starpage.ru"
               ><img
                 class="logo-email"
                 src="/img/email.png"
@@ -190,25 +333,6 @@
       </footer>
     </div>
 
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      ;(function (b, o, i, l, e, r) {
-        b.GoogleAnalyticsObject = l
-        b[l] ||
-          (b[l] = function () {
-            ;(b[l].q = b[l].q || []).push(arguments)
-          })
-        b[l].l = +new Date()
-        e = o.createElement(i)
-        r = o.getElementsByTagName(i)[0]
-        e.src = '//www.google-analytics.com/analytics.js'
-        r.parentNode.insertBefore(e, r)
-      })(window, document, 'script', 'ga')
-      ga('create', 'UA-XXXXX-X', 'auto')
-      ga('send', 'pageview')
-    </script>
+    <script src="index.js"></script>
   </body>
 </html>

@@ -1,0 +1,198 @@
+.form-ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 8px 16px 16px 8px;
+}
+.form-ul li input[type='checkbox'],
+.form-ul li input[type='radio'] {
+  width: min-content;
+}
+
+form fieldset {
+  margin-bottom: 16px;
+}
+
+.onSuccess__modal {
+  font-size: 18px;
+  font-weight: 500;
+  color: seagreen;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.section__modal-starpage {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  font-size: 30px;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;  
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: var(--modal-transition);
+}
+.modal__dialog {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+
+  border-radius: 10px;
+  transition: var(--modal-transition);
+  transform: translateY(-20px);
+}
+
+.modal--s .modal__dialog {
+  width: 320px;
+}
+.modal--m .modal__dialog {
+  width: 600px;
+}
+.modal--l .modal__dialog {
+  width: 900px;
+}
+.modal--screen-height .modal__dialog {
+  max-height: var(--modal-height);
+}
+
+.modal-active {
+  visibility: hidden;
+  opacity: 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+}
+
+.modal__dialog-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+.modal__dialog-header-content {
+  flex-grow: 1;
+}
+.modal__dialog-header-content h2 {
+  width: 100%;
+  font-size: 18px;
+}
+.modal__dialog-header-close {
+  display: flex;
+  align-items: center;
+}
+.modal__dialog-header-btn-close {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.modal__dialog-header,
+.modal__dialog-body {
+  background-color: white;
+  padding: 16px 16px 0;
+}
+.modal__dialog-body {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.modal__dialog-header,
+.modal__dialog-footer {
+  z-index: 21;
+  -webkit-box-shadow: 0 0px 6px #ccc;
+  -moz-box-shadow: 0 0px 6px #ccc;
+  box-shadow: 0 0px 6px #ccc;
+  transition: var(--modal-transition);
+}
+
+ 
+
+.modal__dialog-body::-webkit-scrollbar {
+  width: 6px;
+}
+.modal__dialog-body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset -2px 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+.modal__dialog-body::-webkit-scrollbar-thumb {
+  background-color: var(--color-brand);
+  outline: 1px solid var(--color-brand);
+  border-radius: 10px;
+}

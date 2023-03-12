@@ -7,7 +7,13 @@
   --color-brand: #6f26ec;
   --second-color-brand: #a84392;
 
+  --modal-width: 320px;
+  --modal-height: 80vh;
+  --modal-transition: 80vh;
+
   font-family: 'Inter', sans-serif;
+
+  transition: all 0.4s;
 }
 
 html {
@@ -78,17 +84,12 @@ body {
     ALL: Orange Theme
    =================== */
 
-.footer-container,
-.main aside {
-  border-top: 20px solid var(--color-white);
-}
-
-.header-container,
-.main aside {
+.header-container {
   background: var(--color-white);
 }
 
 .title {
+  align-self: center;
   background-color: var(--color-dark);
   background-image: linear-gradient(
     254deg,
@@ -102,6 +103,9 @@ body {
 /* ==============
     MOBILE: Menu
    ============== */
+nav {
+  display: none;
+}
 
 ul {
   display: flex;
@@ -113,10 +117,12 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+.ul-footer {
+  margin: 0;
+}
 
 nav a {
   display: flex;
-  margin-bottom: 10px;
   padding: 15px 0;
 
   text-align: center;
@@ -124,7 +130,6 @@ nav a {
   font-weight: bold;
 
   color: var(--color-brand);
-  background: var(--color-white);
 }
 
 nav a:hover,
@@ -143,11 +148,6 @@ nav a:hover {
 
 .main {
   padding: 30px 0;
-}
-
-.main aside {
-  color: var(--color-dark);
-  padding: 0px 5% 10px;
 }
 
 /* ===============
@@ -170,25 +170,14 @@ nav a:hover {
   /* ====================
     INTERMEDIATE: Menu
    ==================== */
+  nav {
+    margin-right: 100px;
+    display: flex;
+  }
 
   nav a {
     width: auto;
-    margin: 0 1.7%;
     padding: 25px 2%;
-    margin-bottom: 0;
-  }
-
-  nav li:first-child a {
-    margin-left: 0;
-  }
-
-  nav li:last-child a {
-    position: fixed;
-    top: 0;
-    height: inherit;
-    color: var(--second-color-brand);
-    margin-right: 0;
-    margin-top: 6px;
   }
 
   /* ========================
@@ -220,10 +209,6 @@ nav a:hover {
     WIDE: Menu
    ============ */
 
-  .title {
-    align-self: center;
-  }
-
   nav {
     width: auto;
   }
@@ -237,11 +222,6 @@ nav a:hover {
     flex-direction: column;
     width: 100%;
   }
-
-  .main aside {
-    position: fixed;
-    width: 28%;
-  }
 }
 
 @media only screen and (min-width: 1140px) {
@@ -253,8 +233,21 @@ nav a:hover {
     width: 1026px; /* 1140px - 10% for margins */
     margin: 0 auto;
   }
+
+  nav {
+    margin-right: 64px;
+  }
 }
 
+@media only screen and (min-width: 1220px) {
+  /* ===============
+    Maximal Width
+   =============== */
+
+  nav {
+    margin-right: 0;
+  }
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
