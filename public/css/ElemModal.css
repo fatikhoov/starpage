@@ -39,19 +39,20 @@ form fieldset {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;  
+  height: 100%;
   z-index: 20;
+  visibility: hidden;
+  opacity: 0;
   background-color: rgba(0, 0, 0, 0.6);
   transition: var(--modal-transition);
 }
 .modal__dialog {
   display: flex;
   flex-direction: column;
-  overflow: hidden; 
-
+  overflow: hidden;
   border-radius: 10px;
   transition: var(--modal-transition);
-  transform: translateY(-20px);
+  transform: translateY(-50px);
 }
 
 .modal--s .modal__dialog {
@@ -68,73 +69,18 @@ form fieldset {
 }
 
 .modal-active {
-  visibility: hidden;
-  opacity: 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+  visibility: visible;
+  opacity: 1;
+}
+.modal-active .modal__dialog {
+  transform: translateY(0);
+}
+
+.modal--has-scroll .modal__dialog-header,
+.modal--has-scroll .modal__dialog-footer {
+  -webkit-box-shadow: 0 0px 6px #ccc;
+  -moz-box-shadow: 0 0px 6px #ccc;
+  box-shadow: 0 0px 6px #ccc;
 }
 
 .modal__dialog-header {
@@ -176,13 +122,8 @@ form fieldset {
 .modal__dialog-header,
 .modal__dialog-footer {
   z-index: 21;
-  -webkit-box-shadow: 0 0px 6px #ccc;
-  -moz-box-shadow: 0 0px 6px #ccc;
-  box-shadow: 0 0px 6px #ccc;
   transition: var(--modal-transition);
 }
-
- 
 
 .modal__dialog-body::-webkit-scrollbar {
   width: 6px;
