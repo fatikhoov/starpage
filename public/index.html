@@ -61,6 +61,7 @@
               Креативные сайты <br />
               - наша особенность
             </h1>
+            <a class="js-modal-open test" href="#modal-test">OPEN TEST MODAL</a>
             <a
               class="js-modal-open button-primary"
               href="#modal-request-website"
@@ -309,6 +310,181 @@
             ><span id="btn-send-modal" class="hidden">Отправить заявку</span>
             <span id="valid-send-modal">Заполните обязательные поля</span>
           </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal modal--s modal--screen-height modal-active"
+      id="modal-test"
+    >
+      <div class="modal__dialog">
+        <div class="modal__dialog-header">
+          <div class="modal__dialog-header-content">
+            <h2 id="modal__header-title">Заявка на разработку сайта</h2>
+            <span id="success-send-modal" class="hidden"
+              >Ваша заявка отправлена!</span
+            >
+          </div>
+          <div class="modal__dialog-header-close">
+            <a class="js-modal-close modal__dialog-header-btn-close">
+              <span>&times;</span>
+            </a>
+          </div>
+        </div>
+        <div class="modal__dialog-body">
+          <form
+            id="regForm"
+            enctype="multipart/form-data"
+            method="post"
+            autocomplete="off"
+          >
+            <input
+              type="hidden"
+              id="website"
+              name="website"
+              value="Заявка на разработку сайта-визитки"
+            />
+            <fieldset class="tab">
+              <legend>Персональные данные</legend>
+              <ul class="form-ul">
+                <li>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Ваше имя"
+                    title="Как мы будем к вам обращаться?"
+                    autofocus
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="company"
+                    id="company"
+                    placeholder="Название проекта"
+                    title="Постарайтесь лучше рассказать о своем проекте"
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="target"
+                    id="target"
+                    placeholder="Цель разработки"
+                    title="Постарайтесь лучше рассказать о своем проекте"
+                  />
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset class="tab hidden">
+              <legend>Контакты</legend>
+              <ul class="form-ul">
+                <li>
+                  <input
+                    type="email"
+                    name="mail"
+                    placeholder="Почта"
+                    id="email"
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="telegram"
+                    id="telegram"
+                    placeholder="Telegram"
+                  />
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset class="tab hidden">
+              <legend>Ваш комментарий</legend>
+              <div class="form-ul">
+                <textarea
+                  name="comment"
+                  rows="4"
+                  id="message"
+                  placeholder="Укажите дополнительно всё, что считаете важным"
+                ></textarea>
+              </div>
+            </fieldset>
+            <fieldset class="tab hidden">
+              <legend>Вопрос из брифа</legend>
+              <ul class="form-ul">
+                <li>
+                  <input
+                    type="checkbox"
+                    name="1 checkbox"
+                    id="courses"
+                    checked
+                  />
+                  <label for="courses">ответ 1</label>
+                </li>
+                <li>
+                  <input type="checkbox" name="2 checkbox" id="books" />
+                  <label for="books">ответ 1</label>
+                </li>
+                <li>
+                  <input type="checkbox" name="3 checkbox" id="video" />
+                  <label for="video">ответ 1</label>
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset class="tab hidden">
+              <legend>Вопрос из брифа</legend>
+              <ul class="form-ul">
+                <li>
+                  <input
+                    type="radio"
+                    name="need radio"
+                    id="front"
+                    value="frontend"
+                    checked
+                  />
+                  <label for="front">Фронтенд-разработка</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="want radio"
+                    id="back"
+                    value="backend"
+                  />
+                  <label for="back">Бэкенд-разработка</label>
+                </li>
+              </ul>
+            </fieldset>
+          </form>
+          <p class="onSuccess__modal hidden" id="onSuccess__modal">
+            Менеджер получил заявку<br />и свяжется с Вами сразу,<br />как её
+            обработает :)
+          </p>
+          <div style="text-align: center; margin-top: 40px">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+          </div>
+        </div>
+
+        <div class="modal__dialog-footer">
+          <div>
+            <div class="btn__footer-wrapper">
+              <button type="button" id="prevBtn" onclick="nextPrev(-1)">
+                Назад
+              </button>
+              <button
+                class="btn-send"
+                type="button"
+                id="nextBtn"
+                onclick="nextPrev(1)"
+              >
+                Вперед
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

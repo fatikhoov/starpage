@@ -90,6 +90,24 @@ function _handleFormSubmit() {
   return _handleFormSubmit.apply(this, arguments);
 }
 applicantForm.addEventListener("input", checkValidity), applicantForm.addEventListener("submit", handleFormSubmit), console.log("Завершено форма из модалки");
+var currentTab = 0;
+function showTab(e) {
+  var t = document.getElementsByClassName("tab");
+  t[e].classList.remove("hidden"), document.getElementById("prevBtn").classList.toggle("hidden"), e == t.length - 1 ? document.getElementById("nextBtn").innerHTML = "Отправить заявку" : document.getElementById("nextBtn").innerHTML = "Вперед", fixStepIndicator(e);
+}
+function nextPrev(e) {
+  var t = document.getElementsByClassName("tab");
+  return !(1 == e && !validateForm()) && (t[currentTab].classList.toggle("hidden"), (currentTab += e) >= t.length ? (document.getElementById("regForm").submit(), !1) : void showTab(currentTab));
+}
+function validateForm() {
+  for (var e = !0, t = document.getElementsByClassName("tab")[currentTab].getElementsByTagName("input"), n = 0; n < t.length; n++) "" == t[n].value && (t[n].className += " invalid", e = !1);
+  return e && (document.getElementsByClassName("step")[currentTab].className += " finish"), e;
+}
+function fixStepIndicator(e) {
+  for (var t = document.getElementsByClassName("step"), n = 0; n < t.length; n++) t[n].className = t[n].className.replace(" active", "");
+  t[e].className += " active";
+}
+showTab(currentTab);
 "use strict";
 
 var resizeObserver = null;

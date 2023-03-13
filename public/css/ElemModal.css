@@ -84,6 +84,7 @@ form fieldset {
   display: flex;
   align-items: flex-start;
   gap: 32px;
+  padding: 16px 16px 0;
 }
 .modal__dialog-header-content {
   flex-grow: 1;
@@ -109,15 +110,57 @@ form fieldset {
 .modal__dialog-header,
 .modal__dialog-body {
   background-color: white;
-  padding: 16px 16px 0;
 }
 .modal__dialog-body {
+  padding: 16px;
   flex-grow: 1;
   overflow: auto;
+  transition: var(--modal-transition);
 }
 
 .modal__dialog-header,
 .modal__dialog-footer {
   z-index: 21;
+  background: white;
   transition: var(--modal-transition);
+}
+
+/* Style the input fields */
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: block;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4caf50;
+}
+
+.btn__footer-wrapper {
+  display: flex;
 }
