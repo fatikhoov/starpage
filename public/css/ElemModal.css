@@ -125,14 +125,7 @@ form fieldset {
   transition: var(--modal-transition);
 }
 
-/* Style the input fields */
-input {
-  padding: 10px;
-  width: 100%;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
-}
+/*ИНДИКАТОР ФОРМЫ*/
 
 /* Hide all steps by default: */
 .tab {
@@ -144,11 +137,11 @@ input {
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #bbbbbb;
+  background-color: #bbb;
   border: none;
   border-radius: 50%;
   display: inline-block;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 /* Mark the active step: */
@@ -158,7 +151,7 @@ input {
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: #4caf50;
+  background-color: seagreen;
 }
 
 .btn__footer-wrapper {

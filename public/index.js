@@ -14,15 +14,17 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 console.log("форма для модалки..");
-var s = "Заявка из формы";
-var successSendModal = document.getElementById("success-send-modal"),
-  validSendModal = document.getElementById("valid-send-modal"),
+var s = "Заявка из формы",
+  TARGET_ID;
+var validSendModal = document.getElementById("valid-send-modal"),
   btnSendModal = document.getElementById("btn-send-modal"),
   loader = document.getElementById("loader-modal"),
   onSuccessModal = document.getElementById("onSuccess__modal"),
   btnSend = document.querySelector(".btn-send"),
   applicantForm = document.getElementById("modal-form"),
-  titleSuccess = document.getElementById("modal__header-title");
+  regForm = document.getElementById("regForm"),
+  titleSuccess = document.querySelector(".modal__header-title"),
+  successSendModal = document.querySelector(".success-send-modal");
 function checkValidity(e) {
   e = e.target.form.checkValidity();
   return btnSend.disabled = !e, !btnSend.disabled && btnSendModal.classList.contains("hidden") || btnSend.disabled && validSendModal.classList.contains("hidden") ? (validSendModal.classList.toggle("hidden"), btnSendModal.classList.toggle("hidden")) : void 0;
@@ -30,11 +32,11 @@ function checkValidity(e) {
 function onError(e) {
   alert(e.message);
 }
-function onSuccess(e) {
-  e.classList.toggle("hidden"), onSuccessModal.classList.toggle("hidden"), btnSendModal.classList.toggle("hidden"), successSendModal.classList.toggle("hidden"), titleSuccess.classList.toggle("hidden"), btnSend.disabled = "disabled";
+function onSuccess() {
+  console.log("i work onSuccess"), titleSuccess.classList.toggle("hidden"), successSendModal.classList.toggle("hidden"), document.querySelector("p[ind-data=\"".concat(TARGET_ID, "-onSuccess\"]")).classList.toggle("hidden"), document.querySelector("[id=\"".concat(TARGET_ID, "\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-steps\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-btns\"]")).classList.add("hidden");
 }
 function toggleLoader() {
-  btnSendModal.classList.toggle("hidden"), loader.classList.toggle("hidden");
+  document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-loader\"]")).classList.toggle("hidden"), document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-sendBtn\"]")).classList.toggle("hidden");
 }
 function sendData(_x) {
   return _sendData.apply(this, arguments);
@@ -60,7 +62,7 @@ function _sendData() {
 }
 function serializeForm(e) {
   e = new FormData(e);
-  return Array.from(e.entries()).filter(function (e) {
+  return console.log("data", e), Array.from(e.entries()).filter(function (e) {
     s += "  |---|  ".concat(e[0], ": ") + e[1];
   }), s;
 }
@@ -69,18 +71,20 @@ function handleFormSubmit(_x2) {
 }
 function _handleFormSubmit() {
   _handleFormSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
-    var t;
+    var t, n;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          e.preventDefault();
+          e.preventDefault(), console.log("submit click"), TARGET_ID = e.target.id;
           t = serializeForm(e.target);
           toggleLoader();
           _context2.next = 5;
           return sendData(t);
         case 5:
-          t = _context2.sent["status"];
-          toggleLoader(), 200 === t ? onSuccess(e.target) : onError(error);
+          n = _context2.sent["status"];
+          setTimeout(function () {
+            toggleLoader(e), 200 === n ? onSuccess() : onError(error);
+          }, 2e3);
         case 7:
         case "end":
           return _context2.stop();
@@ -89,23 +93,24 @@ function _handleFormSubmit() {
   }));
   return _handleFormSubmit.apply(this, arguments);
 }
-applicantForm.addEventListener("input", checkValidity), applicantForm.addEventListener("submit", handleFormSubmit), console.log("Завершено форма из модалки");
+addEventListener("input", checkValidity), addEventListener("submit", handleFormSubmit), console.log("Завершено форма из модалки");
+var btn_send = document.getElementById("nextBtn");
 var currentTab = 0;
 function showTab(e) {
   var t = document.getElementsByClassName("tab");
-  t[e].classList.remove("hidden"), document.getElementById("prevBtn").classList.toggle("hidden"), e == t.length - 1 ? document.getElementById("nextBtn").innerHTML = "Отправить заявку" : document.getElementById("nextBtn").innerHTML = "Вперед", fixStepIndicator(e);
+  t[e].classList.remove("hidden"), 0 == e ? document.getElementById("prevBtn").classList.add("hidden") : document.getElementById("prevBtn").classList.remove("hidden"), e == t.length - 1 ? (console.log("end and  "), document.getElementById("btnRegForm").classList.toggle("hidden"), btn_send.classList.toggle("hidden")) : document.getElementById("nextBtn").innerHTML = "Вперед", fixStepIndicator(e);
 }
 function nextPrev(e) {
   var t = document.getElementsByClassName("tab");
-  return !(1 == e && !validateForm()) && (t[currentTab].classList.toggle("hidden"), (currentTab += e) >= t.length ? (document.getElementById("regForm").submit(), !1) : void showTab(currentTab));
+  return !(1 == e && !validateForm()) && (t[currentTab].classList.toggle("hidden"), (currentTab += e) >= t.length ? (console.log("submit"), !1) : void showTab(currentTab));
 }
 function validateForm() {
   for (var e = !0, t = document.getElementsByClassName("tab")[currentTab].getElementsByTagName("input"), n = 0; n < t.length; n++) "" == t[n].value && (t[n].className += " invalid", e = !1);
   return e && (document.getElementsByClassName("step")[currentTab].className += " finish"), e;
 }
 function fixStepIndicator(e) {
-  for (var t = document.getElementsByClassName("step"), n = 0; n < t.length; n++) t[n].className = t[n].className.replace(" active", "");
-  t[e].className += " active";
+  for (var t = document.getElementsByClassName("step"), n = document.getElementsByClassName("tab"), d = 0; d < t.length; d++) t[d].className = t[d].className.replace(" active", "");
+  e + 1 >= n.length ? console.log("end and stop tab") : t[e].className += " active";
 }
 showTab(currentTab);
 "use strict";

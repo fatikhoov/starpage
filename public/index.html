@@ -314,15 +314,12 @@
       </div>
     </div>
 
-    <div
-      class="modal modal--s modal--screen-height modal-active"
-      id="modal-test"
-    >
+    <div class="modal modal--s modal--screen-height" id="modal-test">
       <div class="modal__dialog">
         <div class="modal__dialog-header">
           <div class="modal__dialog-header-content">
-            <h2 id="modal__header-title">Заявка на разработку сайта</h2>
-            <span id="success-send-modal" class="hidden"
+            <h2 class="modal__header-title">Заявка на разработку сайта</h2>
+            <span class="success-send-modal hidden"
               >Ваша заявка отправлена!</span
             >
           </div>
@@ -457,20 +454,27 @@
               </ul>
             </fieldset>
           </form>
-          <p class="onSuccess__modal hidden" id="onSuccess__modal">
+          <p
+            class="onSuccess__modal hidden"
+            id="onSuccess__modal-quiz"
+            ind-data="regForm-onSuccess"
+          >
             Менеджер получил заявку<br />и свяжется с Вами сразу,<br />как её
             обработает :)
           </p>
-          <div style="text-align: center; margin-top: 40px">
+          <div
+            style="text-align: center; margin-top: 40px"
+            ind-data="regForm-steps"
+          >
+            <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
           </div>
         </div>
-
         <div class="modal__dialog-footer">
-          <div>
+          <div ind-data="regForm-btns">
             <div class="btn__footer-wrapper">
               <button type="button" id="prevBtn" onclick="nextPrev(-1)">
                 Назад
@@ -482,6 +486,18 @@
                 onclick="nextPrev(1)"
               >
                 Вперед
+              </button>
+              <button
+                class="btn-send btn-send-telegram hidden"
+                type="submit"
+                form="regForm"
+                id="btnRegForm"
+              >
+                <span class="hidden" id="loader-modal" ind-data="regForm-loader"
+                  >Отправляем...</span
+                ><span class="" id="btn-send-modal" ind-data="regForm-sendBtn"
+                  >Отправить заявку</span
+                >
               </button>
             </div>
           </div>
