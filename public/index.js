@@ -74,64 +74,61 @@ function handleFormSubmit(_x) {
 }
 function _handleFormSubmit() {
   _handleFormSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-    var t, n, o, a, l, _iterator, _step, _step$value, d, c, r, i;
+    var t, a, n, o, d, _iterator, _step, _step$value, c, i, l;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          e.preventDefault(), TARGET_ID = e.target.id, s = "Заявка из формы " + TARGET_ID, toggleLoader(), console.log("handleFormSubmit", TARGET_ID);
-          o = e.target, a = new FormData(o), l = {};
-          console.log("pre formData", a);
-          _iterator = _createForOfIteratorHelper(a.entries());
+          e.preventDefault(), TARGET_ID = e.target.id, s = "Заявка из формы " + TARGET_ID, toggleLoader();
+          n = e.target, o = new FormData(n), d = {};
+          _iterator = _createForOfIteratorHelper(o.entries());
           try {
             for (_iterator.s(); !(_step = _iterator.n()).done;) {
               _step$value = _slicedToArray(_step.value, 2);
               t = _step$value[0];
-              n = _step$value[1];
-              l[t] = n;
+              a = _step$value[1];
+              d[t] = a;
             }
           } catch (err) {
             _iterator.e(err);
           } finally {
             _iterator.f();
           }
-          console.log("pre formData", l);
-          _context.next = 9;
-          return sendToTelegram(l);
-        case 9:
-          d = _context.sent;
-          _context.next = 12;
-          return sendToEmail(l);
-        case 12:
+          _context.next = 7;
+          return sendToTelegram(d);
+        case 7:
           c = _context.sent;
-          _context.next = 15;
-          return sendToGoogle(l);
-        case 15:
-          r = _context.sent;
-          _context.next = 18;
-          return Promise.allSettled([d, c, r]);
-        case 18:
+          _context.next = 10;
+          return sendToEmail(d);
+        case 10:
           i = _context.sent;
-          if (!i.every(function (e) {
+          _context.next = 13;
+          return sendToGoogle(d);
+        case 13:
+          l = _context.sent;
+          _context.next = 16;
+          return Promise.allSettled([c, i, l]);
+        case 16:
+          if (!_context.sent.every(function (e) {
             return "rejected" === e.status;
           })) {
-            _context.next = 21;
+            _context.next = 18;
             break;
           }
-          throw console.log("ошибка!"), new Error("All promises were rejected");
-        case 21:
-          console.log("удача! результат промисов", i), onSuccess();
-          _context.next = 27;
+          throw new Error("Ошибка промисов");
+        case 18:
+          onSuccess();
+          _context.next = 24;
           break;
-        case 24:
-          _context.prev = 24;
+        case 21:
+          _context.prev = 21;
           _context.t0 = _context["catch"](0);
-          console.log("  sent error!", _context.t0);
-        case 27:
+          console.error("Ошибка отправки данных!", _context.t0);
+        case 24:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 24]]);
+    }, _callee, null, [[0, 21]]);
   }));
   return _handleFormSubmit.apply(this, arguments);
 }
@@ -145,8 +142,8 @@ function _sendToTelegram() {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           console.log("начало телеграмм");
-          t = "<b>\u0417\u0410\u042F\u0412\u041A\u0410 \u041D\u0410 \u0420\u0410\u0417\u0420\u0410\u0411\u041E\u0422\u041A\u0423 \u0421\u0410\u0419\u0422\u0410</b>\n", t = (t = (t = (t = (t = (t = (t += "<i>\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:</i>".concat(e.name, "\n")) + "<i>\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F:</i>".concat(e.company, "\n")) + "<i>\u0426\u0435\u043B\u044C:</i>".concat(e.target, "\n\n")) + "<i>\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:</i>".concat(e.email, "\n")) + "<i>\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:</i>".concat(e.telegram, "\n")) + "<i>\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:</i>".concat(e.comment, "\n\n")) + "<i>Из формы:</i>" + e.website;
-          console.log("сообщение", t);
+          t = "<b>\u0417\u0410\u042F\u0412\u041A\u0410 \u041D\u0410 \u0420\u0410\u0417\u0420\u0410\u0411\u041E\u0422\u041A\u0423 \u0421\u0410\u0419\u0422\u0410</b>\n";
+          t = (t = (t = (t = (t = (t = (t += "\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.name, "</b>\n")) + "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F:<b> ".concat(e.company, "</b>\n")) + "\u0426\u0435\u043B\u044C:<b> ".concat(e.target, "</b>\n\n")) + "\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.email, "</b>\n")) + "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:<b> ".concat(e.telegram, "</b>\n")) + "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:<b> ".concat(e.comment, "</b>\n\n")) + "\u0418\u0437 \u0444\u043E\u0440\u043C\u044B:<b> ".concat(e.website, "</b>\n") + "Из формы:<b><a href='https://login.sendpulse.com/crm/deals'>Посмотреть в CRM</a></b>";
           _context2.next = 5;
           return fetch("https://api.telegram.org/bot6107421370:AAFAUTLHO9IWB6gRD1E9vHs-NuIscyNJvkQ/sendMessage", {
             method: "POST",
@@ -164,11 +161,11 @@ function _sendToTelegram() {
           return _context2.sent.json();
         case 7:
           e = _context2.sent;
-          if (!(console.log("РЕЗУЛЬТАТ ТЕЛЕГА", e, e.ok), e.ok)) {
+          if (!e.ok) {
             _context2.next = 10;
             break;
           }
-          return _context2.abrupt("return", e);
+          return _context2.abrupt("return", e.ok);
         case 10:
           throw new Error("Ошибка отправки данных в телеграмм");
         case 11:
@@ -183,17 +180,131 @@ function sendToEmail(_x3) {
   return _sendToEmail.apply(this, arguments);
 }
 function _sendToEmail() {
-  _sendToEmail = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
-    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-      while (1) switch (_context3.prev = _context3.next) {
+  _sendToEmail = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(e) {
+    var t, a, n, s, o, d;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
         case 0:
-          console.log("начало гугл", e);
-          return _context3.abrupt("return", 200);
+          _context4.next = 2;
+          return fetch("https://api.sendpulse.com/oauth/access_token", {
+            method: "POST",
+            body: "grant_type=client_credentials&client_id=b217105b9b53c078e2590cde9ed470a9&client_secret=19a8cffa13cce6bd54c94f094aaa3e56",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            }
+          });
         case 2:
+          _context4.next = 4;
+          return _context4.sent.json();
+        case 4:
+          t = _context4.sent["access_token"];
+          _context4.next = 7;
+          return fetch("https://api.sendpulse.com/crm/v1/pipelines", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + t
+            }
+          });
+        case 7:
+          a = _context4.sent;
+          if (a.ok) {
+            _context4.next = 10;
+            break;
+          }
+          throw new Error("Ошибка создания сделки: " + a.status);
+        case 10:
+          _context4.next = 12;
+          return a.json();
+        case 12:
+          a = _context4.sent;
+          n = a.data[0].id;
+          a = a.data[0].steps[0].id;
+          _context4.next = 17;
+          return fetch("https://api.sendpulse.com/crm/v1/deals/get-list", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + t
+            },
+            body: JSON.stringify({
+              limit: 10,
+              offset: 0,
+              pipelineIds: [n]
+            })
+          });
+        case 17:
+          _context4.next = 19;
+          return _context4.sent.json();
+        case 19:
+          s = _context4.sent;
+          _context4.next = 22;
+          return fetch("https://api.sendpulse.com/crm/v1//deals/".concat(s.data[0].id, "/attributes"), {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + t
+            }
+          });
+        case 22:
+          _context4.next = 24;
+          return _context4.sent.json();
+        case 24:
+          o = _context4.sent;
+          d = [];
+          _context4.next = 28;
+          return Promise.all(Object.entries(e).map( /*#__PURE__*/function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(_ref) {
+              var _ref3, t, e, a;
+              return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+                while (1) switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _ref3 = _slicedToArray(_ref, 2), t = _ref3[0], e = _ref3[1];
+                    a = o.data.find(function (e) {
+                      return e.name === t;
+                    });
+                    a && d.push({
+                      attributeId: a.id,
+                      value: e
+                    });
+                  case 3:
+                  case "end":
+                    return _context3.stop();
+                }
+              }, _callee3);
+            }));
+            return function (_x5) {
+              return _ref2.apply(this, arguments);
+            };
+          }()));
+        case 28:
+          _context4.next = 30;
+          return fetch("https://api.sendpulse.com/crm/v1/deals", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + t
+            },
+            body: JSON.stringify({
+              pipelineId: n,
+              stepId: a,
+              name: e.website,
+              price: 0,
+              currency: "RUB",
+              attributes: d
+            })
+          });
+        case 30:
+          _context4.next = 32;
+          return _context4.sent.json();
+        case 32:
+          s = _context4.sent;
+          return _context4.abrupt("return", (console.log("сделка", s), s.success));
+        case 34:
         case "end":
-          return _context3.stop();
+          return _context4.stop();
       }
-    }, _callee3);
+    }, _callee4);
   }));
   return _sendToEmail.apply(this, arguments);
 }
@@ -201,17 +312,17 @@ function sendToGoogle(_x4) {
   return _sendToGoogle.apply(this, arguments);
 }
 function _sendToGoogle() {
-  _sendToGoogle = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(e) {
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) switch (_context4.prev = _context4.next) {
+  _sendToGoogle = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(e) {
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          console.log("начало гугл", e);
-          return _context4.abrupt("return", 200);
+          console.log("запись в сервис гугл таблицы", e);
+          return _context5.abrupt("return", 200);
         case 2:
         case "end":
-          return _context4.stop();
+          return _context5.stop();
       }
-    }, _callee4);
+    }, _callee5);
   }));
   return _sendToGoogle.apply(this, arguments);
 }
@@ -225,11 +336,11 @@ function nextPrev(e) {
   return !(1 == e && !validateForm()) && (t[currentTab].classList.toggle("hidden"), (currentTab += e) >= t.length ? (console.log("submit"), !1) : void showTab(currentTab));
 }
 function validateForm() {
-  for (var e = !0, t = document.getElementsByClassName("tab")[currentTab].getElementsByTagName("input"), n = 0; n < t.length; n++) "" == t[n].value && (t[n].className += " invalid", e = !1);
+  for (var e = !0, t = document.getElementsByClassName("tab")[currentTab].getElementsByTagName("input"), a = 0; a < t.length; a++) "" == t[a].value && (t[a].className += " invalid", e = !1);
   return e && (document.getElementsByClassName("step")[currentTab].className += " finish"), e;
 }
 function fixStepIndicator(e) {
-  for (var t = document.getElementsByClassName("step"), n = document.getElementsByClassName("tab"), o = 0; o < t.length; o++) t[o].className = t[o].className.replace(" active", "");
-  e + 1 >= n.length ? console.log("end and stop tab") : t[e].className += " active";
+  for (var t = document.getElementsByClassName("step"), a = document.getElementsByClassName("tab"), n = 0; n < t.length; n++) t[n].className = t[n].className.replace(" active", "");
+  e + 1 >= a.length ? console.log("end and stop tab") : t[e].className += " active";
 }
 showTab(currentTab), addEventListener("submit", handleFormSubmit);
