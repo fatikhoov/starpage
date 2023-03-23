@@ -19,9 +19,11 @@ html {
 body {
   overflow-x: hidden;
   margin: 0;
-  display: block;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-
 /* HTML5 display definitions
    ========================================================================== */
 

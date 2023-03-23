@@ -1,15 +1,17 @@
 "use strict";
 
-var questions = document.querySelectorAll(".accordion__req-res");
-questions.forEach(function (e) {
-  var o = e.querySelector(".btn-accordion"),
-    t = e.querySelector(".content-accordion");
-  o.addEventListener("click", function () {
-    t.classList.toggle("hidden-accordion"), t.classList.contains("hidden-accordion") ? (o.children[1].style.transform = "rotate(45deg)", t.style.display = "none", setTimeout(function () {
-      t.style.display = "", o.style.boxShadow = "";
-    }, 1)) : (o.style.boxShadow = "0px 5px 20px 0px rgba(178,57,221,0.2)", o.children[1].style.transform = "rotate(0deg)");
+var initAccordionShow = function initAccordionShow() {
+  var e = document.querySelectorAll(".accordion__req-res");
+  0 <= e.length && e.forEach(function (e) {
+    var o = e.querySelector(".btn-accordion"),
+      t = e.querySelector(".content-accordion");
+    o.addEventListener("click", function () {
+      t.classList.toggle("hidden-accordion"), t.classList.contains("hidden-accordion") ? (o.children[1].style.transform = "rotate(45deg)", t.style.display = "none", setTimeout(function () {
+        t.style.display = "", o.style.boxShadow = "";
+      }, 1)) : (o.style.boxShadow = "0px 5px 20px 0px rgba(178,57,221,0.2)", o.children[1].style.transform = "rotate(0deg)");
+    });
   });
-});
+};
 "use strict";
 
 var resizeObserver = null;
@@ -51,31 +53,47 @@ var CLASS_LIST = {
   };
 "use strict";
 
-var routes = [{
-  path: "/",
-  name: "home",
-  component: Home
-}, {
-  path: "/services",
-  name: "services",
-  component: Services
-}, {
-  path: "/about",
-  name: "about",
-  component: About
-}, {
-  path: "/contacts",
-  name: "contacts",
-  component: Contacts
-}];
-function Router() {
-  var o = getCurrentRoute();
-  var t = routes.find(function (t) {
-    return t.path === o;
+function loadHomePage(e) {
+  return new Promise(function (n, t) {
+    e && e.preventDefault(), fetch("home.html").then(function (e) {
+      if (e.ok) return e.text();
+      throw new Error("Failed to load home page");
+    }).then(function (e) {
+      document.querySelector("#content").innerHTML = e, history.pushState({}, "", "/"), initPage(), initAccordionShow(), n();
+    })["catch"](function (e) {
+      console.error(e), t(e);
+    });
   });
-  t ? t.component() : Home();
 }
-function getCurrentRoute() {}
+function loadBusinessPage(e) {
+  e.preventDefault(), fetch("business.html").then(function (e) {
+    return e.text();
+  }).then(function (e) {
+    document.querySelector("#content").innerHTML = e, history.pushState({}, "", "/business"), initPage();
+  });
+}
+function loadLandingPage(e) {
+  e.preventDefault(), fetch("landing.html").then(function (e) {
+    return e.text();
+  }).then(function (e) {
+    document.querySelector("#content").innerHTML = e, history.pushState({}, "", "/landing"), initPage();
+  });
+}
+function loadEcommercePage(n) {
+  n.preventDefault(), fetch("ecommerce.html").then(function (e) {
+    return e.text();
+  }).then(function (e) {
+    document.querySelector("#content").innerHTML = e, history.pushState({}, "", "/ecommerce"), initPage(n);
+  });
+}
+var initPage = function initPage() {
+  console.log("init", window.location.pathname), window.scrollTo(0, 0), document.querySelector('.nav-link[href="/home.html"]').addEventListener("click", loadHomePage), "/" === window.location.pathname && (document.querySelector('.nav-link[href="/business.html"]').addEventListener("click", loadBusinessPage), document.querySelector('.nav-link[href="/landing.html"]').addEventListener("click", loadLandingPage), document.querySelector('.nav-link[href="/ecommerce.html"]').addEventListener("click", loadEcommercePage));
+};
+window.addEventListener("load", function (e) {
+  "/" === window.location.pathname && (console.log(e), loadHomePage().then(function () {
+    console.log("Главная страница загружена");
+  })), "/business" === window.location.pathname && console.log("business page");
+});
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
