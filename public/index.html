@@ -24,6 +24,7 @@
     <script src="js/plugins.js"></script>
   </head>
   <body>
+    <!-- ШАПКА СТРАНИЦЫ - МЕНЮ -->
     <div class="header-container">
       <header class="header__menu clearfix">
         <h1 class="title"><a href="/">STARPAGE</a></h1>
@@ -52,7 +53,7 @@
         <a class="link-menu js-modal-open" href="#modal-menu">Меню</a>
       </header>
     </div>
-
+    <!-- ТЕЛО СТРАНИЦЫ -->
     <div class="main-container">
       <!-- главный экран и услуги -->
       <div class="main wrapper clearfix">
@@ -402,6 +403,33 @@
         </article>
       </div>
     </div>
+    <!-- ПОДВАЛ СТРАНИЦЫ -->
+    <div class="footer-container">
+      <footer class="main footer__wrapper">
+        <h3>ОСТАЛИСЬ ЕЩЕ ВОПРОСЫ?</h3>
+        <p>Свяжитесь с нами<br />удобным для вас способом!</p>
+        <ul class="ul-footer">
+          <li>
+            <a href="https://t.me/my_starpage"
+              ><img
+                class="logo-telegram"
+                src="/img/telegram.svg"
+                srcset="/img/telegram.svg 2x"
+                alt="starpage telegram"
+            /></a>
+          </li>
+          <li>
+            <a href="mailto:hello@starpage.ru"
+              ><img
+                class="logo-email"
+                src="/img/email.png"
+                srcset="/img/email.png 2x"
+                alt="starpage email"
+            /></a>
+          </li>
+        </ul>
+      </footer>
+    </div>
 
     <!-- МОДАЛЬНЫЕ ОКНА -->
     <div class="modal modal--l" id="modal-menu">
@@ -422,11 +450,11 @@
         <div class="modal__dialog-footer"></div>
       </div>
     </div>
-    <div class="modal modal--l" id="modal-landing">
+    <div class="modal modal--l modal-active" id="modal-landing">
       <div class="modal__dialog">
         <div class="modal__dialog-header">
           <div class="modal__dialog-header-content">
-            <h2 id="modal__header-title">Landing page (лендинг)</h2>
+            <h2 id="modal__header-title">Сайт: landing page</h2>
           </div>
           <div class="modal__dialog-header-close">
             <a class="js-modal-close modal__dialog-header-btn-close">
@@ -455,7 +483,13 @@
           </p>
         </div>
         <div class="modal__dialog-footer">
-          <a class="button-portfolio" href="/">Заказать сайт</a>
+          <button
+            class="button-portfolio js-modal-open"
+            type="button"
+            href="#modal-test"
+          >
+            <span>Заказать сайт</span>
+          </button>
         </div>
       </div>
     </div>
@@ -650,34 +684,6 @@
         </div>
       </div>
     </div>
-
-    <div class="footer-container">
-      <footer class="main footer__wrapper">
-        <h3>ОСТАЛИСЬ ЕЩЕ ВОПРОСЫ?</h3>
-        <p>Свяжитесь с нами<br />удобным для вас способом!</p>
-        <ul class="ul-footer">
-          <li>
-            <a href="https://t.me/my_starpage"
-              ><img
-                class="logo-telegram"
-                src="/img/telegram.svg"
-                srcset="/img/telegram.svg 2x"
-                alt="starpage telegram"
-            /></a>
-          </li>
-          <li>
-            <a href="mailto:hello@starpage.ru"
-              ><img
-                class="logo-email"
-                src="/img/email.png"
-                srcset="/img/email.png 2x"
-                alt="starpage email"
-            /></a>
-          </li>
-        </ul>
-      </footer>
-    </div>
-
     <script src="index.js"></script>
   </body>
 </html>

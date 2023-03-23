@@ -3,9 +3,11 @@
 var questions = document.querySelectorAll(".accordion__req-res");
 questions.forEach(function (e) {
   var o = e.querySelector(".btn-accordion"),
-    c = e.querySelector(".content-accordion");
+    t = e.querySelector(".content-accordion");
   o.addEventListener("click", function () {
-    c.classList.toggle("hidden-accordion"), c.classList.contains("hidden-accordion") ? o.children[1].style.transform = "rotate(45deg)" : o.children[1].style.transform = "rotate(0deg)";
+    t.classList.toggle("hidden-accordion"), t.classList.contains("hidden-accordion") ? (o.children[1].style.transform = "rotate(45deg)", t.style.display = "none", setTimeout(function () {
+      t.style.display = "", o.style.boxShadow = "";
+    }, 1)) : (o.style.boxShadow = "0px 5px 20px 0px rgba(178,57,221,0.2)", o.children[1].style.transform = "rotate(0deg)");
   });
 });
 "use strict";
@@ -20,7 +22,7 @@ var CLASS_LIST = {
     TRIGGER_CLOSE: "js-modal-close"
   },
   showScroll = function showScroll(e) {
-    "transform" === e.propertyName && (document.body.style.paddingRight = "", document.body.style.overflow = "visible", e.target.closest("." + CLASS_LIST.MODAL).removeEventListener("transitionend", showScroll));
+    "transform" === e.propertyName && (document.body.style.paddingRight = "", document.body.style.overflow = "", document.body.style.overflowX = "hidden", e.target.closest("." + CLASS_LIST.MODAL).removeEventListener("transitionend", showScroll));
   },
   getScrollbarWidth = function getScrollbarWidth() {
     var e = document.createElement("div"),
@@ -28,8 +30,15 @@ var CLASS_LIST = {
     return document.body.removeChild(e), t;
   },
   bindResizeObserver = (document.addEventListener("click", function (e) {
-    var t;
-    e.target.closest("." + CLASS_LIST.TRIGGER_OPEN) && (e.preventDefault(), t = e.target.closest("." + CLASS_LIST.TRIGGER_OPEN).getAttribute("href").replace("#", ""), t = document.getElementById(t), document.body.style.paddingRight = getScrollbarWidth() + "px", document.body.style.overflow = "hidden", t.classList.add(CLASS_LIST.MODAL_ACTIVE), bindResizeObserver(t)), (e.target.closest("." + CLASS_LIST.TRIGGER_CLOSE) || e.target.classList.contains(CLASS_LIST.MODAL_ACTIVE)) && (e.preventDefault(), (t = e.target.closest("." + CLASS_LIST.MODAL)).classList.remove(CLASS_LIST.MODAL_ACTIVE), unbindResizeObserver(t), t.addEventListener("transitionend", showScroll));
+    if (e.target.closest("." + CLASS_LIST.TRIGGER_OPEN) && (e.preventDefault(), s = e.target.closest("." + CLASS_LIST.TRIGGER_OPEN).getAttribute("href").replace("#", ""), s = document.getElementById(s), document.body.style.paddingRight = getScrollbarWidth() + "px", document.body.style.overflow = "hidden", s.classList.add(CLASS_LIST.MODAL_ACTIVE), bindResizeObserver(s)), e.target.closest("." + CLASS_LIST.TRIGGER_CLOSE) || e.target.classList.contains(CLASS_LIST.MODAL_ACTIVE)) {
+      e.preventDefault();
+      var s = e.target.closest("." + CLASS_LIST.MODAL);
+      s.classList.remove(CLASS_LIST.MODAL_ACTIVE);
+      var t = [];
+      document.querySelectorAll(".modal").forEach(function (e) {
+        e.classList.contains("modal-active") && t.push(e);
+      }), t.length <= 0 && (s.addEventListener("transitionend", showScroll), unbindResizeObserver(s));
+    }
   }), function (e) {
     var t = e.querySelector("." + CLASS_LIST.MODAL_DIALOG_BODY);
     (resizeObserver = new ResizeObserver(function () {
@@ -40,6 +49,33 @@ var CLASS_LIST = {
     e = e.querySelector("." + CLASS_LIST.MODAL_DIALOG_BODY);
     resizeObserver.unobserve(e), resizeObserver = null;
   };
+"use strict";
+
+var routes = [{
+  path: "/",
+  name: "home",
+  component: Home
+}, {
+  path: "/services",
+  name: "services",
+  component: Services
+}, {
+  path: "/about",
+  name: "about",
+  component: About
+}, {
+  path: "/contacts",
+  name: "contacts",
+  component: Contacts
+}];
+function Router() {
+  var o = getCurrentRoute();
+  var t = routes.find(function (t) {
+    return t.path === o;
+  });
+  t ? t.component() : Home();
+}
+function getCurrentRoute() {}
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }

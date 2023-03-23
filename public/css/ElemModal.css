@@ -45,6 +45,7 @@ form fieldset {
   border-radius: 10px;
   transition: var(--modal-transition);
   transform: translateY(50px);
+  background: white;
 }
 
 .modal--s .modal__dialog {
