@@ -1,13 +1,13 @@
 "use strict";
 
-console.log("index.js dev menu");
-var mobileMenu = document.querySelector(".menu-mobile"),
-  linkMenu = document.querySelector(".link-menu");
-linkMenu.addEventListener("click", function (e) {
-  if (e.preventDefault(), "flex" === mobileMenu.style.display) return mobileMenu.style.display = "none", linkMenu.innerHTML = "Меню", document.body.style.overflowY = "auto";
-  mobileMenu.style.display = "flex", linkMenu.innerHTML = "Закрыть", document.body.style.overflowY = "hidden";
-}), console.log("END index.js dev menu");
-"use strict";
+var questions = document.querySelectorAll(".accordion__req-res");
+questions.forEach(function (e) {
+  var o = e.querySelector(".btn-accordion"),
+    c = e.querySelector(".content-accordion");
+  o.addEventListener("click", function () {
+    c.classList.toggle("hidden-accordion"), c.classList.contains("hidden-accordion") ? o.children[1].style.transform = "rotate(45deg)" : o.children[1].style.transform = "rotate(0deg)";
+  });
+});
 "use strict";
 
 var resizeObserver = null;
@@ -67,14 +67,14 @@ function onSuccess(e) {
   console.log("i work onSuccess"), alert("Удачно ->>", e, TARGET_ID), titleSuccess.classList.toggle("hidden"), successSendModal.classList.toggle("hidden"), document.querySelector("p[ind-data=\"".concat(TARGET_ID, "-onSuccess\"]")).classList.toggle("hidden"), document.querySelector("[id=\"".concat(TARGET_ID, "\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-steps\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-btns\"]")).classList.add("hidden");
 }
 function toggleLoader() {
-  document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-loader\"]")).classList.toggle("hidden"), document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-sendBtn\"]")).classList.toggle("hidden");
+  document.querySelector("button[ind-data=\"".concat(TARGET_ID, "-button\"]")).disabled = !0, document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-loader\"]")).classList.toggle("hidden"), document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-sendBtn\"]")).classList.toggle("hidden");
 }
 function handleFormSubmit(_x) {
   return _handleFormSubmit.apply(this, arguments);
 }
 function _handleFormSubmit() {
   _handleFormSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-    var t, a, n, o, d, _iterator, _step, _step$value, c, i, l;
+    var t, a, n, o, d, _iterator, _step, _step$value, i, c, l;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -97,17 +97,17 @@ function _handleFormSubmit() {
           _context.next = 7;
           return sendToTelegram(d);
         case 7:
-          c = _context.sent;
+          i = _context.sent;
           _context.next = 10;
           return sendToEmail(d);
         case 10:
-          i = _context.sent;
+          c = _context.sent;
           _context.next = 13;
           return sendToGoogle(d);
         case 13:
           l = _context.sent;
           _context.next = 16;
-          return Promise.allSettled([c, i, l]);
+          return Promise.allSettled([i, c, l]);
         case 16:
           if (!_context.sent.every(function (e) {
             return "rejected" === e.status;
@@ -299,8 +299,26 @@ function _sendToEmail() {
           return _context4.sent.json();
         case 32:
           s = _context4.sent;
-          return _context4.abrupt("return", (console.log("сделка", s), s.success));
-        case 34:
+          console.log("сделка", s);
+          _context4.next = 36;
+          return fetch("https://api.sendpulse.com/crm/v1/contacts/get-list", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + t
+            },
+            body: JSON.stringify({
+              limit: 10
+            })
+          });
+        case 36:
+          _context4.next = 38;
+          return _context4.sent.json();
+        case 38:
+          n = _context4.sent;
+          a = n.data.list[0].responsibleId;
+          return _context4.abrupt("return", (console.log("СПИСОК КОНТАКТОВ", n, a), s.success));
+        case 41:
         case "end":
           return _context4.stop();
       }

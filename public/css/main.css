@@ -69,11 +69,6 @@ textarea {
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */
 
-.wrapper {
-  width: 90%;
-  margin: 0 5%;
-}
-
 /* ===================
     ALL: Orange Theme
    =================== */
@@ -91,6 +86,7 @@ textarea {
     rgba(3, 69, 250, 1) 100%
   );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -139,10 +135,6 @@ nav a:hover {
 /* ==============
     MOBILE: Main
    ============== */
-
-.main {
-  padding: 30px 0;
-}
 
 /* ===============
     ALL: IE Fixes
@@ -246,11 +238,6 @@ nav a:hover {
    Helper classes
    ========================================================================== */
 
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -274,83 +261,4 @@ nav a:hover {
 
 .invisible {
   visibility: hidden;
-}
-
-.clearfix {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-/* ==========================================================================
-   Print styles
-   ========================================================================== */
-
-@media print {
-  *,
-  *:before,
-  *:after {
-    background: transparent !important;
-    color: #000 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]:after {
-    content: ' (' attr(href) ')';
-  }
-
-  abbr[title]:after {
-    content: ' (' attr(title) ')';
-  }
-
-  a[href^='#']:after,
-  a[href^='javascript:']:after {
-    content: '';
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  thead {
-    display: table-header-group;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  img {
-    max-width: 100% !important;
-  }
-
-  p {
-    display: flex;
-    flex-direction: column;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-    color: var(--color-dark);
-  }
-
-  h1,
-  h2,
-  h3 {
-    page-break-after: avoid;
-    color: var(--color-dark);
-    font-family: 'Montserrat', sans-serif;
-  }
 }

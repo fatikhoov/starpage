@@ -25,7 +25,7 @@
   </head>
   <body>
     <div class="header-container">
-      <header class="wrapper clearfix">
+      <header class="header__menu clearfix">
         <h1 class="title"><a href="/">STARPAGE</a></h1>
         <nav>
           <ul>
@@ -49,14 +49,15 @@
             </li>
           </ul>
         </nav>
-        <a class="link-menu" href="#">Меню</a>
+        <a class="link-menu js-modal-open" href="#modal-menu">Меню</a>
       </header>
     </div>
 
     <div class="main-container">
+      <!-- главный экран и услуги -->
       <div class="main wrapper clearfix">
         <article class="main__article">
-          <header class="main__wrapper-header">
+          <header class="main__header">
             <h1 class="title__head-block">
               Креативные сайты <br />
               - наша особенность
@@ -74,10 +75,13 @@
             </picture>
             <div class="circle-blue"></div>
           </header>
-          <section class="main__services gap-in-block">
-            <h2>Какой сайт вам нужен?</h2>
+
+          <section class="main__section-wrapper main__services">
+            <h2 class="main__services-h2">
+              Мы знаем<br />как разработать сайт<br />который принесет прибыль!
+            </h2>
             <section>
-              <div class="link-block">
+              <div class="link-block js-modal-open" href="#modal-landing">
                 <h3 class="text-color-brand">Сайт-визитка</h3>
                 <p>
                   Создаем интуитивно понятну навигацию по сайту с входами,
@@ -104,7 +108,7 @@
             </section>
             <picture>
               <img
-                class="logo-stars"
+                class="logo-stars__services"
                 src="/img/stars.png"
                 srcset="/img/stars.png 2x"
                 alt="Logo stars"
@@ -112,46 +116,299 @@
             </picture>
           </section>
         </article>
+      </div>
 
-        <aside class="menu-mobile">
-          <h3>Агентство создания сайтов под ключ</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-            sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam
-            bibendum iaculis libero, eget molestie nisl pharetra in. In semper
-            consequat est, eu porta velit mollis nec. Curabitur posuere enim
-            eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit
-            suscipit ultrices.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-            sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam
-            bibendum iaculis libero, eget molestie nisl pharetra in. In semper
-            consequat est, eu porta velit mollis nec. Curabitur posuere enim
-            eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit
-            suscipit ultrices.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-            sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam
-            bibendum iaculis libero, eget molestie nisl pharetra in. In semper
-            consequat est, eu porta velit mollis nec. Curabitur posuere enim
-            eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit
-            suscipit ultrices.
-          </p>
-        </aside>
+      <!-- преимущества -->
+      <div class="main main_dark wrapper clearfix">
+        <article class="main__article">
+          <section class="main__section-wrapper main__advantages">
+            <h2 class="main__services-h2">ПОЧЕМУ МЫ?</h2>
+            <section>
+              <div class="link-block">
+                <div class="link-block-content">
+                  <div>
+                    <h3>Быстро</h3>
+                    <p>
+                      Мы уделяем больше времени исследованию и анализу Вашего
+                      продукта, и не тратим время на сложное программирование
+                    </p>
+                  </div>
+                  <span>1</span>
+                </div>
+                <p>
+                  Запускаем лендинг за 3-7 дней Интернет-магазин будет готов за
+                  21 день
+                </p>
+              </div>
+              <div class="link-block">
+                <picture>
+                  <img
+                    class="logo-stars__advantages"
+                    src="/img/stars.png"
+                    srcset="/img/stars.png 2x"
+                    alt="Logo stars"
+                  />
+                </picture>
+                <div class="link-block-content">
+                  <div>
+                    <h3>Удобно</h3>
+                    <p>
+                      Реализуем все необходимые функции - онлайн оплата, CRM
+                      системы, онлайн расписание, настраиваем ботов
+                    </p>
+                  </div>
+                  <span>2</span>
+                </div>
+                <p>
+                  А в дальнейшем вы сможете самостоятельно менять тексты и
+                  картинки
+                </p>
+              </div>
+              <div class="link-block">
+                <div class="link-block-content">
+                  <div class="circle-brand"></div>
+                  <div>
+                    <h3>Круто</h3>
+                    <p>
+                      В нашем штате профессиональные дизайнеры и маркетологи,
+                      которые сделают Ваш сайт отличным от конкурентов, покажут
+                      продукт с лучшей стороны и решат Ваши задачи креативно и
+                      современно
+                    </p>
+                  </div>
+                  <span>3</span>
+                </div>
+                <p>
+                  Никаких готовых решений - только уникальный дизайн и
+                  продуманная навигация по сайту
+                </p>
+              </div>
+            </section>
+            <a class="js-modal-open button-primary" href="#modal-test"
+              >Обсудить проект</a
+            >
+          </section>
+        </article>
+      </div>
+
+      <!-- портфолио | кейсы -->
+      <div class="main wrapper clearfix">
+        <article class="main__article">
+          <section class="main__section-wrapper main__portfolio">
+            <h2 class="main__services-h2">Портфолио</h2>
+            <section>
+              <div class="portfolio-block">
+                <header class="portfolio-block_header">
+                  <img src="/img/work1.png" alt="кейс" />
+                </header>
+                <div class="portfolio-body">
+                  <p class="portfolio-body_tags">#Интернет магазин</p>
+                  <a
+                    class="portfolio-body_website"
+                    href="https://ITSNOTSIMPLE.RU"
+                    >ITSNOTSIMPLE.RU</a
+                  >
+                  <p class="portfolio-body_about">
+                    Разработали интернет-магазин одежды для независимых
+                    дизайнеров с собственным производством.
+                  </p>
+                  <div class="portfolio-body_target">
+                    <p class="portfolio-body_target-title">Задача:</p>
+                    <p class="portfolio-body_target-description">
+                      Разработать сайт с нуля с основными информационными
+                      блоками, каталогом, карточкой товара, корзиной,
+                      оформлением заказа и выбором видов доставки на сайте.
+                    </p>
+                  </div>
+                  <div class="portfolio-body_result">
+                    <p class="portfolio-body_result-title">Результат:</p>
+                    <p class="portfolio-body_result-description">
+                      Сайт стал основным каналом продаж! На данный момент Яндекс
+                      метрика фиксирует минимум 10 заказов в день со средним
+                      чеком 5 900 RUB, и каждый день заказы увеличиваются.
+                    </p>
+                  </div>
+                </div>
+                <footer class="portfolio-block_footer">
+                  <a class="js-modal-open button-portfolio" href="#modal-test"
+                    >Смотреть</a
+                  >
+                </footer>
+              </div>
+            </section>
+          </section>
+        </article>
+      </div>
+
+      <!-- схема работы -->
+      <div class="main main_dark wrapper clearfix">
+        <article class="main__article">
+          <section class="main__section-wrapper main__work-steps">
+            <h2 class="main__services-h2">ПОНЯТНАЯ СХЕМА РАБОТЫ</h2>
+            <section>
+              <div class="link-block">
+                <h3>Подготовка</h3>
+                <ul class="work-steps__ul">
+                  <li>Подписываем договор с техническим заданием</li>
+                  <li>Проводим маркетинговое исследование</li>
+                  <li>Разрабатываем прототип сайта</li>
+                  <li>Согласуем первичные работы</li>
+                </ul>
+              </div>
+
+              <div class="link-block">
+                <h3>Дизайн</h3>
+                <ul class="work-steps__ul">
+                  <li>Отрисовываем дизайн сайта</li>
+                  <li>Адаптируем под нужные устройства</li>
+                  <li>Подключаем анимации</li>
+                  <li>Проводим согласование</li>
+                </ul>
+              </div>
+              <div class="link-block">
+                <picture class="work-steps__image">
+                  <img
+                    class="logo-neon_Like"
+                    src="/img/neon_Like.png"
+                    srcset="/img/neon_Like.png 2x"
+                    alt="Logo Like"
+                  />
+                </picture>
+                <h3>Запуск</h3>
+                <ul class="work-steps__ul">
+                  <li>Подключаем домен и корпоративную почту</li>
+                  <li>Яндекс Метрику</li>
+                  <li>
+                    Настраиваем телеграмм-бот и другие необходимые виджеты
+                  </li>
+                  <li>Обучаем управлению сайтом</li>
+                </ul>
+              </div>
+            </section>
+            <a class="js-modal-open button-primary" href="#modal-test"
+              >Пройти БРИФ</a
+            >
+          </section>
+        </article>
+      </div>
+
+      <!-- вопросы-ответы -->
+      <div class="main wrapper clearfix">
+        <article class="main__article">
+          <section class="main__section-wrapper main__req-res">
+            <h2 class="main__services-h2">ВЫ СПРАШИВАЛИ<br />- МЫ ОТВЕЧАЕМ</h2>
+            <picture class="req-res__image">
+              <img
+                class="logo-megaphone"
+                src="/img/megaphone.png"
+                srcset="/img/megaphone.png 2x"
+                alt="Logo megaphone"
+              />
+            </picture>
+            <section>
+              <div class="accordion__req-res">
+                <button class="btn-accordion">
+                  <span>За сколько дней будет готов сайт?</span
+                  ><span>&times;</span>
+                </button>
+                <p class="content-accordion hidden-accordion">
+                  Всё зависит от того, какой сайт требуется разработать.
+                  Например: интернет-магазин мы запускаем в среднем за 21 день,
+                  а лендинг можно разработать и за 3 дня.
+                </p>
+              </div>
+
+              <div class="accordion__req-res">
+                <button class="btn-accordion">
+                  <span>Какая средняя стоимость?</span><span>&times;</span>
+                </button>
+                <p class="content-accordion hidden-accordion">
+                  В среднем цены на услуги разработки сайта начинаются от 35 000
+                  руб. Всё зависит от вашего желания по наполнению функционалом
+                  сайта, для вашего удобства мы подготовили выгодное предложение
+                  с необходимым набором в разделе Тарифы Доменное имя сайта и
+                  год пользованием хостинга входит в стоимость пакетов
+                </p>
+              </div>
+
+              <div class="accordion__req-res">
+                <button class="btn-accordion">
+                  <span>Вдруг мне не понравится результат?</span
+                  ><span>&times;</span>
+                </button>
+                <p class="content-accordion hidden-accordion">
+                  Наша с вами работа состоит из нескольких этапов БРИФ - мы
+                  прислушиваемся к вашим знаниям о продукте/услуге. Исследуем
+                  рынок, анализируем конкурентов и целевую аудиторию, учитываем
+                  все детали. Подписание Договора с техническим заданием. Оплата
+                  производится после согласования в три этапа. Ваш крутой
+                  результат - это наша гордость!
+                </p>
+              </div>
+
+              <div class="accordion__req-res">
+                <button class="btn-accordion">
+                  <span
+                    >Если через месяц Я захочу что-то изменить на сайте?</span
+                  ><span>&times;</span>
+                </button>
+                <p class="content-accordion hidden-accordion">
+                  Мы подготовим удобную навигацию для администрирования и вы
+                  сможете легко изменить фотографию, добавить карточку товара
+                  или текст на сайте. Так же мы можем дополнительно обучить вас,
+                  провести интенсив по "администрированию сайта".
+                </p>
+              </div>
+
+              <div class="accordion__req-res">
+                <button class="btn-accordion">
+                  <span>У меня нет логотипа и фирменного стиля</span
+                  ><span>&times;</span>
+                </button>
+                <p class="content-accordion hidden-accordion">
+                  В нашей команде опытные дизайнеры, которые могут создать
+                  уникальный фирменный стиль.
+                </p>
+              </div>
+
+              <div class="accordion__req-res">
+                <button class="btn-accordion">
+                  <span
+                    >У меня нет контента (заготовленного текста, фотографий и
+                    др.)</span
+                  ><span>&times;</span>
+                </button>
+                <p class="content-accordion hidden-accordion">
+                  Мы можем предоставить услуги копирайтера и подобрать весь
+                  необходимый контент для вашего сайта.
+                </p>
+              </div>
+
+              <div class="accordion__req-res">
+                <button class="btn-accordion">
+                  <span>Почему разработка сайта на Тильде?</span
+                  ><span>&times;</span>
+                </button>
+                <p class="content-accordion hidden-accordion">
+                  Мы не тратим время на сложное программирование, а уделяем
+                  больше времени исследованию продукта, это увеличивает продажи.
+                  При этом реализуем все необходимые функции- онлайн оплата, CRM
+                  системы, онлайн расписание, настраиваем ботов В дальнейшем
+                  администрировать сайт вы сможете самостоятельно.
+                </p>
+              </div>
+            </section>
+          </section>
+        </article>
       </div>
     </div>
 
     <!-- МОДАЛЬНЫЕ ОКНА -->
-    <div class="modal modal--s modal--screen-height" id="modal-request-website">
+    <div class="modal modal--l" id="modal-menu">
       <div class="modal__dialog">
         <div class="modal__dialog-header">
           <div class="modal__dialog-header-content">
-            <h2 id="modal__header-title">Заявка на разработку сайта</h2>
-            <span id="success-send-modal" class="hidden"
-              >Ваша заявка отправлена!</span
-            >
+            <h2 id="modal__header-title">STARPAGE - МЕНЮ</h2>
           </div>
           <div class="modal__dialog-header-close">
             <a class="js-modal-close modal__dialog-header-btn-close">
@@ -160,157 +417,48 @@
           </div>
         </div>
         <div class="modal__dialog-body">
-          <form
-            id="modal-form"
-            enctype="multipart/form-data"
-            method="post"
-            autocomplete="off"
-          >
-            <input
-              type="hidden"
-              id="website"
-              name="website"
-              value="Заявка на разработку сайта-визитки"
-            />
-            <fieldset>
-              <legend>Персональные данные</legend>
-              <ul class="form-ul">
-                <li>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Ваше имя"
-                    title="Как мы будем к вам обращаться?"
-                    required
-                    autofocus
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="company"
-                    id="company"
-                    placeholder="Название проекта"
-                    title="Постарайтесь лучше рассказать о своем проекте"
-                    required
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="target"
-                    id="target"
-                    placeholder="Цель разработки"
-                    title="Постарайтесь лучше рассказать о своем проекте"
-                    required
-                  />
-                </li>
-              </ul>
-            </fieldset>
-            <fieldset>
-              <legend>Контакты</legend>
-              <ul class="form-ul">
-                <li>
-                  <input
-                    type="email"
-                    name="mail"
-                    placeholder="Почта"
-                    id="email"
-                    required
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="telegram"
-                    id="telegram"
-                    placeholder="Telegram"
-                    required
-                  />
-                </li>
-              </ul>
-            </fieldset>
-            <fieldset>
-              <legend>Ваш комментарий</legend>
-              <div class="form-ul">
-                <textarea
-                  name="comment"
-                  rows="4"
-                  id="message"
-                  placeholder="Укажите дополнительно всё, что считаете важным"
-                ></textarea>
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend>Вопрос из брифа</legend>
-              <ul class="form-ul">
-                <li>
-                  <input
-                    type="checkbox"
-                    name="1 checkbox"
-                    id="courses"
-                    checked
-                  />
-                  <label for="courses">ответ 1</label>
-                </li>
-                <li>
-                  <input type="checkbox" name="2 checkbox" id="books" />
-                  <label for="books">ответ 1</label>
-                </li>
-                <li>
-                  <input type="checkbox" name="3 checkbox" id="video" />
-                  <label for="video">ответ 1</label>
-                </li>
-              </ul>
-            </fieldset>
-            <fieldset>
-              <legend>Вопрос из брифа</legend>
-              <ul class="form-ul">
-                <li>
-                  <input
-                    type="radio"
-                    name="need radio"
-                    id="front"
-                    value="frontend"
-                    checked
-                  />
-                  <label for="front">Фронтенд-разработка</label>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    name="want radio"
-                    id="back"
-                    value="backend"
-                  />
-                  <label for="back">Бэкенд-разработка</label>
-                </li>
-              </ul>
-            </fieldset>
-            <div>
-              <input type="reset" value="Очистить все поля" />
-              <p>
-                Ссылки на политику конфидениальности, передачи персональных
-                данных
-              </p>
-            </div>
-          </form>
-          <p class="onSuccess__modal hidden" id="onSuccess__modal">
-            Менеджер получил заявку<br />и свяжется с Вами сразу,<br />как её
-            обработает :)
+          <p>пункты меню</p>
+        </div>
+        <div class="modal__dialog-footer"></div>
+      </div>
+    </div>
+    <div class="modal modal--l" id="modal-landing">
+      <div class="modal__dialog">
+        <div class="modal__dialog-header">
+          <div class="modal__dialog-header-content">
+            <h2 id="modal__header-title">Landing page (лендинг)</h2>
+          </div>
+          <div class="modal__dialog-header-close">
+            <a class="js-modal-close modal__dialog-header-btn-close">
+              <span>&times;</span>
+            </a>
+          </div>
+        </div>
+        <div class="modal__dialog-body">
+          <img src="/img/landing.png" alt="landing page" />
+          <p>
+            Мы знаем, как разработать лендинг, который принесет прибыль! Быстро
+            привлечет внимание вашей целевой аудитории, и увеличит конверсию Это
+            адаптивный и функциональный лендинг с уникальным и современным
+            дизайном!
+          </p>
+          <p>КОМУ ПОДХОДИТ САЙТ</p>
+          <p>Компаниям и бизнесам</p>
+          <p>Интернет-магазинам и агентствам</p>
+          <p>Представителям творческих профессий</p>
+          <p>Докладчикам, выступающим ораторам</p>
+          <p>
+            Мы знаем, как разработать лендинг, который принесет прибыль! Быстро
+            привлечет внимание вашей целевой аудитории, и увеличит конверсию Это
+            адаптивный и функциональный лендинг с уникальным и современным
+            дизайном!
           </p>
         </div>
         <div class="modal__dialog-footer">
-          <button class="btn-send" type="submit" form="modal-form" disabled>
-            <span id="loader-modal" class="hidden">Отправляем...</span
-            ><span id="btn-send-modal" class="hidden">Отправить заявку</span>
-            <span id="valid-send-modal">Заполните обязательные поля</span>
-          </button>
+          <a class="button-portfolio" href="/">Заказать сайт</a>
         </div>
       </div>
     </div>
-
     <div class="modal modal--s modal--screen-height" id="modal-test">
       <div class="modal__dialog">
         <div class="modal__dialog-header">
@@ -489,6 +637,7 @@
                 type="submit"
                 form="regForm"
                 id="btnRegForm"
+                ind-data="regForm-button"
               >
                 <span class="hidden" id="loader-modal" ind-data="regForm-loader"
                   >Отправляем...</span
@@ -503,9 +652,9 @@
     </div>
 
     <div class="footer-container">
-      <footer class="wrapper">
+      <footer class="main footer__wrapper">
         <h3>ОСТАЛИСЬ ЕЩЕ ВОПРОСЫ?</h3>
-        <p>Свяжитесь с нами удобным для вас способом!</p>
+        <p>Свяжитесь с нами<br />удобным для вас способом!</p>
         <ul class="ul-footer">
           <li>
             <a href="https://t.me/my_starpage"
