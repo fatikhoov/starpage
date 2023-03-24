@@ -46,7 +46,7 @@ gulp.task('js', function (done) {
         presets: ['@babel/preset-env'],
       })
     )
-    .pipe(concat('index.js')) // объединяем все js файлы в один с именем bundle.js
+    .pipe(concat('main.js')) // объединяем все js файлы в один с именем bundle.js
     .pipe(gulp.dest('public/')) // Выгружаем результат в папку public/js
     .pipe(browserSync.stream()) // Обновляем страницу в браузере
   done() // Вызываем коллбэк для сообщения о завершении задачи

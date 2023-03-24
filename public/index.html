@@ -28,7 +28,7 @@
     <div class="header-container">
       <header class="header__menu clearfix">
         <h1 class="title">
-          <a class="nav-link" href="/home.html">STARPAGE</a>
+          <a class="nav-link" href="/home">STARPAGE</a>
         </h1>
         <nav>
           <ul>
@@ -56,7 +56,18 @@
       </header>
     </div>
     <!-- ТЕЛО СТРАНИЦЫ -->
-    <div class="main-container" id="content"></div>
+    <div class="main-container" id="content">
+      <div class="main wrapper clearfix">
+        <picture>
+          <img
+            class="logo-rocket"
+            src="/img/rocket.png"
+            srcset="/img/rocket.png 2x"
+            alt="Logo rocket"
+          />
+        </picture>
+      </div>
+    </div>
     <!-- ПОДВАЛ СТРАНИЦЫ -->
     <div class="footer-container">
       <footer class="main footer__wrapper">
@@ -338,6 +349,7 @@
         </div>
       </div>
     </div>
+    <script src="main.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
