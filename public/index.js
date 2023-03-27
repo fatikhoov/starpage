@@ -2,6 +2,10 @@ const initPage = (path) => {
   console.log('init', path)
   window.scrollTo(0, 0)
   initAccordionShow()
+  if (path === 'landing') {
+    initCarouselShow()
+  }
+
   // обработчики событий для кликов по ссылкам в меню
   const menuLinks = document.querySelectorAll('.nav-link')
   menuLinks.forEach((link) => {
@@ -55,7 +59,7 @@ function loadPage(path) {
       }
       console.log('началась проверка:', path)
       if (path === '/' || path === '' || path === '/home' || path === 'index') {
-        ;(path = 'home'), history.replaceState({}, '', '/')
+        ;(path = 'landing'), history.replaceState({}, '', '/')
         fetchPathHtml()
       } else if (path === '/landing' || path === '/landing.html') {
         ;(path = 'landing'), history.replaceState({}, '', '/landing')
@@ -81,7 +85,7 @@ window.addEventListener('popstate', () => {
   loadPage()
 })
 
-// загрузка страницы при загрузке страницы
+// загрузка шаблона страницы при загрузке сайта
 window.addEventListener('DOMContentLoaded', () => {
   console.log('2', window.location.pathname)
   loadPage()

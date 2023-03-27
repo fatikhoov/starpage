@@ -14,6 +14,29 @@ var initAccordionShow = function initAccordionShow() {
 };
 "use strict";
 
+var initCarouselShow = function initCarouselShow() {
+  var e = document.querySelector(".carousel"),
+    r = new Flickity(e, {
+      imagesLoaded: !0,
+      percentPosition: !0,
+      draggable: !0,
+      cellAlign: "center",
+      freeScroll: !1,
+      contain: !0,
+      wrapAround: !0,
+      autoPlay: !0
+    }),
+    n = e.querySelectorAll(".carousel-cell img"),
+    o = "string" == typeof document.documentElement.style.transform ? "transform" : "WebkitTransform";
+  e.addEventListener("scroll", function () {
+    r.slides.forEach(function (e, t) {
+      t = n[t], e = -1 * (e.target + r.x) / 3;
+      t.style[o] = "translateX(" + e + "px)";
+    });
+  });
+};
+"use strict";
+
 var resizeObserver = null;
 var CLASS_LIST = {
     MODAL: "modal",
@@ -21,7 +44,8 @@ var CLASS_LIST = {
     MODAL_HAS_SCROLL: "modal--has-scroll",
     MODAL_DIALOG_BODY: "modal__dialog-body",
     TRIGGER_OPEN: "js-modal-open",
-    TRIGGER_CLOSE: "js-modal-close"
+    TRIGGER_CLOSE: "js-modal-close",
+    TRIGGER_LINK: "nav-link"
   },
   showScroll = function showScroll(e) {
     "transform" === e.propertyName && (document.body.style.paddingRight = "", document.body.style.overflow = "", document.body.style.overflowX = "hidden", e.target.closest("." + CLASS_LIST.MODAL).removeEventListener("transitionend", showScroll));
@@ -32,7 +56,7 @@ var CLASS_LIST = {
     return document.body.removeChild(e), t;
   },
   bindResizeObserver = (document.addEventListener("click", function (e) {
-    if (e.target.closest("." + CLASS_LIST.TRIGGER_OPEN) && (e.preventDefault(), s = e.target.closest("." + CLASS_LIST.TRIGGER_OPEN).getAttribute("href").replace("#", ""), s = document.getElementById(s), document.body.style.paddingRight = getScrollbarWidth() + "px", document.body.style.overflow = "hidden", s.classList.add(CLASS_LIST.MODAL_ACTIVE), bindResizeObserver(s)), e.target.closest("." + CLASS_LIST.TRIGGER_CLOSE) || e.target.classList.contains(CLASS_LIST.MODAL_ACTIVE)) {
+    if (e.target.closest("." + CLASS_LIST.TRIGGER_OPEN) && (e.preventDefault(), s = e.target.closest("." + CLASS_LIST.TRIGGER_OPEN).getAttribute("href").replace("#", ""), s = document.getElementById(s), document.body.style.paddingRight = getScrollbarWidth() + "px", document.body.style.overflow = "hidden", s.classList.add(CLASS_LIST.MODAL_ACTIVE), bindResizeObserver(s)), e.target.closest("." + CLASS_LIST.TRIGGER_CLOSE) || e.target.classList.contains(CLASS_LIST.MODAL_ACTIVE) || e.target.classList.contains(CLASS_LIST.TRIGGER_LINK)) {
       e.preventDefault();
       var s = e.target.closest("." + CLASS_LIST.MODAL);
       s.classList.remove(CLASS_LIST.MODAL_ACTIVE);

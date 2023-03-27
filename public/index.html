@@ -14,7 +14,10 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flickity-fullscreen@2/fullscreen.css"
+    />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/ElemModal.css" />
@@ -22,14 +25,15 @@
 
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="js/plugins.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   </head>
   <body>
     <!-- ШАПКА СТРАНИЦЫ - МЕНЮ -->
     <div class="header-container">
       <header class="header__menu clearfix">
-        <h1 class="title">
-          <a class="nav-link" href="/home">STARPAGE</a>
-        </h1>
+        <p class="title">
+          <a class="nav-link STARPAGE" href="/home">STARPAGE</a>
+        </p>
         <nav>
           <ul>
             <li>
@@ -68,6 +72,7 @@
         </picture>
       </div>
     </div>
+
     <!-- ПОДВАЛ СТРАНИЦЫ -->
     <div class="footer-container">
       <footer class="main footer__wrapper">
@@ -111,6 +116,11 @@
         </div>
         <div class="modal__dialog-body">
           <p>пункты меню</p>
+          <ul>
+            <li><a class="nav-link" href="/landing">Лендинг</a></li>
+            <li><a class="nav-link" href="/business">Сайт-визитка</a></li>
+            <li><a class="nav-link" href="/ecommerce">Интернет-магазин</a></li>
+          </ul>
         </div>
         <div class="modal__dialog-footer"></div>
       </div>
