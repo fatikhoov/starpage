@@ -1,22 +1,24 @@
 "use strict";
 
 var initAccordionShow = function initAccordionShow() {
-  var e = document.querySelectorAll(".accordion__req-res");
-  0 <= e.length && e.forEach(function (e) {
-    var o = e.querySelector(".btn-accordion"),
-      t = e.querySelector(".content-accordion");
-    o.addEventListener("click", function () {
-      t.classList.toggle("hidden-accordion"), t.classList.contains("hidden-accordion") ? (o.children[1].style.transform = "rotate(45deg)", t.style.display = "none", setTimeout(function () {
-        t.style.display = "", o.style.boxShadow = "";
-      }, 1)) : (o.style.boxShadow = "0px 5px 20px 0px rgba(178,57,221,0.2)", o.children[1].style.transform = "rotate(0deg)");
+  var o = document.querySelectorAll(".accordion__req-res");
+  0 <= o.length && o.forEach(function (o) {
+    var e = o.querySelector(".btn-accordion"),
+      t = o.querySelector(".content-accordion");
+    e.addEventListener("click", function () {
+      t.classList.toggle("hidden-accordion"), t.classList.contains("hidden-accordion") ? (e.children[1].style.transform = "rotate(45deg)", t.style.display = "none", setTimeout(function () {
+        t.style.display = "", e.style.boxShadow = "";
+      }, 1)) : (e.style.boxShadow = "0px 5px 20px 0px rgba(178,57,221,0.2)", e.children[1].style.transform = "rotate(0deg)");
     });
-  });
+  }), console.log("accordion work");
 };
 "use strict";
 
 var initCarouselShow = function initCarouselShow() {
-  var e = document.querySelector(".carousel"),
-    r = new Flickity(e, {
+  document.querySelectorAll(".carousel").forEach(function (e) {
+    var o, r, t;
+    e.querySelectorAll(".carousel-item");
+    e.classList.contains("carousel-images") ? (t = new Flickity(e, {
       imagesLoaded: !0,
       percentPosition: !0,
       draggable: !0,
@@ -24,16 +26,23 @@ var initCarouselShow = function initCarouselShow() {
       freeScroll: !1,
       contain: !0,
       wrapAround: !0,
-      autoPlay: !0
-    }),
-    n = e.querySelectorAll(".carousel-cell img"),
-    o = "string" == typeof document.documentElement.style.transform ? "transform" : "WebkitTransform";
-  e.addEventListener("scroll", function () {
-    r.slides.forEach(function (e, t) {
-      t = n[t], e = -1 * (e.target + r.x) / 3;
-      t.style[o] = "translateX(" + e + "px)";
-    });
-  });
+      autoPlay: 5e3
+    }), o = e.querySelectorAll(".carousel-cell img"), r = "string" == typeof document.documentElement.style.transform ? "transform" : "WebkitTransform", e.addEventListener("scroll", function () {
+      t.slides.forEach(function (e, l) {
+        l = o[l], e = -1 * (e.target + t.x) / 3;
+        l.style[r] = "translateX(" + e + "px)";
+      });
+    })) : e.classList.contains("carousel-cards") && (t = new Flickity(e, {
+      draggable: !0,
+      cellAlign: "center",
+      freeScroll: !1,
+      contain: !0,
+      wrapAround: !0,
+      autoPlay: 8e3,
+      prevNextButtons: !1,
+      pageDots: !1
+    }));
+  }), console.log("carousel work");
 };
 "use strict";
 

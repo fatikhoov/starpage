@@ -1,8 +1,10 @@
 const initPage = (path) => {
   console.log('init', path)
   window.scrollTo(0, 0)
-  initAccordionShow()
-  if (path === 'landing') {
+  if (document.querySelector('.accordion__req-res')) {
+    initAccordionShow()
+  }
+  if (document.querySelector('.carousel')) {
     initCarouselShow()
   }
 
@@ -24,21 +26,18 @@ function loadPage(path) {
       if (!response.ok) {
         throw new Error(`Failed to load index.html`)
       }
-      console.log('переход по клику:', path)
       if (!path || path === 'undefined') {
         path = window.location.pathname
       }
-      console.log('переход по клику - забрал из адреса:', path)
       return path
     })
-    .then(() => {
-      const fetchPathHtml = () => {
+    .then((path) => {
+      const fetchPathHtml = (path) => {
         fetch(`${path}.html`)
           .then((response) => {
             if (!response.ok) {
               throw new Error(`Failed to load ${path}`)
             }
-            console.log('res', response.ok)
             return response.text()
           })
           .then((html) => {
@@ -57,25 +56,22 @@ function loadPage(path) {
               })
           })
       }
-      console.log('началась проверка:', path)
       if (path === '/' || path === '' || path === '/home' || path === 'index') {
-        ;(path = 'landing'), history.replaceState({}, '', '/')
-        fetchPathHtml()
+        ;(path = 'home'), history.replaceState({}, '', '/')
+        fetchPathHtml(path)
       } else if (path === '/landing' || path === '/landing.html') {
         ;(path = 'landing'), history.replaceState({}, '', '/landing')
-        fetchPathHtml()
+        fetchPathHtml(path)
       } else if (path === '/business' || path === '/business.html') {
         ;(path = 'business'), history.replaceState({}, '', '/business')
-        fetchPathHtml()
+        fetchPathHtml(path)
       } else if (path === '/ecommerce' || path === '/ecommerce.html') {
         ;(path = 'ecommerce'), history.replaceState({}, '', '/ecommerce')
-        fetchPathHtml()
+        fetchPathHtml(path)
       } else {
         path = '404'
         history.replaceState({}, '', '/404')
-        console.log('404 проверка ошибки адреса:', path)
       }
-      console.log('Итоговый:', path)
     })
 }
 

@@ -5,7 +5,7 @@
       <header class="header__service-landing">
         <h1>
           Разработка<br />
-          <span class="title">Landing Page</span>
+          <span>Landing Page</span>
         </h1>
       </header>
       <section class="main__section-wrapper main__service-landing">
@@ -24,31 +24,33 @@
         <h3>Наши клиенты</h3>
         <!-- 2 -->
         <div class="link-block none-list-style-type">
-          <p>Успешно торгующие на маркетплейсах</p>
+          <h4>Успешно торгующие на маркетплейсах</h4>
           <ul>
-            <li><h4>OZON</h4></li>
-            <li><h4>Wildberries</h4></li>
+            <li><span>OZON</span></li>
+            <li><span>Wildberries</span></li>
           </ul>
         </div>
         <!-- 2 -->
         <div class="link-block none-list-style-type">
-          <p>Специалисты, продающие свои услуги и продвигающие личный бренд</p>
+          <h4>
+            Специалисты, продающие свои услуги и продвигающие личный бренд
+          </h4>
           <ul>
-            <li><h4>Психологи</h4></li>
-            <li><h4>Адвокаты</h4></li>
-            <li><h4>Тарологи</h4></li>
-            <li><h4>Нутрицилоги</h4></li>
-            <li><h4>Таргетологи</h4></li>
+            <li><span>Психологи</span></li>
+            <li><span>Адвокаты</span></li>
+            <li><span>Тарологи</span></li>
+            <li><span>Нутрицилоги</span></li>
+            <li><span>Таргетологи</span></li>
           </ul>
         </div>
         <!-- 2 -->
         <div class="link-block none-list-style-type">
-          <p>Планирующие событие/мероприятие</p>
+          <h4>Планирующие событие/мероприятие</h4>
           <ul>
-            <li><h4>Вебинары</h4></li>
-            <li><h4>Прямые эфиры</h4></li>
-            <li><h4>Анонсы курсов</h4></li>
-            <li><h4>Туры</h4></li>
+            <li><span>Вебинары</span></li>
+            <li><span>Прямые эфиры</span></li>
+            <li><span>Анонсы курсов</span></li>
+            <li><span>Туры</span></li>
           </ul>
         </div>
       </section>
@@ -61,41 +63,31 @@
       <header class="header__service-landing">
         <h3>
           Стоимость <span class="title">Landing Page</span> <br />
-          <span class="big bold none-uppercase">от 25 000 руб.</span><br />
+          <span class="big bold none-uppercase">от 25 000 руб.</span> <br />
           <span class="price-small-text">Срок исполнения 3 - 14 дней</span>
         </h3>
       </header>
       <section class="main__section-wrapper main__service-price">
         <!-- 2 -->
         <div class="link-block">
-          <p class="bold">Включено:</p>
+          <p class="bold">Включено в пакет:</p>
           <ul>
             <li><span>Адаптивный дизайн</span></li>
             <li><span>Верстка из 5 блоков</span></li>
-            <li><span>целевое действие заявка/продажа</span></li>
-            <li><span>Квиз или форма обратной связи </span></li>
-            <li>
-              <span>SEO оптимизация для индексации</span>
-            </li>
-            <li><span>Быстрая загрузка сайта</span></li>
+            <li><span>Целевое действие заявка/продажа</span></li>
+            <li><span>Квиз или форма обратной связи</span></li>
+            <li><span>SEO оптимизация для индексации</span></li>
+            <li><span>Понятная система управления</span></li>
             <li><span>Подключение Яндекс и Google метрик</span></li>
-            <li>
-              <span>Понятная система управления</span>
-            </li>
-            <li>
-              <span>Обучение администрированию в CMS </span>
-            </li>
-            <li>
-              <span>Установка домена + ssl защита сайта </span>
-            </li>
-            <li>
-              <span>Бонус: политика конфиденциальности</span>
-            </li>
+            <li><span>Установка домена + SSL защита сайта</span></li>
+            <li><span>Обучение администрированию в CMS</span></li>
+            <li><span>Оптимизация скорости загрузки сайта</span></li>
+            <li><span>Бонус: политика конфиденциальности</span></li>
           </ul>
           <p class="bold">
-            Опциональные возможности :<br />
-            <span class="price-small-text">
-              Оплачиваются дополнительно по необходимости</span
+            Опциональные возможности:<br />
+            <span class="price-small-text"
+              >Оплачиваются дополнительно по необходимости:</span
             >
           </p>
           <ul>
@@ -108,7 +100,13 @@
             <li><span>Система уведомлений и рассылка</span></li>
           </ul>
         </div>
-        <button class="button-primary" type="button">Заказать сайт</button>
+        <button
+          class="js-modal-open button-primary"
+          type="button"
+          href="#modal-test"
+        >
+          Заказать сайт
+        </button>
       </section>
     </article>
   </div>
@@ -117,9 +115,9 @@
   <div class="main main_dark wrapper clearfix">
     <article class="main__article">
       <section class="main__section-wrapper main__service-landing-clients">
-        <h3>Наши работы</h3>
+        <h3>Кейсы, которые работают</h3>
 
-        <div class="carousel">
+        <div class="carousel carousel-images">
           <div class="carousel-cell">
             <img
               src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg"
@@ -167,24 +165,181 @@
     </article>
   </div>
 
-  <!-- Наши работы -->
+  <!-- Наши отзывы -->
   <div class="main wrapper clearfix">
     <article class="main__article">
       <section class="main__section-wrapper main__service-landing-reviews">
-        <h3>Отзывы</h3>
-        <div class="review-card">
-          <div class="review-avatar">
-            <img src="avatar.jpg" alt="Аватар пользователя" />
+        <h3>Что говорят наши клиенты</h3>
+        <div class="carousel carousel-cards">
+          <div class="carousel-cell">
+            <div class="review-card main_dark">
+              <div class="review-header">
+                <img src="/img/avatar.png" alt="Аватар пользователя" />
+                <p class="review-name">
+                  <span>Генеральный директор компании</span>
+                  <span class="bold">Илон Маск</span>
+                </p>
+              </div>
+              <div class="review-details">
+                <div class="review-text">
+                  <p class="review-short">
+                    Краткий отзыв, не более 2 строк<br />
+                    Полный текст отзыва...
+                  </p>
+                </div>
+                <div class="review-btns"></div>
+              </div>
+            </div>
           </div>
-          <div class="review-details">
-            <h3 class="review-name">Имя Фамилия</h3>
-            <div class="review-text">
-              <p class="review-short">Краткий отзыв, не более 2 строк...</p>
-              <p class="review-full">Полный текст отзыва...</p>
-              <button class="review-read-more">Читать полностью</button>
+          <div class="carousel-cell">
+            <div class="review-card main_dark">
+              <div class="review-header">
+                <img src="/img/avatar.png" alt="Аватар пользователя" />
+                <p class="review-name">
+                  <span>Генеральный директор компании</span>
+                  <span class="bold">Илон Маск</span>
+                </p>
+              </div>
+              <div class="review-details">
+                <div class="review-text">
+                  <p class="review-short">
+                    Краткий отзыв, не более 2 строк<br />
+                    Полный текст отзыва...
+                  </p>
+                </div>
+                <div class="review-btns"></div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <div class="review-card main_dark">
+              <div class="review-header">
+                <img src="/img/avatar.png" alt="Аватар пользователя" />
+                <p class="review-name">
+                  <span>Генеральный директор компании</span>
+                  <span class="bold">Илон Маск</span>
+                </p>
+              </div>
+              <div class="review-details">
+                <div class="review-text">
+                  <p class="review-short">
+                    Краткий отзыв, не более 2 строк<br />
+                    Полный текст отзыва...
+                  </p>
+                </div>
+                <div class="review-btns"></div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
+    </article>
+  </div>
+
+  <!-- вопросы-ответы -->
+  <div class="main wrapper clearfix">
+    <article class="main__article">
+      <section class="main__section-wrapper main__req-res">
+        <h3 class="main__services-h2">Вы спрашивали<br />- Мы отвечаем</h3>
+        <picture class="req-res__image">
+          <img
+            class="logo-megaphone"
+            src="/img/megaphone.png"
+            srcset="/img/megaphone.png 2x"
+            alt="Logo megaphone"
+          />
+        </picture>
+        <section>
+          <div class="accordion__req-res">
+            <button class="btn-accordion">
+              <span>За сколько дней будет готов сайт?</span><span>&times;</span>
+            </button>
+            <p class="content-accordion hidden-accordion">
+              Всё зависит от того, какой сайт требуется разработать. Например:
+              интернет-магазин мы запускаем в среднем за 21 день, а лендинг
+              можно разработать и за 3 дня.
+            </p>
+          </div>
+
+          <div class="accordion__req-res">
+            <button class="btn-accordion">
+              <span>Какая средняя стоимость?</span><span>&times;</span>
+            </button>
+            <p class="content-accordion hidden-accordion">
+              В среднем цены на услуги разработки сайта начинаются от 35 000
+              руб. Всё зависит от вашего желания по наполнению функционалом
+              сайта, для вашего удобства мы подготовили выгодное предложение с
+              необходимым набором в разделе Тарифы Доменное имя сайта и год
+              пользованием хостинга входит в стоимость пакетов
+            </p>
+          </div>
+
+          <div class="accordion__req-res">
+            <button class="btn-accordion">
+              <span>Вдруг мне не понравится результат?</span
+              ><span>&times;</span>
+            </button>
+            <p class="content-accordion hidden-accordion">
+              Наша с вами работа состоит из нескольких этапов БРИФ - мы
+              прислушиваемся к вашим знаниям о продукте/услуге. Исследуем рынок,
+              анализируем конкурентов и целевую аудиторию, учитываем все детали.
+              Подписание Договора с техническим заданием. Оплата производится
+              после согласования в три этапа. Ваш крутой результат - это наша
+              гордость!
+            </p>
+          </div>
+
+          <div class="accordion__req-res">
+            <button class="btn-accordion">
+              <span>Если через месяц Я захочу что-то изменить на сайте?</span
+              ><span>&times;</span>
+            </button>
+            <p class="content-accordion hidden-accordion">
+              Мы подготовим удобную навигацию для администрирования и вы сможете
+              легко изменить фотографию, добавить карточку товара или текст на
+              сайте. Так же мы можем дополнительно обучить вас, провести
+              интенсив по "администрированию сайта".
+            </p>
+          </div>
+
+          <div class="accordion__req-res">
+            <button class="btn-accordion">
+              <span>У меня нет логотипа и фирменного стиля</span
+              ><span>&times;</span>
+            </button>
+            <p class="content-accordion hidden-accordion">
+              В нашей команде опытные дизайнеры, которые могут создать
+              уникальный фирменный стиль.
+            </p>
+          </div>
+
+          <div class="accordion__req-res">
+            <button class="btn-accordion">
+              <span
+                >У меня нет контента (заготовленного текста, фотографий и
+                др.)</span
+              ><span>&times;</span>
+            </button>
+            <p class="content-accordion hidden-accordion">
+              Мы можем предоставить услуги копирайтера и подобрать весь
+              необходимый контент для вашего сайта.
+            </p>
+          </div>
+
+          <div class="accordion__req-res">
+            <button class="btn-accordion">
+              <span>Почему разработка сайта на Тильде?</span
+              ><span>&times;</span>
+            </button>
+            <p class="content-accordion hidden-accordion">
+              Мы не тратим время на сложное программирование, а уделяем больше
+              времени исследованию продукта, это увеличивает продажи. При этом
+              реализуем все необходимые функции- онлайн оплата, CRM системы,
+              онлайн расписание, настраиваем ботов В дальнейшем администрировать
+              сайт вы сможете самостоятельно.
+            </p>
+          </div>
+        </section>
       </section>
     </article>
   </div>
