@@ -14,10 +14,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/flickity-fullscreen@2/fullscreen.css"
-    />
+
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/ElemModal.css" />
@@ -36,7 +33,7 @@
         </p>
         <nav>
           <ul>
-            <li>
+            <li class="desctop-show">
               <a href="https://t.me/my_starpage"
                 ><img
                   class="logo-telegram"
@@ -45,7 +42,7 @@
                   alt="starpage telegram"
               /></a>
             </li>
-            <li>
+            <li class="desctop-show">
               <a href="mailto:hello@starpage.ru"
                 ><img
                   class="logo-email"
@@ -54,9 +51,19 @@
                   alt="starpage email"
               /></a>
             </li>
+            <li>
+              <a
+                class="link-menu js-modal-open"
+                id="burger-open"
+                href="#modal-menu"
+              >
+                <span class="menu-burger-design"></span>
+                <span class="menu-burger-design"></span>
+                <span class="menu-burger-design"></span>
+              </a>
+            </li>
           </ul>
         </nav>
-        <a class="link-menu js-modal-open" href="#modal-menu">Меню</a>
       </header>
     </div>
     <!-- ТЕЛО СТРАНИЦЫ -->
@@ -106,21 +113,97 @@
       <div class="modal__dialog">
         <div class="modal__dialog-header">
           <div class="modal__dialog-header-content">
-            <p id="modal__header-title">STARPAGE - МЕНЮ</p>
+            <p>
+              <a class="nav-link nav-link-burger STARPAGE" href="/home"
+                >STARPAGE</a
+              >
+            </p>
           </div>
           <div class="modal__dialog-header-close">
-            <a class="js-modal-close modal__dialog-header-btn-close">
-              <span>&times;</span>
+            <a
+              class="js-modal-close modal__dialog-header-btn-close not-active"
+              id="burger-close"
+            >
+              <span class="menu-burger-design-close"></span>
+              <span class="menu-burger-design-close"></span>
             </a>
           </div>
         </div>
         <div class="modal__dialog-body">
-          <p>пункты меню</p>
-          <ul>
-            <li><a class="nav-link" href="/landing">Лендинг</a></li>
-            <li><a class="nav-link" href="/business">Сайт-визитка</a></li>
-            <li><a class="nav-link" href="/ecommerce">Интернет-магазин</a></li>
-          </ul>
+          <nav class="menu__starpage">
+            <ul class="menu__starpage-items">
+              <li>
+                <a navlink-data="services" href="#"
+                  >Услуги <span class="icon-color">&#9660;</span></a
+                >
+              </li>
+            </ul>
+            <ul
+              class="menu__starpage-items hidden"
+              id="menu__starpage-items-services"
+            >
+              <li>
+                <a class="nav-link nav-link-burger" href="/landing">Лендинг</a>
+              </li>
+              <li>
+                <a class="nav-link nav-link-burger" href="/business"
+                  >Сайт-визитка</a
+                >
+              </li>
+              <li>
+                <a class="nav-link nav-link-burger" href="/ecommerce"
+                  >Интернет-магазин</a
+                >
+              </li>
+            </ul>
+            <ul class="menu__starpage-items">
+              <li>
+                <a class="nav-link nav-link-burger" href="#">Преимущества </a>
+              </li>
+              <li>
+                <a class="nav-link nav-link-burger" href="#">Портфолио </a>
+              </li>
+              <li>
+                <a class="nav-link nav-link-burger" href="#">Схема работы </a>
+              </li>
+              <li>
+                <a class="nav-link nav-link-burger" href="#"
+                  >Персональный расчет
+                </a>
+              </li>
+              <li>
+                <a class="nav-link nav-link-burger" href="#"
+                  >Популярные вопросы
+                </a>
+              </li>
+              <li>
+                <a class="nav-link nav-link-burger" href="#"
+                  >Форма обратной связи
+                </a>
+              </li>
+            </ul>
+
+            <ul class="menu__starpage-items-social">
+              <li>
+                <a href="https://t.me/my_starpage"
+                  ><img
+                    class="logo-telegram"
+                    src="/img/telegram.svg"
+                    srcset="/img/telegram.svg 2x"
+                    alt="starpage telegram"
+                /></a>
+              </li>
+              <li>
+                <a href="mailto:hello@starpage.ru"
+                  ><img
+                    class="logo-email"
+                    src="/img/email.png"
+                    srcset="/img/email.png 2x"
+                    alt="starpage email"
+                /></a>
+              </li>
+            </ul>
+          </nav>
         </div>
         <div class="modal__dialog-footer"></div>
       </div>
@@ -129,7 +212,7 @@
       <div class="modal__dialog">
         <div class="modal__dialog-header">
           <div class="modal__dialog-header-content">
-            <h2 id="modal__header-title">Сайт: landing page</h2>
+            <h3 id="modal__header-title">Сайт: landing page</h3>
           </div>
           <div class="modal__dialog-header-close">
             <a class="js-modal-close modal__dialog-header-btn-close">
@@ -172,7 +255,7 @@
       <div class="modal__dialog">
         <div class="modal__dialog-header">
           <div class="modal__dialog-header-content">
-            <h2 class="modal__header-title">Заявка на разработку сайта</h2>
+            <h3 class="modal__header-title">Заявка на разработку сайта</h3>
             <span class="success-send-modal hidden"
               >Ваша заявка отправлена!</span
             >

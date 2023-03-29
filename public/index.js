@@ -1,3 +1,5 @@
+isLoadingPage = false
+
 const initPage = (path) => {
   console.log('init', path)
   window.scrollTo(0, 0)
@@ -10,13 +12,21 @@ const initPage = (path) => {
 
   // обработчики событий для кликов по ссылкам в меню
   const menuLinks = document.querySelectorAll('.nav-link')
+
   menuLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
+    function handleLinkClick(event) {
       event.preventDefault()
       const path = link.getAttribute('href')
+      if (isLoadingPage && path === window.location.pathname) return false
+
+      console.log('handl', path !== window.location.pathname)
+      isLoadingPage = true
       history.pushState({}, '', path)
       loadPage(path)
-    })
+    }
+    if (!isLoadingPage) {
+      link.addEventListener('click', handleLinkClick)
+    }
   })
 }
 
@@ -42,6 +52,7 @@ function loadPage(path) {
           })
           .then((html) => {
             document.querySelector('#content').innerHTML = html
+            isLoadingPage = false
             initPage(path)
           })
           .catch((error) => {
@@ -76,13 +87,18 @@ function loadPage(path) {
 }
 
 // обработчик событий для изменения URL адресной строки
-window.addEventListener('popstate', () => {
-  console.log('1', window.location.pathname)
-  loadPage()
+window.addEventListener('popstate', (event) => {
+  const path = event.state.path
+  console.log('1 popstate', path, window.location.pathname)
+  loadPage(path)
 })
 
 // загрузка шаблона страницы при загрузке сайта
-window.addEventListener('DOMContentLoaded', () => {
-  console.log('2', window.location.pathname)
-  loadPage()
+window.addEventListener('DOMContentLoaded', (event) => {
+  console.log(
+    '2 DOMContentLoaded',
+    event.target.location.pathname,
+    window.location.pathname
+  )
+  loadPage(event.target.location.pathname)
 })

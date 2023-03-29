@@ -2,10 +2,12 @@
 
 * {
   --color-white: #fff;
+  --color-light: #ebebeb;
   --color-black: #000;
   --color-dark: #303030;
+  --color-blue: #0345fa;
   --color-brand: #6f26ec;
-  --second-color-brand: #a84392;
+  --second-color-brand: #d900dd;
 
   --modal-width: 320px;
   --modal-height: 80vh;
@@ -94,7 +96,7 @@ textarea {
     MOBILE: Menu
    ============== */
 nav {
-  display: none;
+  display: flex;
 }
 
 ul {
@@ -113,11 +115,12 @@ ul {
 
 nav a {
   display: flex;
-  padding: 15px 0;
+  padding: 0;
 
   text-align: center;
   text-decoration: none;
   font-weight: bold;
+  align-items: center;
 
   color: var(--color-brand);
 }
@@ -157,7 +160,7 @@ nav a:hover {
     INTERMEDIATE: Menu
    ==================== */
   nav {
-    margin-right: 100px;
+    margin-right: 0;
     display: flex;
   }
 
@@ -218,10 +221,6 @@ nav a:hover {
   .wrapper {
     width: 1026px; /* 1140px - 10% for margins */
     margin: 0 auto;
-  }
-
-  nav {
-    margin-right: 64px;
   }
 }
 

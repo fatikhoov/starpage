@@ -1,14 +1,14 @@
 "use strict";
 
 var initAccordionShow = function initAccordionShow() {
-  var o = document.querySelectorAll(".accordion__req-res");
-  0 <= o.length && o.forEach(function (o) {
-    var e = o.querySelector(".btn-accordion"),
-      t = o.querySelector(".content-accordion");
-    e.addEventListener("click", function () {
-      t.classList.toggle("hidden-accordion"), t.classList.contains("hidden-accordion") ? (e.children[1].style.transform = "rotate(45deg)", t.style.display = "none", setTimeout(function () {
-        t.style.display = "", e.style.boxShadow = "";
-      }, 1)) : (e.style.boxShadow = "0px 5px 20px 0px rgba(178,57,221,0.2)", e.children[1].style.transform = "rotate(0deg)");
+  var e = document.querySelectorAll(".accordion__req-res");
+  0 <= e.length && e.forEach(function (e) {
+    var o = e.querySelector(".btn-accordion"),
+      t = e.querySelector(".content-accordion");
+    o.addEventListener("click", function (e) {
+      e.preventDefault(), t.classList.toggle("hidden-accordion"), t.classList.contains("hidden-accordion") ? (o.children[1].style.transform = "rotate(45deg)", t.style.display = "none", setTimeout(function () {
+        t.style.display = "", o.style.boxShadow = "";
+      }, 1)) : (o.style.boxShadow = "0px 5px 20px 0px rgba(178,57,221,0.2)", o.children[1].style.transform = "rotate(0deg)");
     });
   }), console.log("accordion work");
 };
@@ -54,7 +54,7 @@ var CLASS_LIST = {
     MODAL_DIALOG_BODY: "modal__dialog-body",
     TRIGGER_OPEN: "js-modal-open",
     TRIGGER_CLOSE: "js-modal-close",
-    TRIGGER_LINK: "nav-link"
+    TRIGGER_LINK: "nav-link-burger"
   },
   showScroll = function showScroll(e) {
     "transform" === e.propertyName && (document.body.style.paddingRight = "", document.body.style.overflow = "", document.body.style.overflowX = "hidden", e.target.closest("." + CLASS_LIST.MODAL).removeEventListener("transitionend", showScroll));
@@ -65,14 +65,15 @@ var CLASS_LIST = {
     return document.body.removeChild(e), t;
   },
   bindResizeObserver = (document.addEventListener("click", function (e) {
-    if (e.target.closest("." + CLASS_LIST.TRIGGER_OPEN) && (e.preventDefault(), s = e.target.closest("." + CLASS_LIST.TRIGGER_OPEN).getAttribute("href").replace("#", ""), s = document.getElementById(s), document.body.style.paddingRight = getScrollbarWidth() + "px", document.body.style.overflow = "hidden", s.classList.add(CLASS_LIST.MODAL_ACTIVE), bindResizeObserver(s)), e.target.closest("." + CLASS_LIST.TRIGGER_CLOSE) || e.target.classList.contains(CLASS_LIST.MODAL_ACTIVE) || e.target.classList.contains(CLASS_LIST.TRIGGER_LINK)) {
+    var t;
+    if (e.target.closest("." + CLASS_LIST.TRIGGER_OPEN) && (e.preventDefault(), s = e.target.closest("." + CLASS_LIST.TRIGGER_OPEN).getAttribute("href").replace("#", ""), t = document.getElementById(s), null != s && "modal-menu" === s && (document.getElementById("burger-open").classList.add("not-active"), document.getElementById("burger-close").classList.remove("not-active")), document.body.style.paddingRight = getScrollbarWidth() + "px", document.body.style.overflow = "hidden", t.classList.add(CLASS_LIST.MODAL_ACTIVE), bindResizeObserver(t)), e.target.closest("." + CLASS_LIST.TRIGGER_CLOSE) || e.target.classList.contains(CLASS_LIST.MODAL_ACTIVE) || e.target.classList.contains(CLASS_LIST.TRIGGER_LINK)) {
       e.preventDefault();
       var s = e.target.closest("." + CLASS_LIST.MODAL);
-      s.classList.remove(CLASS_LIST.MODAL_ACTIVE);
-      var t = [];
+      null != s.id && "modal-menu" === s.id && (document.getElementById("burger-open").classList.remove("not-active"), document.getElementById("burger-close").classList.add("not-active"), document.getElementById("menu__starpage-items-services").classList.add("hidden"), document.querySelector(".icon-color").style.transform = "rotate(0deg)"), s.classList.remove(CLASS_LIST.MODAL_ACTIVE);
+      var _t = [];
       document.querySelectorAll(".modal").forEach(function (e) {
-        e.classList.contains("modal-active") && t.push(e);
-      }), t.length <= 0 && (s.addEventListener("transitionend", showScroll), unbindResizeObserver(s));
+        e.classList.contains("modal-active") && _t.push(e);
+      }), _t.length <= 0 && (s.addEventListener("transitionend", showScroll), unbindResizeObserver(s));
     }
   }), function (e) {
     var t = e.querySelector("." + CLASS_LIST.MODAL_DIALOG_BODY);
@@ -83,7 +84,18 @@ var CLASS_LIST = {
   unbindResizeObserver = function unbindResizeObserver(e) {
     e = e.querySelector("." + CLASS_LIST.MODAL_DIALOG_BODY);
     resizeObserver.unobserve(e), resizeObserver = null;
+  },
+  initMenuModalShow = function initMenuModalShow() {
+    var e = document.querySelectorAll("a[navlink-data]");
+    0 <= e.length && e.forEach(function (t) {
+      t.addEventListener("click", function (e) {
+        e.preventDefault();
+        e = t.attributes["navlink-data"].value, e = document.getElementById("menu__starpage-items-" + e);
+        e.classList.toggle("hidden"), e.classList.contains("hidden") ? t.children[0].style.transform = "rotate(0deg)" : t.children[0].style.transform = "rotate(-180deg)", console.log("menu open");
+      });
+    });
   };
+initMenuModalShow();
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
