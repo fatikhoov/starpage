@@ -9,6 +9,9 @@ const initPage = (path) => {
   if (document.querySelector('.carousel')) {
     initCarouselShow()
   }
+  if (document.querySelector('#reviews')) {
+    loadReviews()
+  }
 
   // обработчики событий для кликов по ссылкам в меню
   const menuLinks = document.querySelectorAll('.nav-link')
@@ -68,7 +71,7 @@ function loadPage(path) {
           })
       }
       if (path === '/' || path === '' || path === '/home' || path === 'index') {
-        ;(path = 'home'), history.replaceState({}, '', '/')
+        ;(path = 'landing'), history.replaceState({}, '', '/')
         fetchPathHtml(path)
       } else if (path === '/landing' || path === '/landing.html') {
         ;(path = 'landing'), history.replaceState({}, '', '/landing')

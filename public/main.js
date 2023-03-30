@@ -418,3 +418,24 @@ function fixStepIndicator(e) {
   e + 1 >= a.length ? console.log("end and stop tab") : t[e].className += " active";
 }
 showTab(currentTab), addEventListener("submit", handleFormSubmit);
+"use strict";
+
+function loadReviews() {
+  console.log("json work"), fetch("/my-database/reviews.json").then(function (e) {
+    return e.json();
+  }).then(function (e) {
+    e = e.reviews;
+    var r = document.getElementById("reviews");
+    var d = "";
+    e.forEach(function (e) {
+      var s = "" + e.author,
+        a = "" + e.profession,
+        i = "" + e.text,
+        v = "" + e.date,
+        e = " \n       <div class=\"carousel-cell\">\n        <div class=\"review-card main_dark\">\n          <div class=\"review-header\">\n          <div class=\"review-header-image\"><img class=\"review-image\" src=\"".concat("" + e.image, "\" alt=\"\u0424\u043E\u0442\u043E\u0433\u0440\u0444\u0438\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\" /></div> \n            <p class=\"review-name\">\n              <span>").concat(a, "</span>\n              <span class=\"bold\">").concat(s, "</span>\n            </p>\n          </div>\n          <div class=\"review-details\">\n            <div class=\"review-text\">\n              <p class=\"review-short\">\n                ").concat(i, "\n              <span class=\"review-date\">").concat(v, "\n              </span>\n                </p>\n                </div>\n            <div class=\"review-btns\"></div>\n          </div>\n        </div>\n      </div>\n");
+      d += e, r.innerHTML = "\n        <div class=\"carousel carousel-cards\">\n            ".concat(d, "\n        </div>\n        ");
+    });
+  })["finally"](function () {
+    initCarouselShow();
+  });
+}
