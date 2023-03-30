@@ -420,20 +420,36 @@ function fixStepIndicator(e) {
 showTab(currentTab), addEventListener("submit", handleFormSubmit);
 "use strict";
 
+function loadCases() {
+  fetch("/my-database/cases.json").then(function (e) {
+    return e.json();
+  }).then(function (e) {
+    e = e.cases;
+    var s = document.getElementById("cases");
+    var a = "";
+    e.forEach(function (e) {
+      e = " \n          <div class=\"carousel-cell\">\n          <div class=\"carousel-cell-images1\" style=\"background-image:url('".concat("" + e["background-image"], "')\"></div>\n          <p>").concat("" + e.title, "</p>\n          <p>").concat("" + e.text, "</p>\n        </div>\n  ");
+      a += e, s.innerHTML = "\n          <div class=\"carousel carousel-images\">\n              ".concat(a, "\n          </div>\n          ");
+    });
+  })["finally"](function () {
+    initCarouselShow();
+  });
+}
+"use strict";
+
 function loadReviews() {
-  console.log("json work"), fetch("/my-database/reviews.json").then(function (e) {
+  fetch("/my-database/reviews.json").then(function (e) {
     return e.json();
   }).then(function (e) {
     e = e.reviews;
-    var r = document.getElementById("reviews");
+    var v = document.getElementById("reviews");
     var d = "";
     e.forEach(function (e) {
       var s = "" + e.author,
-        a = "" + e.profession,
-        i = "" + e.text,
-        v = "" + e.date,
-        e = " \n       <div class=\"carousel-cell\">\n        <div class=\"review-card main_dark\">\n          <div class=\"review-header\">\n          <div class=\"review-header-image\"><img class=\"review-image\" src=\"".concat("" + e.image, "\" alt=\"\u0424\u043E\u0442\u043E\u0433\u0440\u0444\u0438\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\" /></div> \n            <p class=\"review-name\">\n              <span>").concat(a, "</span>\n              <span class=\"bold\">").concat(s, "</span>\n            </p>\n          </div>\n          <div class=\"review-details\">\n            <div class=\"review-text\">\n              <p class=\"review-short\">\n                ").concat(i, "\n              <span class=\"review-date\">").concat(v, "\n              </span>\n                </p>\n                </div>\n            <div class=\"review-btns\"></div>\n          </div>\n        </div>\n      </div>\n");
-      d += e, r.innerHTML = "\n        <div class=\"carousel carousel-cards\">\n            ".concat(d, "\n        </div>\n        ");
+        i = "" + e.profession,
+        a = "" + e.text,
+        e = (e.date, " \n       <div class=\"carousel-cell\">\n        <div class=\"review-card\">\n          <div class=\"review-header\">\n          <div class=\"review-header-image\"><img class=\"review-image\" src=\"".concat("" + e.image, "\" alt=\"\u0424\u043E\u0442\u043E\u0433\u0440\u0444\u0438\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\" /></div> \n            <p class=\"review-name\">\n            <span class=\"bold\">").concat(s, "</span> \n              <span>").concat(i, "</span> \n            </p> \n          </div>\n          <div class=\"review-details\">\n            <div class=\"review-text\">\n              <p class=\"review-short\">\n                ").concat(a, " \n                </p>\n                </div>\n            <div class=\"review-btns\"></div>\n          </div>\n        </div>\n      </div>\n"));
+      d += e, v.innerHTML = "\n        <div class=\"carousel carousel-cards\">\n            ".concat(d, "\n        </div>\n        ");
     });
   })["finally"](function () {
     initCarouselShow();

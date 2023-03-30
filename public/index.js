@@ -6,8 +6,8 @@ const initPage = (path) => {
   if (document.querySelector('.accordion__req-res')) {
     initAccordionShow()
   }
-  if (document.querySelector('.carousel')) {
-    initCarouselShow()
+  if (document.querySelector('#cases')) {
+    loadCases()
   }
   if (document.querySelector('#reviews')) {
     loadReviews()
@@ -71,7 +71,7 @@ function loadPage(path) {
           })
       }
       if (path === '/' || path === '' || path === '/home' || path === 'index') {
-        ;(path = 'landing'), history.replaceState({}, '', '/')
+        ;(path = 'home'), history.replaceState({}, '', '/')
         fetchPathHtml(path)
       } else if (path === '/landing' || path === '/landing.html') {
         ;(path = 'landing'), history.replaceState({}, '', '/landing')
