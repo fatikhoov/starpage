@@ -66,6 +66,7 @@
         </nav>
       </header>
     </div>
+
     <!-- ТЕЛО СТРАНИЦЫ -->
     <div class="main-container" id="content">
       <div class="main wrapper clearfix">
@@ -81,10 +82,91 @@
     </div>
 
     <!-- ПОДВАЛ СТРАНИЦЫ -->
-    <div class="footer-container">
-      <footer class="main footer__wrapper">
+    <div class="footer-container" id="section__footer">
+      <footer class="main main_dark footer__wrapper">
         <h3>Остались еще вопросы?</h3>
-        <p>Свяжитесь с нами<br />удобным для вас способом!</p>
+
+        <div class="Feedback-body">
+          <h4 class="form-ul" ind-data="FeedbackForm-btns">
+            Свяжитесь с нами<br />удобным для вас способом!
+          </h4>
+
+          <form
+            id="FeedbackForm"
+            enctype="multipart/form-data"
+            method="post"
+            autocomplete="off"
+          >
+            <input
+              type="hidden"
+              id="website"
+              name="website"
+              value="Форма обратной связи"
+            /><input type="hidden" name="sender" value="hello@starpage.ru" />
+            <ul class="form-ul">
+              <li>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Ваше имя"
+                  title="Как мы будем к вам обращаться?"
+                  autofocus
+                />
+              </li>
+            </ul>
+            <ul class="form-ul">
+              <li>
+                <input
+                  type="text"
+                  name="telegram"
+                  id="telegram"
+                  placeholder="Контакт для связи"
+                />
+              </li>
+            </ul>
+            <div class="form-ul">
+              <textarea
+                name="comment"
+                rows="4"
+                id="message"
+                placeholder="Укажите дополнительно всё, что считаете важным"
+              ></textarea>
+            </div>
+          </form>
+          <p
+            class="onSuccess__modal hidden"
+            id="onSuccess__modal-quiz"
+            ind-data="FeedbackForm-onSuccess"
+          >
+            Менеджер получил заявку<br />и свяжется с Вами сразу,<br />как её
+            обработает :)
+          </p>
+          <div class="form-ul" ind-data="FeedbackForm-btns">
+            <div class="btn__footer-wrapper">
+              <button
+                class="button-primary"
+                type="submit"
+                form="FeedbackForm"
+                id="btnFeedbackForm"
+                ind-data="FeedbackForm-button"
+              >
+                <span
+                  class="hidden"
+                  id="loader-modal"
+                  ind-data="FeedbackForm-loader"
+                  >Отправляем...</span
+                ><span
+                  class=""
+                  id="btn-send-modal"
+                  ind-data="FeedbackForm-sendBtn"
+                  >Обсудить проект</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+
         <ul class="ul-footer">
           <li>
             <a href="https://t.me/my_starpage"
@@ -130,80 +212,28 @@
           </div>
         </div>
         <div class="modal__dialog-body">
-          <nav class="menu__starpage">
-            <ul class="menu__starpage-items">
-              <li>
-                <a navlink-data="services" href="#"
-                  >Услуги <span class="icon-color">&#9660;</span></a
-                >
-              </li>
-            </ul>
-            <ul
-              class="menu__starpage-items hidden"
-              id="menu__starpage-items-services"
-            >
-              <li>
-                <a class="nav-link nav-link-burger" href="/landing">Лендинг</a>
-              </li>
-              <li>
-                <a class="nav-link nav-link-burger" href="/business"
-                  >Сайт-визитка</a
-                >
-              </li>
-              <li>
-                <a class="nav-link nav-link-burger" href="/ecommerce"
-                  >Интернет-магазин</a
-                >
-              </li>
-            </ul>
-            <ul class="menu__starpage-items">
-              <li>
-                <a class="nav-link nav-link-burger" href="#">Преимущества </a>
-              </li>
-              <li>
-                <a class="nav-link nav-link-burger" href="#">Портфолио </a>
-              </li>
-              <li>
-                <a class="nav-link nav-link-burger" href="#">Схема работы </a>
-              </li>
-              <li>
-                <a class="nav-link nav-link-burger" href="#"
-                  >Персональный расчет
-                </a>
-              </li>
-              <li>
-                <a class="nav-link nav-link-burger" href="#"
-                  >Популярные вопросы
-                </a>
-              </li>
-              <li>
-                <a class="nav-link nav-link-burger" href="#"
-                  >Форма обратной связи
-                </a>
-              </li>
-            </ul>
+          <nav class="menu__starpage" id="menu__starpage"></nav>
 
-            <ul class="menu__starpage-items-social">
-              <li>
-                <a href="https://t.me/my_starpage"
-                  ><img
-                    class="logo-telegram"
-                    src="/img/telegram.svg"
-                    srcset="/img/telegram.svg 2x"
-                    alt="starpage telegram"
-                /></a>
-              </li>
-              <li>
-                <a href="mailto:hello@starpage.ru"
-                  ><img
-                    class="logo-email"
-                    src="/img/email.png"
-                    srcset="/img/email.png 2x"
-                    alt="starpage email"
-                /></a>
-              </li>
-            </ul>
-          </nav>
+          <ul class="menu__starpage-items-social">
+            <li>
+              <a href="https://t.me/my_starpage"
+                ><img
+                  class="logo-telegram"
+                  src="/img/telegram.svg"
+                  srcset="/img/telegram.svg 2x"
+                  alt="starpage telegram"
+              /></a>
+            </li>
+            <li>
+              <a href="mailto:hello@starpage.ru"
+                ><img
+                  class="logo-email"
+                  src="/img/email.png"
+                  srcset="/img/email.png 2x"
+                  alt="starpage email"
+              /></a>
+            </li>
+          </ul>
         </div>
         <div class="modal__dialog-footer"></div>
       </div>
@@ -277,7 +307,7 @@
               type="hidden"
               id="website"
               name="website"
-              value="Квиз, главный экран, модалка"
+              value="Заявка на разработку сайта (квиз)"
             /><input type="hidden" name="sender" value="hello@starpage.ru" />
             <fieldset class="tab">
               <legend>Персональные данные</legend>

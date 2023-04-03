@@ -1,29 +1,19 @@
 {
   "cases": [
     {
-      "background-image": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg",
-      "title": "Интернет-магазин",
-      "text": "Zara"
+      "background-image": "/img/cases/yoga.png",
+      "title": "Тренер по йоге",
+      "text": "Текст"
     },
     {
-      "background-image": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg",
-      "title": "Интернет-магазин",
-      "text": "Zara"
+      "background-image": "/img/cases/targetolog.png",
+      "title": "Таргетолог",
+      "text": "Текст"
     },
     {
-      "background-image": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg",
-      "title": "Интернет-магазин",
-      "text": "Zara"
-    },
-    {
-      "background-image": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg",
-      "title": "Интернет-магазин",
-      "text": "Zara"
-    },
-    {
-      "background-image": "https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg",
-      "title": "Интернет-магазин",
-      "text": "Zara"
+      "background-image": "/img/cases/psychologist.png",
+      "title": "Психолог",
+      "text": "Текст"
     }
   ]
 }

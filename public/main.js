@@ -84,18 +84,7 @@ var CLASS_LIST = {
   unbindResizeObserver = function unbindResizeObserver(e) {
     e = e.querySelector("." + CLASS_LIST.MODAL_DIALOG_BODY);
     resizeObserver.unobserve(e), resizeObserver = null;
-  },
-  initMenuModalShow = function initMenuModalShow() {
-    var e = document.querySelectorAll("a[navlink-data]");
-    0 <= e.length && e.forEach(function (t) {
-      t.addEventListener("click", function (e) {
-        e.preventDefault();
-        e = t.attributes["navlink-data"].value, e = document.getElementById("menu__starpage-items-" + e);
-        e.classList.toggle("hidden"), e.classList.contains("hidden") ? t.children[0].style.transform = "rotate(0deg)" : t.children[0].style.transform = "rotate(-180deg)", console.log("menu open");
-      });
-    });
   };
-initMenuModalShow();
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -120,7 +109,7 @@ var validSendModal = document.getElementById("valid-send-modal"),
   successSendModal = document.querySelector(".success-send-modal");
 var TARGET_ID, s;
 function onSuccess(e) {
-  console.log("i work onSuccess"), alert("Удачно ->>", e, TARGET_ID), titleSuccess.classList.toggle("hidden"), successSendModal.classList.toggle("hidden"), document.querySelector("p[ind-data=\"".concat(TARGET_ID, "-onSuccess\"]")).classList.toggle("hidden"), document.querySelector("[id=\"".concat(TARGET_ID, "\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-steps\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-btns\"]")).classList.add("hidden");
+  alert("Удачно ->>", e, TARGET_ID), titleSuccess.classList.toggle("hidden"), successSendModal.classList.toggle("hidden"), document.querySelector("p[ind-data=\"".concat(TARGET_ID, "-onSuccess\"]")).classList.toggle("hidden"), document.querySelector("[id=\"".concat(TARGET_ID, "\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-steps\"]")) && document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-steps\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-btns\"]")).classList.add("hidden");
 }
 function toggleLoader() {
   document.querySelector("button[ind-data=\"".concat(TARGET_ID, "-button\"]")).disabled = !0, document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-loader\"]")).classList.toggle("hidden"), document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-sendBtn\"]")).classList.toggle("hidden");
@@ -130,7 +119,7 @@ function handleFormSubmit(_x) {
 }
 function _handleFormSubmit() {
   _handleFormSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-    var t, a, n, o, d, _iterator, _step, _step$value, i, c, l;
+    var t, a, n, o, d, _iterator, _step, _step$value, i, c, r;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -161,9 +150,9 @@ function _handleFormSubmit() {
           _context.next = 13;
           return sendToGoogle(d);
         case 13:
-          l = _context.sent;
+          r = _context.sent;
           _context.next = 16;
-          return Promise.allSettled([i, c, l]);
+          return Promise.allSettled([i, c, r]);
         case 16:
           if (!_context.sent.every(function (e) {
             return "rejected" === e.status;
@@ -197,10 +186,9 @@ function _sendToTelegram() {
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          console.log("начало телеграмм");
-          t = "<b>\u0417\u0410\u042F\u0412\u041A\u0410 \u041D\u0410 \u0420\u0410\u0417\u0420\u0410\u0411\u041E\u0422\u041A\u0423 \u0421\u0410\u0419\u0422\u0410</b>\n";
-          t = (t = (t = (t = (t = (t = (t += "\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.name, "</b>\n")) + "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F:<b> ".concat(e.company, "</b>\n")) + "\u0426\u0435\u043B\u044C:<b> ".concat(e.target, "</b>\n\n")) + "\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.email, "</b>\n")) + "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:<b> ".concat(e.telegram, "</b>\n")) + "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:<b> ".concat(e.comment, "</b>\n\n")) + "\u0418\u0437 \u0444\u043E\u0440\u043C\u044B:<b> ".concat(e.website, "</b>\n") + "Из формы:<b><a href='https://login.sendpulse.com/crm/deals'>Посмотреть в CRM</a></b>";
-          _context2.next = 5;
+          t = "<b>".concat(e.website, "</b>\n\n");
+          t = (t = (t = (t = (t = (t = (t += "\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.name, "</b>\n")) + "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F:<b> ".concat(e.company, "</b>\n")) + "\u0426\u0435\u043B\u044C:<b> ".concat(e.target, "</b>\n\n")) + "\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.email, "</b>\n")) + "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:<b> ".concat(e.telegram, "</b>\n")) + "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:<b> ".concat(e.comment, "</b>\n\n")) + "\u0418\u0437 \u0444\u043E\u0440\u043C\u044B:<b> ".concat(e.website, "</b>\n") + "<b><a href='https://login.sendpulse.com/crm/deals'>Посмотреть в CRM SendPulse</a></b>";
+          _context2.next = 4;
           return fetch("https://api.telegram.org/bot6107421370:AAFAUTLHO9IWB6gRD1E9vHs-NuIscyNJvkQ/sendMessage", {
             method: "POST",
             headers: {
@@ -212,19 +200,19 @@ function _sendToTelegram() {
               text: t
             })
           });
-        case 5:
-          _context2.next = 7;
+        case 4:
+          _context2.next = 6;
           return _context2.sent.json();
-        case 7:
+        case 6:
           e = _context2.sent;
           if (!e.ok) {
-            _context2.next = 10;
+            _context2.next = 9;
             break;
           }
           return _context2.abrupt("return", e.ok);
-        case 10:
+        case 9:
           throw new Error("Ошибка отправки данных в телеграмм");
-        case 11:
+        case 10:
         case "end":
           return _context2.stop();
       }
@@ -355,8 +343,7 @@ function _sendToEmail() {
           return _context4.sent.json();
         case 32:
           s = _context4.sent;
-          console.log("сделка", s);
-          _context4.next = 36;
+          _context4.next = 35;
           return fetch("https://api.sendpulse.com/crm/v1/contacts/get-list", {
             method: "POST",
             headers: {
@@ -367,14 +354,13 @@ function _sendToEmail() {
               limit: 10
             })
           });
-        case 36:
-          _context4.next = 38;
+        case 35:
+          _context4.next = 37;
           return _context4.sent.json();
-        case 38:
-          n = _context4.sent;
-          a = n.data.list[0].responsibleId;
-          return _context4.abrupt("return", (console.log("СПИСОК КОНТАКТОВ", n, a), s.success));
-        case 41:
+        case 37:
+          _context4.sent.data.list[0].responsibleId;
+          return _context4.abrupt("return", s.success);
+        case 39:
         case "end":
           return _context4.stop();
       }
@@ -390,9 +376,8 @@ function _sendToGoogle() {
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          console.log("запись в сервис гугл таблицы", e);
           return _context5.abrupt("return", 200);
-        case 2:
+        case 1:
         case "end":
           return _context5.stop();
       }
@@ -403,7 +388,7 @@ function _sendToGoogle() {
 var currentTab = 0;
 function showTab(e) {
   var t = document.getElementsByClassName("tab");
-  t[e].classList.remove("hidden"), 0 == e ? document.getElementById("prevBtn").classList.add("hidden") : document.getElementById("prevBtn").classList.remove("hidden"), e == t.length - 1 ? (console.log("end and  "), document.getElementById("btnRegForm").classList.toggle("hidden"), document.getElementById("nextBtn").classList.toggle("hidden")) : document.getElementById("nextBtn").innerHTML = "Вперед", fixStepIndicator(e);
+  t[e].classList.remove("hidden"), 0 == e ? document.getElementById("prevBtn").classList.add("hidden") : document.getElementById("prevBtn").classList.remove("hidden"), e == t.length - 1 ? (console.log("end and  "), document.getElementById("btnRegForm").classList.remove("hidden"), document.getElementById("nextBtn").classList.toggle("hidden")) : document.getElementById("nextBtn").innerHTML = "Вперед", fixStepIndicator(e);
 }
 function nextPrev(e) {
   var t = document.getElementsByClassName("tab");
@@ -435,6 +420,36 @@ function loadCases() {
     initCarouselShow();
   });
 }
+"use strict";
+
+function loadMenuItems(l) {
+  return new Promise(function (e, n) {
+    fetch("/my-database/menu.json").then(function (e) {
+      return e.json();
+    }).then(function (e) {
+      var n = document.querySelector("#menu__starpage");
+      var a = n.innerHTML = "",
+        t = "";
+      e[l].services.forEach(function (e) {
+        a += "  \n          <li>\n            <a class=\"nav-link nav-link-burger\" href=\"".concat(e.link, "\" title=\"").concat(e.title, "\">").concat(e.text, "</a>\n          </li> \n");
+      }), e[l].anchors.forEach(function (e) {
+        t += "  \n          <li>\n            <a class=\"nav-link nav-link-burger ".concat(e["class"] || "", "\" href=\"").concat(e.link, "\" title=\"").concat(e.title, "\">").concat(e.text, "</a>\n          </li>\n");
+      }), n.innerHTML = "\n        <ul class=\"menu__starpage-items\">\n           <li>\n             <a navlink-data=\"services\" href=\"#\"\n               >\u0423\u0441\u043B\u0443\u0433\u0438<span class=\"icon-color\">&#9660;</span></a\n             >\n           </li>\n         </ul>\n\n         <ul\n         class=\"menu__starpage-items hidden\"\n         id=\"menu__starpage-items-services\"\n       >\n       ".concat(a, "\n       </ul>\n\n       <ul class=\"menu__starpage-items\">\n       ").concat(t, "\n       </ul>\n        ");
+    })["finally"](function () {
+      initMenuModalShow(), e();
+    });
+  });
+}
+var initMenuModalShow = function initMenuModalShow() {
+  var e = document.querySelectorAll("a[navlink-data]");
+  0 <= e.length && e.forEach(function (n) {
+    n.addEventListener("click", function (e) {
+      e.preventDefault();
+      e = n.attributes["navlink-data"].value, e = document.getElementById("menu__starpage-items-" + e);
+      e.classList.toggle("hidden"), e.classList.contains("hidden") ? n.children[0].style.transform = "rotate(0deg)" : n.children[0].style.transform = "rotate(-180deg)", console.log("menu open");
+    });
+  });
+};
 "use strict";
 
 function loadReviews() {

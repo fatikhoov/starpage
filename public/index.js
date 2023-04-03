@@ -3,6 +3,8 @@ isLoadingPage = false
 const initPage = (path) => {
   console.log('init', path)
   window.scrollTo(0, 0)
+
+  //запуск функций блоков
   if (document.querySelector('.accordion__req-res')) {
     initAccordionShow()
   }
@@ -12,25 +14,46 @@ const initPage = (path) => {
   if (document.querySelector('#reviews')) {
     loadReviews()
   }
-
   // обработчики событий для кликов по ссылкам в меню
-  const menuLinks = document.querySelectorAll('.nav-link')
+  if (document.querySelector('#modal-menu')) {
+    //подгружать пункты меню
+    loadMenuItems(path)
+      .then(() => {
+        const menuLinks = document.querySelectorAll('.nav-link')
 
-  menuLinks.forEach((link) => {
-    function handleLinkClick(event) {
-      event.preventDefault()
-      const path = link.getAttribute('href')
-      if (isLoadingPage && path === window.location.pathname) return false
+        menuLinks.forEach((link) => {
+          function handleLinkClick(event) {
+            event.preventDefault()
+            const path = link.getAttribute('href')
+            if (isLoadingPage && path === window.location.pathname) return false
+            // если ссылка ведет на внутреннюю страницу
+            if (path.startsWith('/')) {
+              // переходим на эту страницу
+              isLoadingPage = true
+              history.pushState({}, '', path)
+              loadPage(path)
+              link.removeEventListener('click', handleLinkClick)
+            } else {
+              // иначе скроллим до якоря на текущей странице
+              const anchor = document.querySelector(path)
+              if (anchor) {
+                const topPosition = anchor.getBoundingClientRect().top
+                anchor.scrollIntoView({ behavior: 'smooth' })
+                window.scrollTo({ top: topPosition, behavior: 'smooth' })
+              }
+            }
+          }
 
-      console.log('handl', path !== window.location.pathname)
-      isLoadingPage = true
-      history.pushState({}, '', path)
-      loadPage(path)
-    }
-    if (!isLoadingPage) {
-      link.addEventListener('click', handleLinkClick)
-    }
-  })
+          // обработчики событий для кликов по ссылкам в меню
+          if (!isLoadingPage) {
+            link.addEventListener('click', handleLinkClick)
+          }
+        })
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
 }
 
 function loadPage(path) {
