@@ -108,6 +108,7 @@ function loadPage(path) {
       } else {
         path = '404'
         history.replaceState({}, '', '/404')
+        fetchPathHtml(path)
       }
     })
 }

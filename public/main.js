@@ -57,7 +57,7 @@ var CLASS_LIST = {
     TRIGGER_LINK: "nav-link-burger"
   },
   showScroll = function showScroll(e) {
-    "transform" === e.propertyName && (document.body.style.paddingRight = "", document.body.style.overflow = "", document.body.style.overflowX = "hidden", e.target.closest("." + CLASS_LIST.MODAL).removeEventListener("transitionend", showScroll));
+    "transform" === e.propertyName && (document.body.style.overflow = "", document.body.style.overflowX = "hidden", e.target.closest("." + CLASS_LIST.MODAL).removeEventListener("transitionend", showScroll));
   },
   getScrollbarWidth = function getScrollbarWidth() {
     var e = document.createElement("div"),
@@ -66,7 +66,7 @@ var CLASS_LIST = {
   },
   bindResizeObserver = (document.addEventListener("click", function (e) {
     var t;
-    if (e.target.closest("." + CLASS_LIST.TRIGGER_OPEN) && (e.preventDefault(), s = e.target.closest("." + CLASS_LIST.TRIGGER_OPEN).getAttribute("href").replace("#", ""), t = document.getElementById(s), null != s && "modal-menu" === s && (document.getElementById("burger-open").classList.add("not-active"), document.getElementById("burger-close").classList.remove("not-active")), document.body.style.paddingRight = getScrollbarWidth() + "px", document.body.style.overflow = "hidden", t.classList.add(CLASS_LIST.MODAL_ACTIVE), bindResizeObserver(t)), e.target.closest("." + CLASS_LIST.TRIGGER_CLOSE) || e.target.classList.contains(CLASS_LIST.MODAL_ACTIVE) || e.target.classList.contains(CLASS_LIST.TRIGGER_LINK)) {
+    if (e.target.closest("." + CLASS_LIST.TRIGGER_OPEN) && (e.preventDefault(), s = e.target.closest("." + CLASS_LIST.TRIGGER_OPEN).getAttribute("href").replace("#", ""), t = document.getElementById(s), null != s && "modal-menu" === s && (document.getElementById("burger-open").classList.add("not-active"), document.getElementById("burger-close").classList.remove("not-active")), document.body.style.overflow = "hidden", t.classList.add(CLASS_LIST.MODAL_ACTIVE), bindResizeObserver(t)), e.target.closest("." + CLASS_LIST.TRIGGER_CLOSE) || e.target.classList.contains(CLASS_LIST.MODAL_ACTIVE) || e.target.classList.contains(CLASS_LIST.TRIGGER_LINK)) {
       e.preventDefault();
       var s = e.target.closest("." + CLASS_LIST.MODAL);
       null != s.id && "modal-menu" === s.id && (document.getElementById("burger-open").classList.remove("not-active"), document.getElementById("burger-close").classList.add("not-active"), document.getElementById("menu__starpage-items-services").classList.add("hidden"), document.querySelector(".icon-color").style.transform = "rotate(0deg)"), s.classList.remove(CLASS_LIST.MODAL_ACTIVE);
@@ -403,6 +403,30 @@ function fixStepIndicator(e) {
   e + 1 >= a.length ? console.log("end and stop tab") : t[e].className += " active";
 }
 showTab(currentTab), addEventListener("submit", handleFormSubmit);
+"use strict";
+
+var link = document.createElement("a"),
+  container = (link.className = "js-modal-open", link.href = "#touchArea-modal", document.querySelector("#inner_link"));
+container.appendChild(link), link.click();
+var currentY = 0,
+  destY = 0;
+var ease = .1;
+var startY = 0,
+  endY;
+function animate() {
+  var e = destY - currentY,
+    t = currentY + e * ease;
+  touchArea.style.transform = "translate(0%, ".concat(t, "px)"), (1 < Math.abs(e) || currentY !== startY) && requestAnimationFrame(animate), currentY = t;
+}
+var touchArea = document.getElementById("touchArea");
+touchArea.addEventListener("touchstart", function (e) {
+  startY = e.touches[0].clientY;
+}), touchArea.addEventListener("touchmove", function (e) {
+  var t = (endY = e.touches[0].clientY) - startY;
+  0 < t ? (220 < t && (t = 220), destY = 220 < t ? 220 : t, requestAnimationFrame(animate)) : (t = 0, touchArea.style.transform = "translate(0%, ".concat(t, "px)"));
+}), touchArea.addEventListener("touchend", function (e) {
+  100 < endY - startY ? (touchArea.classList.remove("modal-active"), touchArea.querySelector(".js-modal-close").click()) : endY - startY < 100 && (startY = currentY, destY = 0, animate());
+});
 "use strict";
 
 function loadCases() {
