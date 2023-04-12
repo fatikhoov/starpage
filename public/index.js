@@ -1,9 +1,8 @@
 isLoadingPage = false
 
 const initPage = (path) => {
-  console.log('init', path)
   window.scrollTo(0, 0)
-
+  initTouchMove()
   //запуск функций блоков
   if (document.querySelector('.accordion__req-res')) {
     initAccordionShow()

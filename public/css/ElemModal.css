@@ -35,7 +35,8 @@ form fieldset {
   z-index: 30;
   visibility: hidden;
   opacity: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
   transition: var(--modal-transition);
 }
 .modal__dialog {

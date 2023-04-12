@@ -46,6 +46,43 @@ var initCarouselShow = function initCarouselShow() {
 };
 "use strict";
 
+var container = document.querySelector("#inner_link"),
+  showModalSale = {
+    name: "a",
+    className: "js-modal-open",
+    id: "showModalSale",
+    href: "#touchArea-modal",
+    textContent: "",
+    style: ""
+  },
+  initTouchMove = (createAndAppendElems(container, showModalSale).then(function (e) {
+    setTimeout(function () {
+      e.click();
+    }, 2e3);
+  })["catch"](function (e) {
+    console.error(e);
+  }), function () {
+    var o = document.getElementById("touchArea");
+    var n = 0,
+      a = 0,
+      s = 0,
+      l;
+    function r() {
+      var e = a - n,
+        t = n + e;
+      o.style.transition = "transform 0.3s ease-out", o.style.transform = "translate(0%, ".concat(t, "px)"), (1 < Math.abs(e) || n !== s) && requestAnimationFrame(r), n = t;
+    }
+    o.addEventListener("touchstart", function (e) {
+      s = e.touches[0].clientY, console.log("старт", s);
+    }, !1), o.addEventListener("touchmove", function (e) {
+      var t = (l = e.touches[0].clientY) - s;
+      0 < t ? (220 < t && (t = 220), a = 220 < t ? 220 : t, requestAnimationFrame(r)) : (t = 0, o.style.transform = "translate(0%, ".concat(t, "px)"));
+    }, !1), o.addEventListener("touchend", function (e) {
+      o.style.transition = "all .2s", 60 < l - s ? (o.classList.remove("modal-active"), o.querySelector(".js-modal-close").click()) : l - s < 60 && (s = n, a = 0, r());
+    }, !1);
+  });
+"use strict";
+
 var resizeObserver = null;
 var CLASS_LIST = {
     MODAL: "modal",
@@ -58,11 +95,6 @@ var CLASS_LIST = {
   },
   showScroll = function showScroll(e) {
     "transform" === e.propertyName && (document.body.style.overflow = "", document.body.style.overflowX = "hidden", e.target.closest("." + CLASS_LIST.MODAL).removeEventListener("transitionend", showScroll));
-  },
-  getScrollbarWidth = function getScrollbarWidth() {
-    var e = document.createElement("div"),
-      t = (e.style.position = "absolute", e.style.top = "-9999px", e.style.width = "50px", e.style.height = "50px", e.style.overflow = "scroll", e.style.visibility = "hidden", document.body.appendChild(e), e.offsetWidth - e.clientWidth);
-    return document.body.removeChild(e), t;
   },
   bindResizeObserver = (document.addEventListener("click", function (e) {
     var t;
@@ -405,28 +437,12 @@ function fixStepIndicator(e) {
 showTab(currentTab), addEventListener("submit", handleFormSubmit);
 "use strict";
 
-var link = document.createElement("a"),
-  container = (link.className = "js-modal-open", link.href = "#touchArea-modal", document.querySelector("#inner_link"));
-container.appendChild(link), link.click();
-var currentY = 0,
-  destY = 0;
-var ease = .1;
-var startY = 0,
-  endY;
-function animate() {
-  var e = destY - currentY,
-    t = currentY + e * ease;
-  touchArea.style.transform = "translate(0%, ".concat(t, "px)"), (1 < Math.abs(e) || currentY !== startY) && requestAnimationFrame(animate), currentY = t;
+function createAndAppendElems(s, a) {
+  return new Promise(function (e, t) {
+    var n = document.createElement(a.name);
+    a.className && (n.className = a.className), a.id && (n.id = a.id), a.href && (n.href = a.href), a.textContent && (n.textContent = a.textContent), a.style && Object.assign(n.style, a.style), s.appendChild(n), e(n);
+  });
 }
-var touchArea = document.getElementById("touchArea");
-touchArea.addEventListener("touchstart", function (e) {
-  startY = e.touches[0].clientY;
-}), touchArea.addEventListener("touchmove", function (e) {
-  var t = (endY = e.touches[0].clientY) - startY;
-  0 < t ? (220 < t && (t = 220), destY = 220 < t ? 220 : t, requestAnimationFrame(animate)) : (t = 0, touchArea.style.transform = "translate(0%, ".concat(t, "px)"));
-}), touchArea.addEventListener("touchend", function (e) {
-  100 < endY - startY ? (touchArea.classList.remove("modal-active"), touchArea.querySelector(".js-modal-close").click()) : endY - startY < 100 && (startY = currentY, destY = 0, animate());
-});
 "use strict";
 
 function loadCases() {
