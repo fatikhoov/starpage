@@ -23,6 +23,50 @@
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      ;(function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            ;(m[i].a = m[i].a || []).push(arguments)
+          }
+        m[i].l = 1 * new Date()
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return
+          }
+        }
+        ;(k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a)
+      })(
+        window,
+        document,
+        'script',
+        'https://mc.yandex.ru/metrika/tag.js',
+        'ym'
+      )
+
+      ym(91554824, 'init', {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true,
+      })
+    </script>
+    <noscript>
+      <div>
+        <img
+          src="https://mc.yandex.ru/watch/91554824"
+          style="position: absolute; left: -9999px"
+          alt=""
+        />
+      </div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
   </head>
   <body>
     <!-- ШАПКА СТРАНИЦЫ - МЕНЮ -->
@@ -69,15 +113,30 @@
     <!--  <a class="js-modal-open" href="#touchArea"><mark>Открыть модалку</mark></a> -->
     <!-- ТЕЛО СТРАНИЦЫ -->
     <div class="main-container" id="content">
-      <div class="main wrapper clearfix">
-        <picture>
-          <img
-            class="logo-rocket"
-            src="/img/rocket.png"
-            srcset="/img/rocket.png 2x"
-            alt="Logo rocket"
-          />
-        </picture>
+      <div class="main main_dark wrapper clearfix">
+        <article class="main__article">
+          <section class="main__section-wrapper main__service-landing-clients">
+            <section>
+              <!-- 2 -->
+              <div class="link-block none-list-style-type">
+                <p>
+                  <span class="bold big">Добро пожаловать,</span> загружаю
+                  данные страницы...
+                </p>
+              </div>
+              <div class="link-block none-list-style-type">
+                <picture>
+                  <img
+                    class="logo-rocket"
+                    src="/img/rocket.png"
+                    srcset="/img/rocket.png 2x"
+                    alt="Logo rocket"
+                  />
+                </picture>
+              </div>
+            </section>
+          </section>
+        </article>
       </div>
     </div>
 

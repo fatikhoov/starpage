@@ -55,11 +55,7 @@ var container = document.querySelector("#inner_link"),
     textContent: "",
     style: ""
   },
-  initTouchMove = (createAndAppendElems(container, showModalSale).then(function (e) {
-    setTimeout(function () {
-      e.click();
-    }, 2e3);
-  })["catch"](function (e) {
+  initTouchMove = (createAndAppendElems(container, showModalSale).then(function (e) {})["catch"](function (e) {
     console.error(e);
   }), function () {
     var o = document.getElementById("touchArea");
