@@ -341,21 +341,42 @@
         </div>
       </div>
     </div>
-    <div class="modal modal--s modal--screen-height" id="modal-test">
+    <div
+      class="modal modal--s modal--screen-height modal-active"
+      id="modal-test"
+    >
       <div class="modal__dialog">
-        <div class="modal__dialog-header">
-          <div class="modal__dialog-header-content">
-            <h3 class="modal__header-title">Заявка на разработку сайта</h3>
-            <span class="success-send-modal hidden"
-              >Ваша заявка отправлена!</span
-            >
+        <div class="modal__dialog-header modal__quiz-header">
+          <div class="modal__quiz-header-title">
+            <div class="modal__dialog-header-content">
+              <h3 class="modal__header-title modal__quiz-header-title-text">
+                Заявка на разработку сайта
+              </h3>
+              <span class="success-send-modal hidden"
+                >Ваша заявка отправлена!</span
+              >
+            </div>
+            <div class="modal__dialog-header-close modal__quiz-header-close">
+              <a class="js-modal-close modal__dialog-header-btn-close">
+                <span>&times;</span>
+              </a>
+            </div>
           </div>
-          <div class="modal__dialog-header-close">
-            <a class="js-modal-close modal__dialog-header-btn-close">
-              <span>&times;</span>
-            </a>
+
+          <div class="modal__quiz-header-description">
+            <div class="modal__quiz-header-description-content">
+              Пройдите тест и получите персональный расчет
+            </div>
+            <div class="modal__quiz-steps-show" id="modal__quiz-steps-show">
+              1/5
+            </div>
+          </div>
+
+          <div class="modal__quiz-indicator-line">
+            <div class="modal__quiz-indicator-line-show"></div>
           </div>
         </div>
+
         <div class="modal__dialog-body">
           <form
             id="regForm"
@@ -370,7 +391,7 @@
               value="Заявка на разработку сайта (квиз)"
             /><input type="hidden" name="sender" value="hello@starpage.ru" />
             <fieldset class="tab">
-              <legend>Персональные данные</legend>
+              <legend>1. Персональные данные</legend>
               <ul class="form-ul">
                 <li>
                   <input
@@ -387,7 +408,7 @@
                     type="text"
                     name="company"
                     id="company"
-                    placeholder="Название проекта"
+                    placeholder="Имя проекта"
                     title="Постарайтесь лучше рассказать о своем проекте"
                   />
                 </li>
@@ -396,14 +417,14 @@
                     type="text"
                     name="target"
                     id="target"
-                    placeholder="Цель разработки"
+                    placeholder="Цель разработки сайта"
                     title="Постарайтесь лучше рассказать о своем проекте"
                   />
                 </li>
               </ul>
             </fieldset>
             <fieldset class="tab hidden">
-              <legend>Контакты</legend>
+              <legend>2. Контакты</legend>
               <ul class="form-ul">
                 <li>
                   <input
@@ -424,7 +445,7 @@
               </ul>
             </fieldset>
             <fieldset class="tab hidden">
-              <legend>Ваш комментарий</legend>
+              <legend>3. Ваш комментарий</legend>
               <div class="form-ul">
                 <textarea
                   name="comment"
@@ -435,7 +456,7 @@
               </div>
             </fieldset>
             <fieldset class="tab hidden">
-              <legend>Вопрос из брифа</legend>
+              <legend>4. Вопрос из брифа</legend>
               <ul class="form-ul">
                 <li>
                   <input
@@ -457,7 +478,7 @@
               </ul>
             </fieldset>
             <fieldset class="tab hidden">
-              <legend>Вопрос из брифа</legend>
+              <legend>5. Вопрос из брифа</legend>
               <ul class="form-ul">
                 <li>
                   <input
@@ -489,33 +510,29 @@
             Менеджер получил заявку<br />и свяжется с Вами сразу,<br />как её
             обработает :)
           </p>
-          <div
-            style="text-align: center; margin-top: 40px"
-            ind-data="regForm-steps"
-          >
-            <span class="step"></span>
-            <span class="step"></span>
-            <span class="step"></span>
-            <span class="step"></span>
-            <span class="step"></span>
-          </div>
         </div>
-        <div class="modal__dialog-footer">
+        <div class="modal__dialog-footer modal__quiz-dialog-footer">
           <div ind-data="regForm-btns">
-            <div class="btn__footer-wrapper">
-              <button type="button" id="prevBtn" onclick="nextPrev(-1)">
+            <div class="btn__footer-wrapper modal__quiz-dialog-footer-btn">
+              <button
+                class="disabled btn-quiz"
+                type="button"
+                id="prevBtn"
+                disabled="disabled"
+                onclick="nextPrev(-1)"
+              >
                 Назад
               </button>
               <button
-                class="btn-send"
+                class="btn-send btn-quiz"
                 type="button"
                 id="nextBtn"
                 onclick="nextPrev(1)"
               >
-                Вперед
+                Далее
               </button>
               <button
-                class="btn-send btn-send-telegram hidden"
+                class="btn-send btn-quiz btn-send-telegram hidden"
                 type="submit"
                 form="regForm"
                 id="btnRegForm"
@@ -524,7 +541,7 @@
                 <span class="hidden" id="loader-modal" ind-data="regForm-loader"
                   >Отправляем...</span
                 ><span class="" id="btn-send-modal" ind-data="regForm-sendBtn"
-                  >Отправить заявку</span
+                  >Отправить</span
                 >
               </button>
             </div>
@@ -533,6 +550,7 @@
       </div>
     </div>
 
+    <!-- Смахнуть вниз, чтобы закрыть модалку -->
     <div class="modal modal--s" id="touchArea-modal">
       <div class="modal__dialog" id="touchArea">
         <div class="modal__dialog-header">

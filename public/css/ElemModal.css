@@ -1,17 +1,13 @@
 .form-ul {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   margin: 0;
-  padding: 8px;
+  padding-top: 8px;
 }
 .form-ul li input[type='checkbox'],
 .form-ul li input[type='radio'] {
   width: min-content;
-}
-
-form fieldset {
-  margin-bottom: 16px;
 }
 
 .section__modal-starpage {
@@ -106,6 +102,8 @@ form fieldset {
   height: 24px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
   margin: 8px 0;
   padding: 0;
@@ -123,6 +121,8 @@ form fieldset {
 .modal__dialog-body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
   padding: 16px;
   flex-grow: 1;
   overflow: auto;
@@ -163,8 +163,4 @@ form fieldset {
 /* Mark the steps that are finished and valid: */
 .step.finish {
   background-color: seagreen;
-}
-
-.btn__footer-wrapper {
-  display: flex;
 }

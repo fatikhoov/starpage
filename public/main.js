@@ -147,7 +147,7 @@ function handleFormSubmit(_x) {
 }
 function _handleFormSubmit() {
   _handleFormSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-    var t, a, n, o, d, _iterator, _step, _step$value, i, c, r;
+    var t, a, n, o, d, _iterator, _step, _step$value, i, r, c;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -174,13 +174,13 @@ function _handleFormSubmit() {
           _context.next = 10;
           return sendToEmail(d);
         case 10:
-          c = _context.sent;
+          r = _context.sent;
           _context.next = 13;
           return sendToGoogle(d);
         case 13:
-          r = _context.sent;
+          c = _context.sent;
           _context.next = 16;
-          return Promise.allSettled([i, c, r]);
+          return Promise.allSettled([i, r, c]);
         case 16:
           if (!_context.sent.every(function (e) {
             return "rejected" === e.status;
@@ -416,7 +416,7 @@ function _sendToGoogle() {
 var currentTab = 0;
 function showTab(e) {
   var t = document.getElementsByClassName("tab");
-  t[e].classList.remove("hidden"), 0 == e ? document.getElementById("prevBtn").classList.add("hidden") : document.getElementById("prevBtn").classList.remove("hidden"), e == t.length - 1 ? (console.log("end and  "), document.getElementById("btnRegForm").classList.remove("hidden"), document.getElementById("nextBtn").classList.toggle("hidden")) : document.getElementById("nextBtn").innerHTML = "Вперед", fixStepIndicator(e);
+  t[e].classList.remove("hidden"), e == t.length - 1 ? (console.log("Последняя страница перед отправкой"), document.getElementById("btnRegForm").classList.remove("hidden"), document.getElementById("nextBtn").classList.toggle("hidden")) : (document.getElementById("btnRegForm").classList.add("hidden"), document.getElementById("nextBtn").classList.remove("hidden")), fixStepIndicator(e);
 }
 function nextPrev(e) {
   var t = document.getElementsByClassName("tab");
@@ -424,11 +424,13 @@ function nextPrev(e) {
 }
 function validateForm() {
   for (var e = !0, t = document.getElementsByClassName("tab")[currentTab].getElementsByTagName("input"), a = 0; a < t.length; a++) "" == t[a].value && (t[a].className += " invalid", e = !1);
-  return e && (document.getElementsByClassName("step")[currentTab].className += " finish"), e;
+  return e;
 }
 function fixStepIndicator(e) {
-  for (var t = document.getElementsByClassName("step"), a = document.getElementsByClassName("tab"), n = 0; n < t.length; n++) t[n].className = t[n].className.replace(" active", "");
-  e + 1 >= a.length ? console.log("end and stop tab") : t[e].className += " active";
+  var t = document.querySelector(".modal__quiz-indicator-line-show"),
+    a = document.getElementsByClassName("tab"),
+    n = document.getElementById("prevBtn");
+  document.getElementById("modal__quiz-steps-show").innerHTML = "\n  <span>".concat(currentTab + 1, "/").concat(a.length, "</span>\n"), t.style.width = 100 / a.length * (currentTab + 1) + "%", 0 != e ? (n.disabled = "", n.classList.remove("disabled")) : (n.disabled = "disabled", n.classList.add("disabled"));
 }
 showTab(currentTab), addEventListener("submit", handleFormSubmit);
 "use strict";

@@ -10,7 +10,6 @@ const gcmq = require('gulp-group-css-media-queries')
 const concat = require('gulp-concat')
 
 const babel = require('gulp-babel')
- 
 
 // Задача для сборки HTML
 gulp.task('html', function (done) {
