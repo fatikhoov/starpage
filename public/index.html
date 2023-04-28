@@ -111,6 +111,7 @@
       </header>
     </div>
     <!--  <a class="js-modal-open" href="#touchArea"><mark>Открыть модалку</mark></a> -->
+
     <!-- ТЕЛО СТРАНИЦЫ -->
     <div class="main-container" id="content">
       <div class="main main_dark wrapper clearfix">
@@ -162,9 +163,11 @@
               name="website"
               value="Форма обратной связи"
             /><input type="hidden" name="sender" value="hello@starpage.ru" />
+
             <ul class="form-ul">
               <li>
                 <input
+                  class="starpage__input"
                   type="text"
                   name="name"
                   id="name"
@@ -173,9 +176,11 @@
                 />
               </li>
             </ul>
+
             <ul class="form-ul">
               <li>
                 <input
+                  class="starpage__input"
                   type="text"
                   name="telegram"
                   id="telegram"
@@ -183,8 +188,10 @@
                 />
               </li>
             </ul>
+
             <div class="form-ul">
               <textarea
+                class="starpage__input"
                 name="comment"
                 rows="4"
                 id="message"
@@ -388,6 +395,7 @@
               value="Заявка на разработку сайта (квиз)"
             /><input type="hidden" name="sender" value="hello@starpage.ru" />
             <fieldset class="tab">
+              <div class="tab__circle-color-1"></div>
               <legend>1. Персональные данные</legend>
               <ul class="form-ul">
                 <li>
@@ -421,6 +429,7 @@
               </ul>
             </fieldset>
             <fieldset class="tab hidden">
+              <div class="tab__circle-color-2"></div>
               <legend>2. Контакты</legend>
               <ul class="form-ul">
                 <li>
@@ -442,6 +451,7 @@
               </ul>
             </fieldset>
             <fieldset class="tab hidden">
+              <div class="tab__circle-color-3"></div>
               <legend>3. Ваш комментарий</legend>
               <div class="form-ul">
                 <textarea
@@ -453,6 +463,7 @@
               </div>
             </fieldset>
             <fieldset class="tab hidden">
+              <div class="tab__circle-color-4"></div>
               <legend>4. Вопрос из брифа</legend>
               <ul class="form-ul">
                 <li>
@@ -475,6 +486,7 @@
               </ul>
             </fieldset>
             <fieldset class="tab hidden">
+              <div class="tab__circle-color-5"></div>
               <legend>5. Вопрос из брифа</legend>
               <ul class="form-ul">
                 <li>
@@ -572,6 +584,7 @@
         <div class="modal__dialog-footer"></div>
       </div>
     </div>
+
     <script src="main.js"></script>
     <script src="index.js"></script>
   </body>

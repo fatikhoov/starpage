@@ -147,25 +147,25 @@ function handleFormSubmit(_x) {
 }
 function _handleFormSubmit() {
   _handleFormSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-    var t, a, n, o, d, _iterator, _step, _step$value, i, r, c;
+    var t, a, n, o, d, _iterator2, _step2, _step2$value, i, r, l;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
           e.preventDefault(), TARGET_ID = e.target.id, s = "Заявка из формы " + TARGET_ID, toggleLoader();
           n = e.target, o = new FormData(n), d = {};
-          _iterator = _createForOfIteratorHelper(o.entries());
+          _iterator2 = _createForOfIteratorHelper(o.entries());
           try {
-            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              _step$value = _slicedToArray(_step.value, 2);
-              t = _step$value[0];
-              a = _step$value[1];
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              _step2$value = _slicedToArray(_step2.value, 2);
+              t = _step2$value[0];
+              a = _step2$value[1];
               d[t] = a;
             }
           } catch (err) {
-            _iterator.e(err);
+            _iterator2.e(err);
           } finally {
-            _iterator.f();
+            _iterator2.f();
           }
           _context.next = 7;
           return sendToTelegram(d);
@@ -178,9 +178,9 @@ function _handleFormSubmit() {
           _context.next = 13;
           return sendToGoogle(d);
         case 13:
-          c = _context.sent;
+          l = _context.sent;
           _context.next = 16;
-          return Promise.allSettled([i, r, c]);
+          return Promise.allSettled([i, r, l]);
         case 16:
           if (!_context.sent.every(function (e) {
             return "rejected" === e.status;
@@ -415,8 +415,10 @@ function _sendToGoogle() {
 }
 var currentTab = 0;
 function showTab(e) {
-  var t = document.getElementsByClassName("tab");
-  t[e].classList.remove("hidden"), e == t.length - 1 ? (console.log("Последняя страница перед отправкой"), document.getElementById("btnRegForm").classList.remove("hidden"), document.getElementById("nextBtn").classList.toggle("hidden")) : (document.getElementById("btnRegForm").classList.add("hidden"), document.getElementById("nextBtn").classList.remove("hidden")), fixStepIndicator(e);
+  var t = document.querySelector(".modal__quiz-indicator-line-show"),
+    a = document.getElementsByClassName("tab"),
+    n = document.getElementById("prevBtn");
+  a[e].classList.remove("hidden"), document.getElementById("modal__quiz-steps-show").innerHTML = "\n  <span>".concat(currentTab + 1, "/").concat(a.length, "</span>\n  "), t.style.width = 100 / a.length * (currentTab + 1) + "%", e == a.length - 1 ? (console.log("Последняя страница перед отправкой"), document.getElementById("btnRegForm").classList.remove("hidden"), document.getElementById("nextBtn").classList.toggle("hidden")) : (document.getElementById("btnRegForm").classList.add("hidden"), document.getElementById("nextBtn").classList.remove("hidden")), 0 != e ? (n.disabled = "", n.classList.remove("disabled")) : (n.disabled = "disabled", n.classList.add("disabled"));
 }
 function nextPrev(e) {
   var t = document.getElementsByClassName("tab");
@@ -426,13 +428,32 @@ function validateForm() {
   for (var e = !0, t = document.getElementsByClassName("tab")[currentTab].getElementsByTagName("input"), a = 0; a < t.length; a++) "" == t[a].value && (t[a].className += " invalid", e = !1);
   return e;
 }
-function fixStepIndicator(e) {
-  var t = document.querySelector(".modal__quiz-indicator-line-show"),
-    a = document.getElementsByClassName("tab"),
-    n = document.getElementById("prevBtn");
-  document.getElementById("modal__quiz-steps-show").innerHTML = "\n  <span>".concat(currentTab + 1, "/").concat(a.length, "</span>\n"), t.style.width = 100 / a.length * (currentTab + 1) + "%", 0 != e ? (n.disabled = "", n.classList.remove("disabled")) : (n.disabled = "disabled", n.classList.add("disabled"));
-}
-showTab(currentTab), addEventListener("submit", handleFormSubmit);
+showTab(currentTab), addEventListener("submit", function (e) {
+  e.preventDefault(), 1 == myValidations(e) && handleFormSubmit(e);
+});
+var myValidations = function myValidations(e) {
+  var t = !0;
+  var a,
+    n,
+    e = e.target;
+  var _iterator = _createForOfIteratorHelper(new FormData(e).entries()),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _step$value = _slicedToArray(_step.value, 2);
+      a = _step$value[0];
+      n = _step$value[1];
+      a, n;
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  return e.querySelectorAll(".starpage__input").forEach(function (e) {
+    "" == e.value && (console.log("ошибка"), t = !1);
+  }), t;
+};
 "use strict";
 
 function createAndAppendElems(s, a) {
