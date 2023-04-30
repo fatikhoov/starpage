@@ -12,7 +12,9 @@
       name="keywords"
       content="заказать сайт, купить сайт, разработать сайт, создать, интернет магазин, лендинг, landing page, посадочная страница, корпоративный, визитка, портфолио, уникальный дизайн сайта, адаптивный, современный, макет, прототип, cms, студия, агентство, digital"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"
+    user-scalable=no" />
+
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
     <link rel="stylesheet" href="css/normalize.css" />
@@ -23,7 +25,7 @@
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <!-- Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter  
     <script type="text/javascript">
       ;(function (m, e, t, r, i, k, a) {
         m[i] =
@@ -66,7 +68,7 @@
         />
       </div>
     </noscript>
-    <!-- /Yandex.Metrika counter -->
+      /Yandex.Metrika counter -->
   </head>
   <body>
     <!-- ШАПКА СТРАНИЦЫ - МЕНЮ -->
@@ -144,15 +146,16 @@
     <!-- ПОДВАЛ СТРАНИЦЫ -->
     <div class="footer-container" id="section__footer">
       <footer class="main main_dark footer__wrapper">
-        <h3>Остались еще вопросы?</h3>
+        <h3 ind-data="FeedbackForm">Остались еще вопросы?</h3>
 
         <div class="Feedback-body">
-          <h4 class="form-ul" ind-data="FeedbackForm-btns">
+          <h4 class="form-ul" ind-data="FeedbackForm">
             Свяжитесь с нами<br />удобным для вас способом!
           </h4>
 
           <form
             id="FeedbackForm"
+            ind-data="FeedbackForm"
             enctype="multipart/form-data"
             method="post"
             autocomplete="off"
@@ -173,6 +176,9 @@
                   id="name"
                   placeholder="Ваше имя"
                   title="Как мы будем к вам обращаться?"
+                  data-required="true"
+                  data-min-length="2"
+                  data-max-length="50"
                 />
               </li>
             </ul>
@@ -185,6 +191,9 @@
                   name="telegram"
                   id="telegram"
                   placeholder="Контакт для связи"
+                  data-required="true"
+                  data-min-length="2"
+                  data-max-length="100"
                 />
               </li>
             </ul>
@@ -196,18 +205,13 @@
                 rows="4"
                 id="message"
                 placeholder="Укажите дополнительно всё, что считаете важным"
+                data-required="true"
               ></textarea>
             </div>
           </form>
-          <p
-            class="onSuccess__modal hidden"
-            id="onSuccess__modal-quiz"
-            ind-data="FeedbackForm-onSuccess"
-          >
-            Менеджер получил заявку<br />и свяжется с Вами сразу,<br />как её
-            обработает :)
-          </p>
-          <div class="form-ul" ind-data="FeedbackForm-btns">
+          <div id="FeedbackForm__success-content"></div>
+
+          <div class="form-ul" ind-data="FeedbackForm">
             <div class="btn__footer-wrapper">
               <button
                 class="button-primary"
@@ -216,18 +220,19 @@
                 id="btnFeedbackForm"
                 ind-data="FeedbackForm-button"
               >
-                <span
-                  class="hidden"
-                  id="loader-modal"
-                  ind-data="FeedbackForm-loader"
-                  >Отправляем...</span
-                ><span
-                  class=""
-                  id="btn-send-modal"
-                  ind-data="FeedbackForm-sendBtn"
-                  >Обсудить проект</span
-                >
+                Обсудить проект
               </button>
+            </div>
+          </div>
+          <div
+            class="modal__dialog-loader hidden"
+            ind-data="FeedbackForm-loader"
+          >
+            <div class="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
           </div>
         </div>
@@ -367,7 +372,7 @@
             </div>
           </div>
 
-          <div class="modal__quiz-header-description">
+          <div class="modal__quiz-header-description" ind-data="regForm">
             <div class="modal__quiz-header-description-content">
               Пройдите тест и получите персональный расчет
             </div>
@@ -376,7 +381,7 @@
             </div>
           </div>
 
-          <div class="modal__quiz-indicator-line">
+          <div class="modal__quiz-indicator-line" ind-data="regForm">
             <div class="modal__quiz-indicator-line-show"></div>
           </div>
         </div>
@@ -387,49 +392,154 @@
             enctype="multipart/form-data"
             method="post"
             autocomplete="off"
+            ind-data="regForm"
           >
             <input
               type="hidden"
               id="website"
               name="website"
-              value="Заявка на разработку сайта (квиз)"
+              value="Заявка на разработку сайта (из квиза - модалка)"
             /><input type="hidden" name="sender" value="hello@starpage.ru" />
-            <fieldset class="tab">
+            <fieldset class="tab hidden">
               <div class="tab__circle-color-1"></div>
+              <legend>1. Какой сайт вам нужен?</legend>
+              <ul class="form-ul">
+                <li class="starpage_input-radio-wrapper">
+                  <input
+                    class="starpage__input starpage__input-radio"
+                    type="radio"
+                    name="radio"
+                    id="landing-radio"
+                    value="Лендинг"
+                    checked
+                  />
+                  <label class="starpage_input-radio-label" for="landing-radio"
+                    >Лендинг (одностраничный сайт)</label
+                  >
+                </li>
+                <li class="starpage_input-radio-wrapper">
+                  <input
+                    class="starpage__input starpage__input-radio"
+                    type="radio"
+                    name="radio"
+                    id="ecommerce-radio"
+                    value="Интернет-магазин"
+                  />
+                  <label
+                    class="starpage_input-radio-label"
+                    for="ecommerce-radio"
+                    >Интернет-магазин</label
+                  >
+                </li>
+                <li class="starpage_input-radio-wrapper">
+                  <input
+                    class="starpage__input starpage__input-radio"
+                    type="radio"
+                    name="radio"
+                    id="corp-radio"
+                    value="Сайт-визитка"
+                  />
+                  <label class="starpage_input-radio-label" for="corp-radio"
+                    >Сайт-визитка (корпоративный)</label
+                  >
+                </li>
+                <li class="starpage_input-radio-wrapper">
+                  <input
+                    class="starpage__input starpage__input-radio"
+                    type="radio"
+                    name="radio"
+                    id="dont-know-radio"
+                    value="Не знаю, нужна консультация"
+                  />
+                  <label
+                    class="starpage_input-radio-label"
+                    for="dont-know-radio"
+                    >Не знаю, нужна консультация</label
+                  >
+                </li>
+              </ul>
+            </fieldset>
+
+            <fieldset class="tab hidden">
+              <div class="tab__circle-color-2"></div>
+              <legend>2. Есть ли у Вас фирменный стиль?</legend>
+              <ul class="form-ul">
+                <li>
+                  <input
+                    class="starpage__input starpage__input-radio"
+                    type="radio"
+                    name="radio-design"
+                    id="design-radio"
+                    value="Да, есть фирменный стиль"
+                    checked
+                  />
+                  <label class="starpage_input-radio-label" for="design-radio"
+                    >Да</label
+                  >
+                </li>
+                <li>
+                  <input
+                    class="starpage__input starpage__input-radio"
+                    type="radio"
+                    name="radio-design"
+                    id="no-design-radio"
+                    value="Нет фирменного стиля"
+                  />
+                  <label
+                    class="starpage_input-radio-label"
+                    for="no-design-radio"
+                    >Нет</label
+                  >
+                </li>
+              </ul>
+            </fieldset>
+
+            <fieldset class="tab hidden">
+              <div class="tab__circle-color-3"></div>
               <legend>1. Персональные данные</legend>
               <ul class="form-ul">
                 <li>
                   <input
+                    class="starpage__input"
                     type="text"
                     name="name"
                     id="name"
                     placeholder="Ваше имя"
                     title="Как мы будем к вам обращаться?"
                     autofocus
+                    data-required="true"
+                    data-min-length="2"
+                    data-name="name"
                   />
                 </li>
                 <li>
                   <input
+                    class="starpage__input"
                     type="text"
                     name="company"
                     id="company"
                     placeholder="Имя проекта"
                     title="Постарайтесь лучше рассказать о своем проекте"
+                    data-required="true"
+                    data-min-length="2"
                   />
                 </li>
                 <li>
                   <input
+                    class="starpage__input"
                     type="text"
                     name="target"
                     id="target"
                     placeholder="Цель разработки сайта"
                     title="Постарайтесь лучше рассказать о своем проекте"
+                    data-required="true"
+                    data-min-length="2"
                   />
                 </li>
               </ul>
             </fieldset>
             <fieldset class="tab hidden">
-              <div class="tab__circle-color-2"></div>
+              <div class="tab__circle-color-4"></div>
               <legend>2. Контакты</legend>
               <ul class="form-ul">
                 <li>
@@ -438,6 +548,9 @@
                     name="email"
                     placeholder="Почта"
                     id="email"
+                    class="starpage__input"
+                    data-name="email"
+                    title="Напишите почту, по которой мы можем с вами связаться"
                   />
                 </li>
                 <li>
@@ -446,13 +559,17 @@
                     name="telegram"
                     id="telegram"
                     placeholder="Telegram"
+                    class="starpage__input"
+                    data-required="true"
+                    title="Напишите ник или номер, чтобы мы
+                  могли с вами связаться в Telegram"
                   />
                 </li>
               </ul>
-            </fieldset>
-            <fieldset class="tab hidden">
-              <div class="tab__circle-color-3"></div>
-              <legend>3. Ваш комментарий</legend>
+
+              <legend style="margin-top: 16px">
+                3. Пожелания и комментарии
+              </legend>
               <div class="form-ul">
                 <textarea
                   name="comment"
@@ -462,98 +579,61 @@
                 ></textarea>
               </div>
             </fieldset>
-            <fieldset class="tab hidden">
-              <div class="tab__circle-color-4"></div>
-              <legend>4. Вопрос из брифа</legend>
-              <ul class="form-ul">
-                <li>
-                  <input
-                    type="checkbox"
-                    name="1 checkbox"
-                    id="courses"
-                    checked
-                  />
-                  <label for="courses">ответ 1</label>
-                </li>
-                <li>
-                  <input type="checkbox" name="2 checkbox" id="books" />
-                  <label for="books">ответ 1</label>
-                </li>
-                <li>
-                  <input type="checkbox" name="3 checkbox" id="video" />
-                  <label for="video">ответ 1</label>
-                </li>
-              </ul>
-            </fieldset>
-            <fieldset class="tab hidden">
-              <div class="tab__circle-color-5"></div>
-              <legend>5. Вопрос из брифа</legend>
-              <ul class="form-ul">
-                <li>
-                  <input
-                    type="radio"
-                    name="need radio"
-                    id="front"
-                    value="frontend"
-                    checked
-                  />
-                  <label for="front">Фронтенд-разработка</label>
-                </li>
-                <li>
-                  <input
-                    type="radio"
-                    name="want radio"
-                    id="back"
-                    value="backend"
-                  />
-                  <label for="back">Бэкенд-разработка</label>
-                </li>
-              </ul>
-            </fieldset>
           </form>
-          <p
-            class="onSuccess__modal hidden"
-            id="onSuccess__modal-quiz"
-            ind-data="regForm-onSuccess"
-          >
-            Менеджер получил заявку<br />и свяжется с Вами сразу,<br />как её
-            обработает :)
-          </p>
+          <div id="regForm__success-content"></div>
         </div>
+
         <div class="modal__dialog-footer modal__quiz-dialog-footer">
-          <div ind-data="regForm-btns">
-            <div class="btn__footer-wrapper modal__quiz-dialog-footer-btn">
-              <button
-                class="disabled btn-quiz"
-                type="button"
-                id="prevBtn"
-                disabled="disabled"
-                onclick="nextPrev(-1)"
-              >
-                Назад
-              </button>
-              <button
-                class="btn-send btn-quiz"
-                type="button"
-                id="nextBtn"
-                onclick="nextPrev(1)"
-              >
-                Далее
-              </button>
-              <button
-                class="btn-send btn-quiz btn-send-telegram hidden"
-                type="submit"
-                form="regForm"
-                id="btnRegForm"
-                ind-data="regForm-button"
-              >
-                <span class="hidden" id="loader-modal" ind-data="regForm-loader"
-                  >Отправляем...</span
-                ><span class="" id="btn-send-modal" ind-data="regForm-sendBtn"
-                  >Отправить</span
-                >
-              </button>
-            </div>
+          <div
+            ind-data="regForm"
+            class="btn__footer-wrapper modal__quiz-dialog-footer-btn"
+          >
+            <button
+              class="disabled btn-quiz"
+              type="button"
+              id="prevBtn"
+              disabled="disabled"
+              onclick="nextPrev(-1)"
+              ind-data="regForm-button"
+            >
+              Назад
+            </button>
+            <button
+              class="btn-send btn-quiz"
+              type="button"
+              id="nextBtn"
+              onclick="nextPrev(1)"
+              ind-data="regForm-button"
+            >
+              Далее
+            </button>
+            <button
+              class="btn-send btn-quiz btn-send-telegram hidden"
+              type="submit"
+              form="regForm"
+              id="btnRegForm"
+              ind-data="regForm-button"
+            >
+              Отправить
+            </button>
+          </div>
+
+          <button
+            class="js-modal-close btn-quiz hidden"
+            id="onSuccess__modal-quiz-btn"
+            ind-data="regForm-onSuccess"
+            type="button"
+          >
+            На главную
+          </button>
+        </div>
+
+        <div class="modal__dialog-loader hidden" ind-data="regForm-loader">
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </div>
       </div>

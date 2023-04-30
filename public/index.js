@@ -121,10 +121,28 @@ window.addEventListener('popstate', (event) => {
 
 // загрузка шаблона страницы при загрузке сайта
 window.addEventListener('DOMContentLoaded', (event) => {
-  console.log(
-    '2 DOMContentLoaded',
-    event.target.location.pathname,
-    window.location.pathname
-  )
   loadPage(event.target.location.pathname)
+
+  document.querySelectorAll('.starpage__input').forEach((input) => {
+    input.addEventListener(
+      'input',
+      function (input) {
+        myValidations(input.target)
+      },
+      false
+    )
+    input.addEventListener(
+      'focusout',
+      function (input) {
+        if (input.target.value == '') {
+          const parent = input.target.parentNode
+          if (parent.classList.contains('error')) {
+            parent.querySelector('.error-label').remove()
+            parent.classList.remove('error')
+          }
+        }
+      },
+      false
+    )
+  })
 })

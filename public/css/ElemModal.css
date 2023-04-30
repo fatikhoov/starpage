@@ -1,9 +1,9 @@
 .form-ul {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
   margin: 0;
-  padding-top: 8px;
+  padding-top: 16px;
   font-size: 14px;
 }
 .form-ul li input[type='checkbox'],
@@ -122,9 +122,9 @@
 .modal__dialog-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 200px;
-  padding: 16px;
+  padding: 16px 16px 32px;
   flex-grow: 1;
   overflow: auto;
 
@@ -137,6 +137,9 @@
   z-index: 21;
   background: transparent;
   transition: var(--modal-transition);
+}
+.modal__dialog-footer {
+  display: flex;
 }
 
 /*ИНДИКАТОР ФОРМЫ*/
@@ -166,4 +169,60 @@
 /* Mark the steps that are finished and valid: */
 .step.finish {
   background-color: seagreen;
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #dfc;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
 }

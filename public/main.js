@@ -137,50 +137,58 @@ var validSendModal = document.getElementById("valid-send-modal"),
   successSendModal = document.querySelector(".success-send-modal");
 var TARGET_ID, s;
 function onSuccess(e) {
-  alert("Удачно ->>", e, TARGET_ID), titleSuccess.classList.toggle("hidden"), successSendModal.classList.toggle("hidden"), document.querySelector("p[ind-data=\"".concat(TARGET_ID, "-onSuccess\"]")).classList.toggle("hidden"), document.querySelector("[id=\"".concat(TARGET_ID, "\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-steps\"]")) && document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-steps\"]")).classList.toggle("hidden"), document.querySelector("div[ind-data=\"".concat(TARGET_ID, "-btns\"]")).classList.add("hidden");
+  console.log(e, TARGET_ID), document.querySelector("[ind-data=\"".concat(TARGET_ID, "-loader\"]")).classList.add("hidden"), document.querySelectorAll("[ind-data=\"".concat(TARGET_ID, "\"]")).forEach(function (e) {
+    e.classList.add("hidden");
+  }), document.getElementById(TARGET_ID + "__success-content").innerHTML = "\n<div\n            class=\"onSuccess__modal hidden\"\n            id=\"onSuccess__modal-quiz\"\n            ind-data=\"".concat(TARGET_ID, "-onSuccess\"\n          >\n            <div class=\"tab__circle-color-success\"></div>\n            <picture>\n              <img\n                class=\"logo-success\"\n                src=\"/img/planet-flat.png\"\n                srcset=\"/img/planet-flat.png 2x\"\n                alt=\"starpage success picture\"\n              />\n            </picture>\n            <p class=\"onSuccess__modal-title\">\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u0435\u043C!</p>\n            <p class=\"onSuccess__modal-descr\">\u0417\u0430\u044F\u0432\u043A\u0430 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430!</p>\n            <p class=\"onSuccess__modal-content\">\n              \u041C\u0435\u043D\u0435\u0434\u0436\u0435\u0440 \u0441\u0432\u044F\u0436\u0435\u0442\u0441\u044F \u0441 \u0412\u0430\u043C\u0438<br />\n              \u0432 \u0442\u0435\u0447\u0435\u043D\u0438\u0435 15 \u043C\u0438\u043D\u0443\u0442 \u0432 \u0440\u0430\u0431\u043E\u0447\u0435\u0435 \u0432\u0440\u0435\u043C\u044F\n            </p>\n          </div>\n"), document.querySelectorAll("[ind-data=\"".concat(TARGET_ID, "-onSuccess\"]")).forEach(function (e) {
+    e.classList.remove("hidden");
+  });
 }
 function toggleLoader() {
-  document.querySelector("button[ind-data=\"".concat(TARGET_ID, "-button\"]")).disabled = !0, document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-loader\"]")).classList.toggle("hidden"), document.querySelector("span[ind-data=\"".concat(TARGET_ID, "-sendBtn\"]")).classList.toggle("hidden");
+  document.querySelectorAll("[ind-data=\"".concat(TARGET_ID, "-button\"]")).forEach(function (e) {
+    e.disabled = "disabled";
+  }), document.querySelectorAll("[ind-data=\"".concat(TARGET_ID, "-button\"]")).forEach(function (e) {
+    e.classList.add("disabled");
+  }), document.querySelector("[ind-data=\"".concat(TARGET_ID, "-loader\"]")).classList.remove("hidden");
 }
 function handleFormSubmit(_x) {
   return _handleFormSubmit.apply(this, arguments);
 }
 function _handleFormSubmit() {
   _handleFormSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-    var t, a, n, o, d, _iterator2, _step2, _step2$value, i, r, l;
+    var t, a, n, o, r, _iterator, _step, _step$value, d, c, l;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
           e.preventDefault(), TARGET_ID = e.target.id, s = "Заявка из формы " + TARGET_ID, toggleLoader();
-          n = e.target, o = new FormData(n), d = {};
-          _iterator2 = _createForOfIteratorHelper(o.entries());
+          n = e.target, o = new FormData(n), r = {};
+          _iterator = _createForOfIteratorHelper(o.entries());
           try {
-            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              _step2$value = _slicedToArray(_step2.value, 2);
-              t = _step2$value[0];
-              a = _step2$value[1];
-              d[t] = a;
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              _step$value = _slicedToArray(_step.value, 2);
+              t = _step$value[0];
+              a = _step$value[1];
+              r[t] = a;
             }
           } catch (err) {
-            _iterator2.e(err);
+            _iterator.e(err);
           } finally {
-            _iterator2.f();
+            _iterator.f();
           }
           _context.next = 7;
-          return sendToTelegram(d);
+          return sendToTelegram(r);
         case 7:
-          i = _context.sent;
+          d = _context.sent;
           _context.next = 10;
-          return sendToEmail(d);
+          return sendToCRM(r);
         case 10:
-          r = _context.sent;
+          c = _context.sent;
           _context.next = 13;
-          return sendToGoogle(d);
+          return sendToGoogle(r);
         case 13:
           l = _context.sent;
           _context.next = 16;
-          return Promise.allSettled([i, r, l]);
+          return Promise.allSettled([d, c, l]);
         case 16:
           if (!_context.sent.every(function (e) {
             return "rejected" === e.status;
@@ -190,7 +198,9 @@ function _handleFormSubmit() {
           }
           throw new Error("Ошибка промисов");
         case 18:
-          onSuccess();
+          setTimeout(function () {
+            onSuccess();
+          }, 1e3);
           _context.next = 24;
           break;
         case 21:
@@ -214,8 +224,8 @@ function _sendToTelegram() {
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          t = "<b>".concat(e.website, "</b>\n\n");
-          t = (t = (t = (t = (t = (t = (t += "\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.name, "</b>\n")) + "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F:<b> ".concat(e.company, "</b>\n")) + "\u0426\u0435\u043B\u044C:<b> ".concat(e.target, "</b>\n\n")) + "\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.email, "</b>\n")) + "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:<b> ".concat(e.telegram, "</b>\n")) + "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:<b> ".concat(e.comment, "</b>\n\n")) + "\u0418\u0437 \u0444\u043E\u0440\u043C\u044B:<b> ".concat(e.website, "</b>\n") + "<b><a href='https://login.sendpulse.com/crm/deals'>Посмотреть в CRM SendPulse</a></b>";
+          t = "<b>\u0423\u0412\u0415\u0414\u041E\u041C\u041B\u0415\u041D\u0418\u0415 \u0421 \u0421\u0410\u0419\u0422\u0410</b>\n\n";
+          t = (t = (t = (t = (t = (t = (t = (t = (t += "<b>".concat(e.website, "</b>\n")) + "\u041D\u0443\u0436\u0435\u043D:<b> ".concat(e.radio, "</b>\n")) + "\u0414\u0438\u0437\u0430\u0439\u043D:<b> ".concat(e.radioDesign, "</b>\n")) + "\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.name, "</b>\n")) + "\u0418\u043C\u044F \u043F\u0440\u043E\u0435\u043A\u0442\u0430:<b> ".concat(e.company, "</b>\n")) + "\u0426\u0435\u043B\u044C:<b> ".concat(e.target, "</b>\n\n")) + "\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.email, "</b>\n")) + "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:<b> ".concat(e.telegram, "</b>\n")) + "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:<b> ".concat(e.comment, "</b>\n\n") + "<b><a href='https://login.sendpulse.com/crm/deals'>Посмотреть в CRM SendPulse</a></b>";
           _context2.next = 4;
           return fetch("https://api.telegram.org/bot6107421370:AAFAUTLHO9IWB6gRD1E9vHs-NuIscyNJvkQ/sendMessage", {
             method: "POST",
@@ -248,12 +258,12 @@ function _sendToTelegram() {
   }));
   return _sendToTelegram.apply(this, arguments);
 }
-function sendToEmail(_x3) {
-  return _sendToEmail.apply(this, arguments);
+function sendToCRM(_x3) {
+  return _sendToCRM.apply(this, arguments);
 }
-function _sendToEmail() {
-  _sendToEmail = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(e) {
-    var t, a, n, s, o, d;
+function _sendToCRM() {
+  _sendToCRM = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(e) {
+    var t, a, s, n, o, r;
     return _regeneratorRuntime().wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
@@ -290,7 +300,7 @@ function _sendToEmail() {
           return a.json();
         case 12:
           a = _context4.sent;
-          n = a.data[0].id;
+          s = a.data[0].id;
           a = a.data[0].steps[0].id;
           _context4.next = 17;
           return fetch("https://api.sendpulse.com/crm/v1/deals/get-list", {
@@ -302,16 +312,16 @@ function _sendToEmail() {
             body: JSON.stringify({
               limit: 10,
               offset: 0,
-              pipelineIds: [n]
+              pipelineIds: [s]
             })
           });
         case 17:
           _context4.next = 19;
           return _context4.sent.json();
         case 19:
-          s = _context4.sent;
+          n = _context4.sent;
           _context4.next = 22;
-          return fetch("https://api.sendpulse.com/crm/v1//deals/".concat(s.data[0].id, "/attributes"), {
+          return fetch("https://api.sendpulse.com/crm/v1//deals/".concat(n.data[0].id, "/attributes"), {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -323,7 +333,7 @@ function _sendToEmail() {
           return _context4.sent.json();
         case 24:
           o = _context4.sent;
-          d = [];
+          r = [];
           _context4.next = 28;
           return Promise.all(Object.entries(e).map( /*#__PURE__*/function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(_ref) {
@@ -335,7 +345,7 @@ function _sendToEmail() {
                     a = o.data.find(function (e) {
                       return e.name === t;
                     });
-                    a && d.push({
+                    a && r.push({
                       attributeId: a.id,
                       value: e
                     });
@@ -358,19 +368,19 @@ function _sendToEmail() {
               Authorization: "Bearer " + t
             },
             body: JSON.stringify({
-              pipelineId: n,
+              pipelineId: s,
               stepId: a,
               name: e.website,
               price: 0,
               currency: "RUB",
-              attributes: d
+              attributes: r
             })
           });
         case 30:
           _context4.next = 32;
           return _context4.sent.json();
         case 32:
-          s = _context4.sent;
+          n = _context4.sent;
           _context4.next = 35;
           return fetch("https://api.sendpulse.com/crm/v1/contacts/get-list", {
             method: "POST",
@@ -387,14 +397,14 @@ function _sendToEmail() {
           return _context4.sent.json();
         case 37:
           _context4.sent.data.list[0].responsibleId;
-          return _context4.abrupt("return", s.success);
+          return _context4.abrupt("return", n.success);
         case 39:
         case "end":
           return _context4.stop();
       }
     }, _callee4);
   }));
-  return _sendToEmail.apply(this, arguments);
+  return _sendToCRM.apply(this, arguments);
 }
 function sendToGoogle(_x4) {
   return _sendToGoogle.apply(this, arguments);
@@ -413,47 +423,51 @@ function _sendToGoogle() {
   }));
   return _sendToGoogle.apply(this, arguments);
 }
+addEventListener("submit", function (e) {
+  e.preventDefault();
+  var t = e.target;
+  t.querySelectorAll(".starpage__input").forEach(function (e) {
+    myValidations(e);
+  }), 0 === t.querySelectorAll(".error-label").length && successValid(e);
+});
+var myValidations = function myValidations(o) {
+    return new Promise(function (e, t) {
+      function a(e, t) {
+        e = e.parentNode;
+        e.classList.contains("success") && e.classList.remove("success"), e.classList.contains("error") || (e.classList.add("error"), createAndAppendElems(e, {
+          name: "label",
+          className: "error-label",
+          id: "",
+          href: "",
+          textContent: t,
+          style: ""
+        }));
+      }
+      (n = (n = o).parentNode).classList.contains("error") && (n.querySelectorAll(".error-label").forEach(function (e) {
+        e.remove();
+      }), n.classList.remove("error"));
+      var s = !0;
+      var n;
+      "true" == o.dataset.required && ("" == o.value && (a(o, "Поле не заполнено"), s = !1), o.dataset.minLength) && o.value.length < o.dataset.minLength && (a(o, "Минимальное кол-во символов: " + o.dataset.minLength), s = !1), o.dataset.maxLength && o.value.length > o.dataset.maxLength && (a(o, "Максимальное кол-во символов: " + o.dataset.maxLength), s = !1), "name" != o.dataset.name || /^[A-ZА-ЯЁ]+$/i.test(o.value) || (a(o, "В имени могут быть только буквы"), s = !1), "email" != o.dataset.name || /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/i.test(o.value) || "" == o.value || (a(o, "Почта введена не корректно (не обязательно)"), s = !1), s && ((n = (n = o).parentNode).classList.contains("error") && n.classList.remove("error"), n.classList.contains("success") || n.classList.add("success")), e(s);
+    });
+  },
+  successValid = function successValid(e) {
+    handleFormSubmit(e);
+  };
 var currentTab = 0;
 function showTab(e) {
   var t = document.querySelector(".modal__quiz-indicator-line-show"),
     a = document.getElementsByClassName("tab"),
-    n = document.getElementById("prevBtn");
-  a[e].classList.remove("hidden"), document.getElementById("modal__quiz-steps-show").innerHTML = "\n  <span>".concat(currentTab + 1, "/").concat(a.length, "</span>\n  "), t.style.width = 100 / a.length * (currentTab + 1) + "%", e == a.length - 1 ? (console.log("Последняя страница перед отправкой"), document.getElementById("btnRegForm").classList.remove("hidden"), document.getElementById("nextBtn").classList.toggle("hidden")) : (document.getElementById("btnRegForm").classList.add("hidden"), document.getElementById("nextBtn").classList.remove("hidden")), 0 != e ? (n.disabled = "", n.classList.remove("disabled")) : (n.disabled = "disabled", n.classList.add("disabled"));
+    s = document.getElementById("prevBtn");
+  a[e].classList.remove("hidden"), document.getElementById("modal__quiz-steps-show").innerHTML = "\n  <span>".concat(currentTab + 1, "/").concat(a.length, "</span>\n  "), t.style.width = 100 / a.length * (currentTab + 1) + "%", e == a.length - 1 ? (console.log("Последняя страница перед отправкой"), document.getElementById("btnRegForm").classList.remove("hidden"), document.getElementById("nextBtn").classList.toggle("hidden")) : (document.getElementById("btnRegForm").classList.add("hidden"), document.getElementById("nextBtn").classList.remove("hidden")), 0 != e ? (s.disabled = "", s.classList.remove("disabled")) : (s.disabled = "disabled", s.classList.add("disabled"));
 }
 function nextPrev(e) {
   var t = document.getElementsByClassName("tab");
-  return !(1 == e && !validateForm()) && (t[currentTab].classList.toggle("hidden"), (currentTab += e) >= t.length ? (console.log("submit"), !1) : void showTab(currentTab));
+  return t[currentTab].querySelectorAll(".starpage__input").forEach(function (e) {
+    myValidations(e);
+  }), !(1 == e && 0 < t[currentTab].querySelectorAll(".error-label").length || (t[currentTab].classList.toggle("hidden"), (currentTab += e) >= t.length)) && void showTab(currentTab);
 }
-function validateForm() {
-  for (var e = !0, t = document.getElementsByClassName("tab")[currentTab].getElementsByTagName("input"), a = 0; a < t.length; a++) "" == t[a].value && (t[a].className += " invalid", e = !1);
-  return e;
-}
-showTab(currentTab), addEventListener("submit", function (e) {
-  e.preventDefault(), 1 == myValidations(e) && handleFormSubmit(e);
-});
-var myValidations = function myValidations(e) {
-  var t = !0;
-  var a,
-    n,
-    e = e.target;
-  var _iterator = _createForOfIteratorHelper(new FormData(e).entries()),
-    _step;
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var _step$value = _slicedToArray(_step.value, 2);
-      a = _step$value[0];
-      n = _step$value[1];
-      a, n;
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-  return e.querySelectorAll(".starpage__input").forEach(function (e) {
-    "" == e.value && (console.log("ошибка"), t = !1);
-  }), t;
-};
+showTab(currentTab);
 "use strict";
 
 function createAndAppendElems(s, a) {
