@@ -25,7 +25,8 @@
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <!-- Yandex.Metrika counter  
+    <script src="https://apis.google.com/js/api.js"></script>
+    <!--  Yandex.Metrika counter  -->
     <script type="text/javascript">
       ;(function (m, e, t, r, i, k, a) {
         m[i] =
@@ -68,7 +69,7 @@
         />
       </div>
     </noscript>
-      /Yandex.Metrika counter -->
+    <!--  Yandex.Metrika counter -->
   </head>
   <body>
     <!-- ШАПКА СТРАНИЦЫ - МЕНЮ -->
@@ -142,7 +143,6 @@
         </article>
       </div>
     </div>
-
     <!-- ПОДВАЛ СТРАНИЦЫ -->
     <div class="footer-container" id="section__footer">
       <footer class="main main_dark footer__wrapper">
@@ -168,46 +168,52 @@
             /><input type="hidden" name="sender" value="hello@starpage.ru" />
 
             <ul class="form-ul">
-              <li>
+              <li class="form__input-wrapper">
                 <input
                   class="starpage__input"
                   type="text"
                   name="name"
-                  id="name"
-                  placeholder="Ваше имя"
+                  id="namecallback"
+                  placeholder=" "
                   title="Как мы будем к вам обращаться?"
                   data-required="true"
                   data-min-length="2"
                   data-max-length="50"
                 />
+                <label for="namecallback" class="starpage__input-label"
+                  >Ваше имя</label
+                >
               </li>
-            </ul>
-
-            <ul class="form-ul">
-              <li>
+              <li class="form__input-wrapper">
                 <input
                   class="starpage__input"
                   type="text"
                   name="telegram"
-                  id="telegram"
-                  placeholder="Контакт для связи"
+                  id="telegramnamecallback"
+                  placeholder=" "
                   data-required="true"
                   data-min-length="2"
                   data-max-length="100"
-                />
+                /><label
+                  for="telegramnamecallback"
+                  class="starpage__input-label"
+                  >Контакт для связи</label
+                >
+              </li>
+              <li class="form__input-wrapper">
+                <textarea
+                  class="starpage__input starpage__input-textarea"
+                  name="comment"
+                  rows="4"
+                  id="messagecallback"
+                  placeholder=" "
+                  data-required="true"
+                ></textarea
+                ><label for="messagecallback" class="starpage__input-label"
+                  >Укажите дополнительно всё, что считаете важным</label
+                >
               </li>
             </ul>
-
-            <div class="form-ul">
-              <textarea
-                class="starpage__input"
-                name="comment"
-                rows="4"
-                id="message"
-                placeholder="Укажите дополнительно всё, что считаете важным"
-                data-required="true"
-              ></textarea>
-            </div>
           </form>
           <div id="FeedbackForm__success-content"></div>
 
@@ -261,7 +267,6 @@
         <div id="inner_link"></div>
       </footer>
     </div>
-
     <!-- МОДАЛЬНЫЕ ОКНА -->
     <div class="modal modal--l" id="modal-menu">
       <div class="modal__dialog">
@@ -400,10 +405,10 @@
               name="website"
               value="Заявка на разработку сайта (из квиза - модалка)"
             /><input type="hidden" name="sender" value="hello@starpage.ru" />
-            <fieldset class="tab hidden">
-              <div class="tab__circle-color-1"></div>
+
+            <fieldset class="tab">
               <legend>1. Какой сайт вам нужен?</legend>
-              <ul class="form-ul">
+              <ul class="form-ul form-ul-radio">
                 <li class="starpage_input-radio-wrapper">
                   <input
                     class="starpage__input starpage__input-radio"
@@ -459,9 +464,7 @@
                 </li>
               </ul>
             </fieldset>
-
             <fieldset class="tab hidden">
-              <div class="tab__circle-color-2"></div>
               <legend>2. Есть ли у Вас фирменный стиль?</legend>
               <ul class="form-ul">
                 <li>
@@ -493,89 +496,99 @@
                 </li>
               </ul>
             </fieldset>
-
             <fieldset class="tab hidden">
-              <div class="tab__circle-color-3"></div>
-              <legend>1. Персональные данные</legend>
+              <legend>3. Персональные данные</legend>
               <ul class="form-ul">
-                <li>
+                <li class="form__input-wrapper">
                   <input
                     class="starpage__input"
                     type="text"
                     name="name"
-                    id="name"
-                    placeholder="Ваше имя"
+                    id="nameclient"
                     title="Как мы будем к вам обращаться?"
-                    autofocus
+                    placeholder=" "
                     data-required="true"
                     data-min-length="2"
                     data-name="name"
                   />
+                  <label for="nameclient" class="starpage__input-label"
+                    >Ваше имя</label
+                  >
                 </li>
-                <li>
+                <li class="form__input-wrapper">
                   <input
                     class="starpage__input"
                     type="text"
                     name="company"
                     id="company"
-                    placeholder="Имя проекта"
                     title="Постарайтесь лучше рассказать о своем проекте"
+                    placeholder=" "
                     data-required="true"
                     data-min-length="2"
                   />
+                  <label for="company" class="starpage__input-label"
+                    >Имя проекта</label
+                  >
                 </li>
-                <li>
+                <li class="form__input-wrapper">
                   <input
                     class="starpage__input"
                     type="text"
                     name="target"
                     id="target"
-                    placeholder="Цель разработки сайта"
                     title="Постарайтесь лучше рассказать о своем проекте"
+                    placeholder=" "
                     data-required="true"
                     data-min-length="2"
-                  />
+                  /><label for="target" class="starpage__input-label"
+                    >Цель разработки сайта</label
+                  >
                 </li>
               </ul>
             </fieldset>
             <fieldset class="tab hidden">
-              <div class="tab__circle-color-4"></div>
-              <legend>2. Контакты</legend>
+              <legend>4. Контакты</legend>
               <ul class="form-ul">
-                <li>
+                <li class="form__input-wrapper">
                   <input
                     type="email"
                     name="email"
-                    placeholder="Почта"
+                    placeholder=" "
                     id="email"
                     class="starpage__input"
                     data-name="email"
                     title="Напишите почту, по которой мы можем с вами связаться"
-                  />
+                  /><label for="email" class="starpage__input-label"
+                    >Почта</label
+                  >
                 </li>
-                <li>
+                <li class="form__input-wrapper">
                   <input
                     type="text"
                     name="telegram"
-                    id="telegram"
-                    placeholder="Telegram"
+                    id="telegraminput"
+                    placeholder=" "
                     class="starpage__input"
                     data-required="true"
                     title="Напишите ник или номер, чтобы мы
                   могли с вами связаться в Telegram"
-                  />
+                  /><label for="telegraminput" class="starpage__input-label"
+                    >Telegram</label
+                  >
+                </li>
+                <li class="form__input-wrapper">
+                  <textarea
+                    class="starpage__input starpage__input-textarea"
+                    name="comment"
+                    rows="4"
+                    id="formmessage"
+                    placeholder=" "
+                  ></textarea
+                  ><label for="formmessage" class="starpage__input-label"
+                    >Укажите все пожелания и комментарии</label
+                  >
                 </li>
               </ul>
-
-              <legend style="margin-top: 16px">3. Пожелания</legend>
-              <div class="form-ul">
-                <textarea
-                  name="comment"
-                  rows="4"
-                  id="message"
-                  placeholder="Укажите дополнительно всё, что считаете важным"
-                ></textarea>
-              </div>
             </fieldset>
           </form>
           <div id="regForm__success-content"></div>
@@ -662,7 +675,6 @@
         <div class="modal__dialog-footer"></div>
       </div>
     </div>
-
     <script src="main.js"></script>
     <script src="index.js"></script>
   </body>

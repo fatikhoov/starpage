@@ -47,6 +47,8 @@
   },
   "sass": "sass",
   "dependencies": {
+    "dropbox": "^10.34.0",
+    "firebase": "^9.21.0",
     "sendpulse-api": "^1.1.6"
   }
 }

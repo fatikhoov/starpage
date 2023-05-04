@@ -137,7 +137,7 @@ var validSendModal = document.getElementById("valid-send-modal"),
   successSendModal = document.querySelector(".success-send-modal");
 var TARGET_ID, s;
 function onSuccess(e) {
-  console.log(e, TARGET_ID), document.querySelector("[ind-data=\"".concat(TARGET_ID, "-loader\"]")).classList.add("hidden"), document.querySelectorAll("[ind-data=\"".concat(TARGET_ID, "\"]")).forEach(function (e) {
+  document.querySelector("[ind-data=\"".concat(TARGET_ID, "-loader\"]")).classList.add("hidden"), document.querySelectorAll("[ind-data=\"".concat(TARGET_ID, "\"]")).forEach(function (e) {
     e.classList.add("hidden");
   }), document.getElementById(TARGET_ID + "__success-content").innerHTML = "\n<div\n            class=\"onSuccess__modal hidden\"\n            id=\"onSuccess__modal-quiz\"\n            ind-data=\"".concat(TARGET_ID, "-onSuccess\"\n          >\n            <div class=\"tab__circle-color-success\"></div>\n            <picture>\n              <img\n                class=\"logo-success\"\n                src=\"/img/planet-flat.png\"\n                srcset=\"/img/planet-flat.png 2x\"\n                alt=\"starpage success picture\"\n              />\n            </picture>\n            <p class=\"onSuccess__modal-title\">\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u0435\u043C!</p>\n            <p class=\"onSuccess__modal-descr\">\u0417\u0430\u044F\u0432\u043A\u0430 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430!</p>\n            <p class=\"onSuccess__modal-content\">\n              \u041C\u0435\u043D\u0435\u0434\u0436\u0435\u0440 \u0441\u0432\u044F\u0436\u0435\u0442\u0441\u044F \u0441 \u0412\u0430\u043C\u0438<br />\n              \u0432 \u0442\u0435\u0447\u0435\u043D\u0438\u0435 15 \u043C\u0438\u043D\u0443\u0442 \u0432 \u0440\u0430\u0431\u043E\u0447\u0435\u0435 \u0432\u0440\u0435\u043C\u044F\n            </p>\n          </div>\n"), document.querySelectorAll("[ind-data=\"".concat(TARGET_ID, "-onSuccess\"]")).forEach(function (e) {
     e.classList.remove("hidden");
@@ -155,7 +155,7 @@ function handleFormSubmit(_x) {
 }
 function _handleFormSubmit() {
   _handleFormSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-    var t, a, n, o, r, _iterator, _step, _step$value, d, c, l;
+    var t, a, n, o, r, _iterator, _step, _step$value, d, c, i;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -184,11 +184,11 @@ function _handleFormSubmit() {
         case 10:
           c = _context.sent;
           _context.next = 13;
-          return sendToGoogle(r);
+          return sendToDropBox(r);
         case 13:
-          l = _context.sent;
+          i = _context.sent;
           _context.next = 16;
-          return Promise.allSettled([d, c, l]);
+          return Promise.allSettled([d, c, i,,]);
         case 16:
           if (!_context.sent.every(function (e) {
             return "rejected" === e.status;
@@ -224,9 +224,8 @@ function _sendToTelegram() {
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          t = "<b>\u0423\u0412\u0415\u0414\u041E\u041C\u041B\u0415\u041D\u0418\u0415 \u0421 \u0421\u0410\u0419\u0422\u0410</b>\n\n";
-          t = (t = (t = (t = (t = (t = (t = (t = (t += "<b>".concat(e.website, "</b>\n")) + "\u041D\u0443\u0436\u0435\u043D:<b> ".concat(e.radio, "</b>\n")) + "\u0414\u0438\u0437\u0430\u0439\u043D:<b> ".concat(e.radiodesign, "</b>\n")) + "\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.name, "</b>\n")) + "\u0418\u043C\u044F \u043F\u0440\u043E\u0435\u043A\u0442\u0430:<b> ".concat(e.company, "</b>\n")) + "\u0426\u0435\u043B\u044C:<b> ".concat(e.target, "</b>\n\n")) + "\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.email, "</b>\n")) + "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:<b> ".concat(e.telegram, "</b>\n")) + "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:<b> ".concat(e.comment, "</b>\n\n") + "<b><a href='https://login.sendpulse.com/crm/deals'>Посмотреть в CRM SendPulse</a></b>";
-          _context2.next = 4;
+          t = "<b>\u0423\u0412\u0415\u0414\u041E\u041C\u041B\u0415\u041D\u0418\u0415 \u0421 \u0421\u0410\u0419\u0422\u0410</b>\n\n", t = (t = (t = (t = (t = (t = (t = (t = (t += "<b>".concat(e.website, "</b>\n")) + "\u041D\u0443\u0436\u0435\u043D:<b> ".concat(e.radio, "</b>\n")) + "\u0414\u0438\u0437\u0430\u0439\u043D:<b> ".concat(e.radiodesign, "</b>\n")) + "\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.name, "</b>\n")) + "\u0418\u043C\u044F \u043F\u0440\u043E\u0435\u043A\u0442\u0430:<b> ".concat(e.company, "</b>\n")) + "\u0426\u0435\u043B\u044C:<b> ".concat(e.target, "</b>\n\n")) + "\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.email, "</b>\n")) + "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:<b> ".concat(e.telegram, "</b>\n")) + "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:<b> ".concat(e.comment, "</b>\n\n") + "<b><a href='https://login.sendpulse.com/crm/deals'>Посмотреть в CRM SendPulse</a></b>";
+          _context2.next = 3;
           return fetch("https://api.telegram.org/bot6107421370:AAFAUTLHO9IWB6gRD1E9vHs-NuIscyNJvkQ/sendMessage", {
             method: "POST",
             headers: {
@@ -238,19 +237,18 @@ function _sendToTelegram() {
               text: t
             })
           });
-        case 4:
-          _context2.next = 6;
+        case 3:
+          _context2.next = 5;
           return _context2.sent.json();
-        case 6:
-          e = _context2.sent;
-          if (!e.ok) {
-            _context2.next = 9;
+        case 5:
+          if (!_context2.sent.ok) {
+            _context2.next = 7;
             break;
           }
-          return _context2.abrupt("return", e.ok);
-        case 9:
+          return _context2.abrupt("return", !0);
+        case 7:
           throw new Error("Ошибка отправки данных в телеграмм");
-        case 10:
+        case 8:
         case "end":
           return _context2.stop();
       }
@@ -406,22 +404,22 @@ function _sendToCRM() {
   }));
   return _sendToCRM.apply(this, arguments);
 }
-function sendToGoogle(_x4) {
-  return _sendToGoogle.apply(this, arguments);
+function sendToDropBox(_x4) {
+  return _sendToDropBox.apply(this, arguments);
 }
-function _sendToGoogle() {
-  _sendToGoogle = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(e) {
+function _sendToDropBox() {
+  _sendToDropBox = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(e) {
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
-          return _context5.abrupt("return", 200);
+          return _context5.abrupt("return", !0);
         case 1:
         case "end":
           return _context5.stop();
       }
     }, _callee5);
   }));
-  return _sendToGoogle.apply(this, arguments);
+  return _sendToDropBox.apply(this, arguments);
 }
 addEventListener("submit", function (e) {
   e.preventDefault();
