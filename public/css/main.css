@@ -61,6 +61,9 @@ textarea {
   padding: 0.2em 0;
 }
 
+a {
+  line-height: 100%;
+}
 /* ===== Initializr Styles ==================================================
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */

@@ -155,7 +155,7 @@ function handleFormSubmit(_x) {
 }
 function _handleFormSubmit() {
   _handleFormSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-    var t, a, n, o, r, _iterator, _step, _step$value, d, c, i;
+    var t, a, n, o, r, _iterator, _step, _step$value, d, c, l, i, m, u;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -175,80 +175,103 @@ function _handleFormSubmit() {
           } finally {
             _iterator.f();
           }
-          _context.next = 7;
-          return sendToTelegram(r);
-        case 7:
-          d = _context.sent;
-          _context.next = 10;
-          return sendToCRM(r);
-        case 10:
+          d = Array.from(n).filter(function (e) {
+            return "file" == e.type;
+          });
+          console.log("myInputFile", d);
+          _context.next = 9;
+          return sendToTelegram(r, d[0].files);
+        case 9:
           c = _context.sent;
-          _context.next = 13;
+          _context.next = 12;
+          return sendToCRM(r);
+        case 12:
+          l = _context.sent;
+          _context.next = 15;
           return sendToDropBox(r);
-        case 13:
+        case 15:
           i = _context.sent;
-          _context.next = 16;
-          return Promise.allSettled([d, c, i,,]);
-        case 16:
-          if (!_context.sent.every(function (e) {
+          _context.next = 18;
+          return Promise.allSettled([c, l, i,,]);
+        case 18:
+          m = _context.sent;
+          u = (console.log(m), m.every(function (e) {
             return "rejected" === e.status;
-          })) {
-            _context.next = 18;
+          }));
+          if (!u) {
+            _context.next = 22;
             break;
           }
           throw new Error("Ошибка промисов");
-        case 18:
+        case 22:
           setTimeout(function () {
             onSuccess();
           }, 1e3);
-          _context.next = 24;
+          _context.next = 28;
           break;
-        case 21:
-          _context.prev = 21;
+        case 25:
+          _context.prev = 25;
           _context.t0 = _context["catch"](0);
           console.error("Ошибка отправки данных!", _context.t0);
-        case 24:
+        case 28:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 21]]);
+    }, _callee, null, [[0, 25]]);
   }));
   return _handleFormSubmit.apply(this, arguments);
 }
-function sendToTelegram(_x2) {
+function sendToTelegram(_x2, _x3) {
   return _sendToTelegram.apply(this, arguments);
 }
 function _sendToTelegram() {
-  _sendToTelegram = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
-    var t;
+  _sendToTelegram = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e, t) {
+    var a, s, n;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          t = "<b>\u0423\u0412\u0415\u0414\u041E\u041C\u041B\u0415\u041D\u0418\u0415 \u0421 \u0421\u0410\u0419\u0422\u0410</b>\n\n", t = (t = (t = (t = (t = (t = (t = (t = (t += "<b>".concat(e.website, "</b>\n")) + "\u041D\u0443\u0436\u0435\u043D:<b> ".concat(e.radio, "</b>\n")) + "\u0414\u0438\u0437\u0430\u0439\u043D:<b> ".concat(e.radiodesign, "</b>\n")) + "\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.name, "</b>\n")) + "\u0418\u043C\u044F \u043F\u0440\u043E\u0435\u043A\u0442\u0430:<b> ".concat(e.company, "</b>\n")) + "\u0426\u0435\u043B\u044C:<b> ".concat(e.target, "</b>\n\n")) + "\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.email, "</b>\n")) + "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:<b> ".concat(e.telegram, "</b>\n")) + "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:<b> ".concat(e.comment, "</b>\n\n") + "<b><a href='https://login.sendpulse.com/crm/deals'>Посмотреть в CRM SendPulse</a></b>";
-          _context2.next = 3;
-          return fetch("https://api.telegram.org/bot6107421370:AAFAUTLHO9IWB6gRD1E9vHs-NuIscyNJvkQ/sendMessage", {
+          console.log("files", t);
+          a = "6107421370:AAFAUTLHO9IWB6gRD1E9vHs-NuIscyNJvkQ", s = "-1001830793403";
+          n = "<b>\u0423\u0412\u0415\u0414\u041E\u041C\u041B\u0415\u041D\u0418\u0415 \u0421 \u0421\u0410\u0419\u0422\u0410</b>\n\n";
+          e.website && (n += "<b>".concat(e.website, "</b>\n")), e.radio && (n += "\u041D\u0443\u0436\u0435\u043D:<b> ".concat(e.radio, "</b>\n")), e.radiodesign && (n += "\u0414\u0438\u0437\u0430\u0439\u043D:<b> ".concat(e.radiodesign, "</b>\n")), e.name && (n += "\u0418\u043C\u044F \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.name, "</b>\n")), e.company && (n += "\u0418\u043C\u044F \u043F\u0440\u043E\u0435\u043A\u0442\u0430:<b> ".concat(e.company, "</b>\n")), e.target && (n += "\u0426\u0435\u043B\u044C:<b> ".concat(e.target, "</b>\n\n")), e.email && (n += "\u041F\u043E\u0447\u0442\u0430 \u043A\u043B\u0438\u0435\u043D\u0442\u0430:<b> ".concat(e.email, "</b>\n")), e.telegram && (n += "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C:<b> ".concat(e.telegram, "</b>\n")), e.comment && (n += "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439:<b> ".concat(e.comment, "</b>\n\n")), n += "<b><a href='https://login.sendpulse.com/crm/deals'>Посмотреть в CRM SendPulse</a></b>";
+          _context2.next = 6;
+          return fetch("https://api.telegram.org/bot".concat(a, "/sendMessage"), {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
             },
             body: JSON.stringify({
-              chat_id: "-1001830793403",
+              chat_id: s,
               parse_mode: "html",
-              text: t
+              text: n
             })
           });
-        case 3:
-          _context2.next = 5;
-          return _context2.sent.json();
-        case 5:
-          if (!_context2.sent.ok) {
-            _context2.next = 7;
+        case 6:
+          e = _context2.sent;
+          Array.from(t).length && Array.from(t).forEach(function (e) {
+            var t = new FormData(),
+              e = (t.append("chat_id", s), t.append("document", e, e.name), {
+                method: "POST",
+                body: t
+              });
+            fetch("https://api.telegram.org/bot".concat(a, "/sendDocument"), e).then(function (e) {
+              e.ok ? console.log("Document sent successfully") : console.error("Failed to send document:", e.status, e.statusText);
+            })["catch"](function (e) {
+              return console.error("Error sending document:", e);
+            });
+          });
+          _context2.next = 10;
+          return e.json();
+        case 10:
+          t = _context2.sent;
+          if (!t.ok) {
+            _context2.next = 13;
             break;
           }
-          return _context2.abrupt("return", !0);
-        case 7:
+          return _context2.abrupt("return", t.ok);
+        case 13:
           throw new Error("Ошибка отправки данных в телеграмм");
-        case 8:
+        case 14:
         case "end":
           return _context2.stop();
       }
@@ -256,7 +279,7 @@ function _sendToTelegram() {
   }));
   return _sendToTelegram.apply(this, arguments);
 }
-function sendToCRM(_x3) {
+function sendToCRM(_x4) {
   return _sendToCRM.apply(this, arguments);
 }
 function _sendToCRM() {
@@ -353,7 +376,7 @@ function _sendToCRM() {
                 }
               }, _callee3);
             }));
-            return function (_x5) {
+            return function (_x6) {
               return _ref2.apply(this, arguments);
             };
           }()));
@@ -404,7 +427,7 @@ function _sendToCRM() {
   }));
   return _sendToCRM.apply(this, arguments);
 }
-function sendToDropBox(_x4) {
+function sendToDropBox(_x5) {
   return _sendToDropBox.apply(this, arguments);
 }
 function _sendToDropBox() {

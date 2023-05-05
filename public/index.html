@@ -26,7 +26,7 @@
     <script src="js/plugins.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
-    <!--  Yandex.Metrika counter  -->
+    <!--  Yandex.Metrika counter  
     <script type="text/javascript">
       ;(function (m, e, t, r, i, k, a) {
         m[i] =
@@ -69,7 +69,7 @@
         />
       </div>
     </noscript>
-    <!--  Yandex.Metrika counter -->
+       Yandex.Metrika counter -->
   </head>
   <body>
     <!-- ШАПКА СТРАНИЦЫ - МЕНЮ -->
@@ -200,7 +200,7 @@
                   >Контакт для связи</label
                 >
               </li>
-              <li class="form__input-wrapper">
+              <li class="form__input-wrapper starpage__input-textarea">
                 <textarea
                   class="starpage__input starpage__input-textarea"
                   name="comment"
@@ -210,8 +210,26 @@
                   data-required="true"
                 ></textarea
                 ><label for="messagecallback" class="starpage__input-label"
-                  >Укажите дополнительно всё, что считаете важным</label
+                  >Напишите всё, что считаете важным</label
                 >
+              </li>
+              <li>
+                <div class="input__wrapper input__wrapper-files">
+                  <input
+                    class="input__file-upload"
+                    type="file"
+                    name="file-callback"
+                    id="FeedbackForm-file-callback"
+                  />
+                  <div
+                    class="buttons__file-upload"
+                    id="FeedbackForm-buttons__file-upload"
+                  ></div>
+                  <div
+                    class="images__file-upload-pre"
+                    id="FeedbackForm-images__file-upload-pre"
+                  ></div>
+                </div>
               </li>
             </ul>
           </form>
@@ -226,7 +244,7 @@
                 id="btnFeedbackForm"
                 ind-data="FeedbackForm-button"
               >
-                Обсудить проект
+                Отправить
               </button>
             </div>
           </div>
@@ -245,22 +263,30 @@
 
         <ul class="ul-footer">
           <li>
-            <a href="https://t.me/my_starpage"
-              ><img
+            <a href="https://t.me/my_starpage">
+              <!--  <img
                 class="logo-telegram"
                 src="/img/telegram.svg"
                 srcset="/img/telegram.svg 2x"
                 alt="starpage telegram"
-            /></a>
+              /> --><span class="footer__social-text"
+                >Написать в Telegram</span
+              ></a
+            >
           </li>
+        </ul>
+        <ul class="ul-footer">
           <li>
-            <a href="mailto:hello@starpage.ru"
-              ><img
+            <a href="mailto:hello@starpage.ru">
+              <!-- <img
                 class="logo-email"
                 src="/img/email.png"
                 srcset="/img/email.png 2x"
                 alt="starpage email"
-            /></a>
+              /> --><span class="footer__social-text"
+                >hello@starpage.ru</span
+              ></a
+            >
           </li>
         </ul>
 
@@ -576,7 +602,7 @@
                     >Telegram</label
                   >
                 </li>
-                <li class="form__input-wrapper">
+                <li class="form__input-wrapper starpage__input-textarea">
                   <textarea
                     class="starpage__input starpage__input-textarea"
                     name="comment"
@@ -587,6 +613,24 @@
                   ><label for="formmessage" class="starpage__input-label"
                     >Укажите все пожелания и комментарии</label
                   >
+                </li>
+                <li>
+                  <div class="input__wrapper input__wrapper-files">
+                    <input
+                      class="input__file-upload"
+                      type="file"
+                      name="file-callback"
+                      id="regForm-file-callback"
+                    />
+                    <div
+                      class="buttons__file-upload"
+                      id="regForm-buttons__file-upload"
+                    ></div>
+                    <div
+                      class="images__file-upload-pre"
+                      id="regForm-images__file-upload-pre"
+                    ></div>
+                  </div>
                 </li>
               </ul>
             </fieldset>
@@ -610,7 +654,7 @@
               Назад
             </button>
             <button
-              class="btn-send btn-quiz"
+              class="btn-quiz btn-send"
               type="button"
               id="nextBtn"
               onclick="nextPrev(1)"
@@ -619,7 +663,7 @@
               Далее
             </button>
             <button
-              class="btn-send btn-quiz btn-send-telegram hidden"
+              class="btn-quiz btn-send hidden"
               type="submit"
               form="regForm"
               id="btnRegForm"
@@ -677,5 +721,6 @@
     </div>
     <script src="main.js"></script>
     <script src="index.js"></script>
+    <script type="module" src="modules.js"></script>
   </body>
 </html>

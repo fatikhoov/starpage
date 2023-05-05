@@ -1,4 +1,3 @@
-
 isLoadingPage = false
 
 const initPage = (path) => {
@@ -168,5 +167,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
       false
     )
   })
-
 })
