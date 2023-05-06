@@ -1,17 +1,6 @@
-/* import { initializeApp } from 'firebase/app'
-import { getStorage } from 'firebase/storage' */
-import { uploadInputFile } from './js/upload.js'
+import { initializeApp } from 'firebase/app'
+import { getStorage } from 'firebase/storage'
 
-const forms = document.querySelectorAll('form')
-
-forms.forEach((form) => {
-  uploadInputFile('file-callback', {
-    multi: true,
-    accept: ['.png', '.jpg', '.jpeg', '.gif'],
-    form: form.id,
-  })
-})
-/* 
 const firebaseConfig = {
   apiKey: 'AIzaSyDfeym0N_eZN2n6rzYkKoQ696mperZxcmw',
   authDomain: 'starpage-5c9b4.firebaseapp.com',
@@ -26,4 +15,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const storage = getStorage(app)
 
-console.log(storage) */
+console.log(storage)
+
+import { uploadInputFile } from './js/upload.js'
+const forms = document.querySelectorAll('form')
+
+forms.forEach((form) => {
+  uploadInputFile('file-callback', {
+    multi: true,
+    accept: ['.png', '.jpg', '.jpeg', '.gif'],
+    form: form.id,
+  })
+})
