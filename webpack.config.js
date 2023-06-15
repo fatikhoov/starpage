@@ -14,6 +14,13 @@ module.exports = {
     path: path.resolve(__dirname, './public/js/dist'),
     filename: 'common.js',
     clean: false,
+    library: 'storage',
+    libraryTarget: 'umd',
+    libraryExport: 'storage',
+  },
+  externals: {
+    'firebase/app': 'firebase/app',
+    'firebase/storage': 'firebase/storage',
   },
   module: {
     rules: [
@@ -30,7 +37,7 @@ module.exports = {
       new TerserPlugin({
         terserOptions: {
           compress: {
-            drop_console: true,
+            drop_console: false,
           },
         },
         extractComments: false,

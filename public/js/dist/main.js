@@ -7,8 +7,8 @@ var initAccordionShow = function initAccordionShow() {
       t = e.querySelector(".content-accordion");
     o.addEventListener("click", function (e) {
       e.preventDefault(), t.classList.toggle("hidden-accordion"), t.classList.contains("hidden-accordion") ? (o.children[1].style.transform = "rotate(45deg)", t.style.display = "none", setTimeout(function () {
-        t.style.display = "", o.style.boxShadow = "";
-      }, 1)) : (o.style.boxShadow = "0px 5px 20px 0px rgba(178,57,221,0.2)", o.children[1].style.transform = "rotate(0deg)");
+        t.style.display = "";
+      }, 1)) : o.children[1].style.transform = "rotate(0deg)";
     });
   }), console.log("accordion work");
 };
@@ -25,8 +25,8 @@ var initCarouselShow = function initCarouselShow() {
       cellAlign: "center",
       freeScroll: !1,
       contain: !0,
-      wrapAround: !0,
-      autoPlay: 5e3
+      wrapAround: !1,
+      autoPlay: !1
     }), o = e.querySelectorAll(".carousel-cell img"), r = "string" == typeof document.documentElement.style.transform ? "transform" : "WebkitTransform", e.addEventListener("scroll", function () {
       t.slides.forEach(function (e, l) {
         l = o[l], e = -1 * (e.target + t.x) / 3;
@@ -37,8 +37,8 @@ var initCarouselShow = function initCarouselShow() {
       cellAlign: "center",
       freeScroll: !1,
       contain: !0,
-      wrapAround: !0,
-      autoPlay: 8e3,
+      wrapAround: !1,
+      autoPlay: !1,
       prevNextButtons: !1,
       pageDots: !1
     }));
