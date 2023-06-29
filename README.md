@@ -5,5 +5,3 @@ STARPAGE - Агентство создания сайтов под ключ
     Уникальный, адаптивный, современный дизайн!
 
 
-команда для optipng
-Get-ChildItem -Path . -Filter *.png | ForEach-Object { optipng -o2 -strip all $_.FullName }
